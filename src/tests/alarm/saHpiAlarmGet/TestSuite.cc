@@ -33,13 +33,12 @@ using namespace ns_saHpiAlarmGet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
-    add(new GetAlarm("B.02|P86-15:P86-15"));
-    add(new InvalidAlarmId("B.02|P86-16:P86-17"));
-    add(new NullAlarm("B.02|P86-18:P86-18"));
-    add(new FirstEntry("B.02|P86-19:P86-19"));
-    add(new LastEntry("B.02|P86-19:P86-19"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
+    add(new GetAlarm("P69-15:P69-15"));
+    add(new InvalidAlarmId("P69-16:P69-17"));
+    add(new NullAlarm("P69-18:P69-18"));
+    add(new FirstEntry("P69-15:P69-15"));
+    add(new LastEntry("P69-15:P69-15"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

@@ -88,18 +88,8 @@ HpiTestStatus SetControl::runCtrlTest(SaHpiSessionIdT sessionId,
         } else {
             error = saHpiControlSet(sessionId, rptEntry->ResourceId,
                                     ctrlRec->Num, ctrlMode, &ctrlState);
-            if (error == SA_OK) 
-            {
-	      status.assertPass();
-
-	      //B.02 code change
-	    } else if ((error == SA_ERR_HPI_INVALID_DATA) && 
-		       (ctrlState.Type == SAHPI_CTRL_TYPE_OEM)) {
-	      status.assertNotSupport();
-
-	    } else if (error == SA_ERR_HPI_UNSUPPORTED_PARAMS) {
-	      status.assertNotSupport();
-
+            if (error == SA_OK) {
+                status.assertPass();
             } else {
                 status.assertFailure(TRACE, CONTROL_SET, SA_OK, error);
             }

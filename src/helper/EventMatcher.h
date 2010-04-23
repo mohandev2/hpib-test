@@ -50,8 +50,7 @@ private:
     SaHpiSeverityT severity;
 
     bool matchResourceEventType;
-    int eventStateCount;
-    SaHpiResourceEventTypeT resEvtType[5];
+    SaHpiResourceEventTypeT resEvtType;
 
     bool matchHotSwapState;
     int hotSwapStateCount;
@@ -73,8 +72,7 @@ public:
     void setEventType(SaHpiEventTypeT eventType);
     void setSeverity(SaHpiSeverityT severity);
 
-    void setResourceEventType(SaHpiResourceEventTypeT resourceEvtType);
-    void addResourceEventType(SaHpiResourceEventTypeT resourceEvtType);
+    void setResourceEventType(SaHpiResourceEventTypeT resEvtType);
 
     void setHotSwapState(SaHpiHsStateT hotSwapState);
     void addHotSwapState(SaHpiHsStateT hotSwapState);

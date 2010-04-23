@@ -16,9 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- * Modified By:
- *   AKMAL MUQEETH
- *   PUSHPA DATLA
  */
 
 #include "TestSuite.h"
@@ -27,6 +24,7 @@
 #include "IdrNotPresent.h"
 #include "AreaNotPresent.h"
 #include "ReadOnlyArea.h"
+#include "ReadOnlyIdr.h"
 #include "InvalidFieldType.h"
 #include "UnspecifiedFieldType.h"
 #include "NullField.h"
@@ -44,22 +42,21 @@ using namespace ns_saHpiIdrFieldAdd;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
-    add(new AddField("B.02|P131-17:P131-17;P132-5:P132-6;P132-7:P132-8"));
-    add(new NoCapability("B.02|P131-18:P131-19"));
-    add(new IdrNotPresent("B.02|P131-21:P131-21"));
-    add(new AreaNotPresent("B.02|P131-22:P131-22"));
-    add(new ReadOnlyArea("B.02|P131-28:P131-28"));
-    add(new InvalidFieldType("B.02|P131-31:P131-31"));
-    add(new UnspecifiedFieldType("B.02|P131-32:P131-32"));
-    add(new NullField("B.02|P132-3:P132-3"));
-    add(new InvalidDataType("B.02|P131-34:P131-34"));
-    add(new InvalidTextCharacters("B.02|P131-35:P131-35"));
-    add(new InvalidLanguage("B.02|P132-1:P132-2"));
-    add(new IgnoreReadOnly("B.02|P132-9:P132-10;"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new AddField("P109-17:P109-17;P110-5:P110-6;P110-7:P110-8"));
+    add(new NoCapability("P109-18:P109-19"));
+    add(new IdrNotPresent("P109-21:P109-21"));
+    add(new AreaNotPresent("P109-22:P109-22"));
+    add(new ReadOnlyArea("P109-28:P109-28"));
+    add(new ReadOnlyIdr("P109-29:P109-29"));
+    add(new InvalidFieldType("P109-31:P109-31"));
+    add(new UnspecifiedFieldType("P109-32:P109-32"));
+    add(new NullField("P110-3:P110-3"));
+    add(new InvalidDataType("P109-34:P109-34"));
+    add(new InvalidTextCharacters("P109-35:P109-35"));
+    add(new InvalidLanguage("P110-1:P110-2"));
+    add(new IgnoreReadOnly("P110-9:P110-10;"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

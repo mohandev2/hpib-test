@@ -39,20 +39,18 @@ using namespace ns_saHpiIdrAreaHeaderGet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
-    add(new NoCapability("B.02|P122-26:P122-27"));
-    add(new IdrNotPresent("B.02|P122-29:P122-29"));
-    add(new AreaNotPresent("B.02|P122-30:P122-31"));
-    add(new AreaTypeMismatch("B.02|P122-32:P122-33"));
-    add(new InvalidAreaType("B.02|P122-35:P122-35"));
-    add(new ReservedAreaId("B.02|P122-36:P122-36"));
-    add(new NullNextAreaId("B.02|P122-37:P122-37"));
-    add(new NullHeader("B.02|P122-38:P122-38"));
-    add(new Traversal("B.02|P123-4:P123-7"));
-    add(new TraversalByAreaType("B.02|P123-8:P123-11"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new NoCapability("P102-26:P102-27"));
+    add(new IdrNotPresent("P102-29:P102-29"));
+    add(new AreaNotPresent("P102-30:P102-31"));
+    add(new AreaTypeMismatch("P102-32:P102-33"));
+    add(new InvalidAreaType("P102-35:P102-35"));
+    add(new ReservedAreaId("P102-36:P102-36"));
+    add(new NullNextAreaId("P102-37:P102-37"));
+    add(new NullHeader("P102-38:P102-38"));
+    add(new Traversal("P103-4:P103-7"));
+    add(new TraversalByAreaType("P103-8:P103-11"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

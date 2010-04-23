@@ -16,10 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * Changes
- * 09/06/25 lars.wetzel@emerson.com
- *          add areaTypes: OEM and INTERNAL_USE
  */
 
 #include "AreaTypeMismatch.h"
@@ -56,8 +52,8 @@ const char *AreaTypeMismatch::getDescription() {
  *****************************************************************************/
 
 const char *AreaTypeMismatch::getPrecondition() {
-    return "Requires an Inventory for which either CHASSIS, BOARD, PRODUCT\n"
-           "OEM or INTERNAL isn't being used by any of its Areas.";
+    return "Requires an Inventory for which either CHASSIS, BOARD, or PRODUCT\n"
+           "isn't being used by any of its Areas.";
 }
 
 /*****************************************************************************
@@ -122,10 +118,10 @@ HpiTestStatus AreaTypeMismatch::findUnusedAreaType(SaHpiSessionIdT     sessionId
     HpiTestStatus status;
     SaHpiEntryIdT nextAreaId, areaId;
     SaHpiIdrAreaHeaderT header;
-    bool found[5];
+    bool found[3];
 
     *foundUnusedArea = false;
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 3; i++) {
         found[i] = false;
     }
 
@@ -145,36 +141,26 @@ HpiTestStatus AreaTypeMismatch::findUnusedAreaType(SaHpiSessionIdT     sessionId
             break;
         } else if (error != SA_OK) {
             status.assertError(TRACE, IDR_AREA_HEADER_GET, SA_OK, error);
-	} else if (header.Type == SAHPI_IDR_AREATYPE_INTERNAL_USE) {
-            found[0] = true;
         } else if (header.Type == SAHPI_IDR_AREATYPE_CHASSIS_INFO) {
-            found[1] = true;
+            found[0] = true;
         } else if (header.Type == SAHPI_IDR_AREATYPE_BOARD_INFO) {
-            found[2] = true;
+            found[1] = true;
         } else if (header.Type == SAHPI_IDR_AREATYPE_PRODUCT_INFO) {
-            found[3] = true;
-        } else if (header.Type == SAHPI_IDR_AREATYPE_OEM) {
-            found[4] = true;
-	}
+            found[2] = true;
+        }
     }
 
     if (status.isOkay()) {
         // Check for an AreaType that wasn't found.
         if (!found[0]) {
             *foundUnusedArea = true;
-	    *areaType = SAHPI_IDR_AREATYPE_INTERNAL_USE;
-	} else if (!found[1]) {
-            *foundUnusedArea = true;
             *areaType = SAHPI_IDR_AREATYPE_CHASSIS_INFO;
-        } else if (!found[2]) {
+        } else if (!found[1]) {
             *foundUnusedArea = true;
             *areaType = SAHPI_IDR_AREATYPE_BOARD_INFO;
-        } else if (!found[3]) {
+        } else if (!found[2]) {
             *foundUnusedArea = true;
             *areaType = SAHPI_IDR_AREATYPE_PRODUCT_INFO;
-        } else if (!found[4]) {
-            *foundUnusedArea = true;
-            *areaType = SAHPI_IDR_AREATYPE_OEM;
         }
     }
 

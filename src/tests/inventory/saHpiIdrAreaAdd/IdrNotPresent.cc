@@ -16,10 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * Changes
- * 09/06/25 lars.wetzel@emerson.com
- *          areaType: PRODUCT_INFO -> OEM
  */
 
 #include "IdrNotPresent.h"
@@ -79,7 +75,7 @@ HpiTestStatus IdrNotPresent::runResourceTest(SaHpiSessionIdT sessionId,
     } else {
         SaErrorT error = saHpiIdrAreaAdd(sessionId, rptEntry->ResourceId, 
                                          getInvalidIdrId(), 
-                                         SAHPI_IDR_AREATYPE_OEM,
+                                         SAHPI_IDR_AREATYPE_PRODUCT_INFO,
                                          &areaId);
 
         if (error == SA_ERR_HPI_NOT_PRESENT) {

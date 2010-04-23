@@ -23,9 +23,6 @@
 #include "NullAlarm.h"
 #include "InvalidSeverity.h"
 #include "InvalidAlarmCond.h"
-#include "InvalidDataType.h"
-#include "InvalidLanguage.h"
-#include "InvalidTextCharacters.h"
 #include "IdAndTimestamp.h"
 #include "OutOfSpace.h"
 #include "InvalidSession.h"
@@ -37,18 +34,13 @@ using namespace ns_saHpiAlarmAdd;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
-    add(new AddAlarm("B.02|P89-12:P89-12"));
-    add(new NullAlarm("B.02|P89-13:P89-13"));
-    add(new InvalidSeverity("B.02|P89-14:P89-15"));
-    add(new InvalidAlarmCond("B.02|P89-16:P89-16"));
-    add(new InvalidDataType("B.02|P89-16:P89-16"));
-    add(new InvalidLanguage("B.02|P89-16:P89-16"));
-    add(new InvalidTextCharacters("B.02|P89-16:P89-16"));
-    add(new OutOfSpace("B.02|P89-23:P89-24"));
-    add(new IdAndTimestamp("B.02|P89-25:P89-26"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new AddAlarm("P72-12:P72-12"));
+    add(new NullAlarm("P72-13:P72-13"));
+    add(new InvalidSeverity("P72-14:P72-15"));
+    add(new InvalidAlarmCond("P72-16:P72-17"));
+    add(new OutOfSpace("P72-18:P72-19"));
+    add(new IdAndTimestamp("P72-21:P72-22"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

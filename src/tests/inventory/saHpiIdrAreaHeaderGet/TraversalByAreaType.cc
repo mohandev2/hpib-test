@@ -16,10 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * Changes
- * 09/06/25 lars.wetzel@emerson.com
- *          add areaType INTERNAL_USE
  */
 
 #include "TraversalByAreaType.h"
@@ -47,8 +43,8 @@ const char *TraversalByAreaType::getName() {
 
 const char *TraversalByAreaType::getDescription() {
     return "Traverse all the areas for a specific <i>AreaType</i>.  Try all\n"
-           "five valid AreaTypes: INTERNAL_USE, CHASSIS_INFO, BOARD_INFO,\n"
-           "PRODUCT_INFO and OEM.";
+           "four valid AreaTypes: CHASSIS_INFO, BOARD_INFO, PRODUCT_INFO,\n"
+           "and OEM.";
 }
 
 /*****************************************************************************
@@ -78,14 +74,13 @@ HpiTestStatus TraversalByAreaType::runIdrTest(SaHpiSessionIdT sessionId,
     SaHpiEntryIdT areaId;
     SaHpiEntryIdT nextAreaId;
     SaHpiIdrAreaHeaderT header;
-    SaHpiIdrAreaTypeT areaType[] = { SAHPI_IDR_AREATYPE_INTERNAL_USE,
-                                     SAHPI_IDR_AREATYPE_CHASSIS_INFO,
+    SaHpiIdrAreaTypeT areaType[] = { SAHPI_IDR_AREATYPE_CHASSIS_INFO,
                                      SAHPI_IDR_AREATYPE_BOARD_INFO,
                                      SAHPI_IDR_AREATYPE_PRODUCT_INFO,
                                      SAHPI_IDR_AREATYPE_OEM };
 
     status.assertNotSupport();
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 4; i++) {
         nextAreaId = SAHPI_FIRST_ENTRY;
         while (nextAreaId != SAHPI_LAST_ENTRY) {
             areaId = nextAreaId;

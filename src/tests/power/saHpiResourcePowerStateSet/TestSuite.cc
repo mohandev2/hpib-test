@@ -35,16 +35,14 @@ using namespace ns_saHpiResourcePowerStateSet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
- 
-    add(new SameState("B.02|P215-5:P215-5"));
-    add(new PowerToggle("B.02|P217-15:P217-15"));
-    add(new PowerCycleOn("B.02|P217-17:P217-17"));
-    add(new PowerCycleOff("B.02|P215-7:P215-8"));
-    add(new NoCapability("B.02|P217-20:P217-21"));
-    add(new InvalidState("B.02|P217-22:P217-22"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new SameState("P157-5:P157-5"));
+    add(new PowerToggle("P159-15:P159-15"));
+    add(new PowerCycleOn("P159-17:P159-17"));
+    add(new PowerCycleOff("P157-7:P157-8"));
+    add(new NoCapability("P159-20:P159-21"));
+    add(new InvalidState("P159-22:P159-22"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

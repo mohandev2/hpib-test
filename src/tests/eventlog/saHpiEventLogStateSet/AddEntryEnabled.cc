@@ -16,16 +16,11 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * Changes     
- * 2009/05/19 - Lars.Wetzel@emerson.com
- *              Verify if proper capability is set
  */
 
 #include "AddEntryEnabled.h"
 #include "EventHelper.h"
 #include "EventLogHelper.h"
-#include "TextBufferHelper.h"
 
 using namespace ns_saHpiEventLogStateSet;
 
@@ -76,30 +71,24 @@ HpiTestStatus AddEntryEnabled::runAddTest(SaHpiSessionIdT sessionId,
                                           SaHpiResourceIdT resourceId) {
     HpiTestStatus status;
     SaHpiEventT event;
-    SaHpiTextBufferT text;
 
-    //    TextBufferHelper::fill(&text, "State Set Test - Enabled");
-    status.add(TRACE, prepareTestData(sessionId, resourceId, &text));
-    EventHelper::fill(&event, &text);
+    EventHelper::fill(&event, "State Set Test - Enabled");
 
-    if (status.isOkay()) {
-      SaErrorT error = saHpiEventLogEntryAdd(sessionId, resourceId, &event);
-      if (error != SA_OK) {
+    SaErrorT error = saHpiEventLogEntryAdd(sessionId, resourceId, &event);
+    if (error != SA_OK) {
         status.assertFailure(TRACE, EVENT_LOG_ENTRY_ADD, SA_OK, error);
-
-      } else {
+    } else {
         bool found;
         status.add(TRACE, EventLogHelper::findEvent(sessionId, resourceId,
                                                     &event, &found));
         if (status.isOkay()) {
             if (found) {
-	      status.assertPass();
+                status.assertPass();
             } else {
-	      status.assertFailure(TRACE, 
-				   "Failed to find the event in the Event Log.");
+                status.assertFailure(TRACE, 
+                            "Failed to find the event in the Event Log.");
             }
         }
-      }
     }
 
     return status;

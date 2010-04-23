@@ -16,10 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * Changes
- * 09/07/30 anurag.saxena@emerson.com
- *          valid for WRITE_TC_ALL_IDR
  */
 
 #include "NullField.h"
@@ -30,8 +26,7 @@ using namespace ns_saHpiIdrFieldSet;
  * Constructor
  *****************************************************************************/
 
-NullField::NullField(char *line) 
-: WriteIdrTestCase(line, WRITE_TC_ALL_IDR) {
+NullField::NullField(char *line) : WriteIdrTestCase(line) {
 }
 
 /*****************************************************************************
@@ -55,8 +50,7 @@ const char *NullField::getDescription() {
  *****************************************************************************/
 
 const char *NullField::getPrecondition() {
-    return "Requires a read-only or read-write Inventory with a read-only or\n"
-           "read-write Area.";
+    return "Requires a read-write Inventory with a read-write Area.";
 }
 
 /*****************************************************************************
@@ -95,8 +89,7 @@ HpiTestStatus NullField::runWriteIdrTest(SaHpiSessionIdT sessionId,
         } else if (error != SA_OK) {
             status.assertError(TRACE, IDR_AREA_HEADER_GET,
                                SA_OK, SA_ERR_HPI_NOT_PRESENT, error);
-//        } else if (!header.ReadOnly) {
-        } else {
+        } else if (!header.ReadOnly) {
             status.add(TRACE, setField(sessionId,
                                        rptEntry->ResourceId,
                                        idrRec->IdrId));

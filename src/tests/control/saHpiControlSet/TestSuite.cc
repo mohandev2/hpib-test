@@ -57,39 +57,36 @@ using namespace ns_saHpiControlSet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
-
-add(new SetControl("B.02|P114-18:P114-18"));
-    add(new SetAnalog("B.02|P114-18:P114-18"));
-    add(new SetDigital("B.02|P114-18:P114-18"));
-    add(new SetDiscrete("B.02|P114-18:P114-18"));
-    add(new SetStream("B.02|P114-18:P114-18"));
-    add(new NoCapability("B.02|P114-19:P114-20"));
-    add(new ControlNotPresent("B.02|P114-21:P114-21"));
-    add(new InvalidType("B.02|P114-23:P114-23"));
-    add(new InvalidAnalog("B.02|P114-24:P114-24"));
-    add(new InvalidDataLength("B.02|P114-25:P114-26"));
-    add(new InvalidDataType("B.02|P114-27:P114-27"));
-    add(new InvalidLanguage("B.02|P114-28:P114-29"));
-    add(new InvalidCtrlMode("B.02|P114-32:P114-32"));
-    add(new NullCtrlState("B.02|P114-33:P114-33"));
-    add(new InvalidDigital("B.02|P114-34:P114-34"));
-    add(new InvalidStreamLength("B.02|P114-35:P114-35"));
-    add(new InvalidTextCharacters("B.02|P115-1:P115-2"));
-    add(new PulseOn("B.02|P115-3:P115-4"));
-    add(new PulseOff("B.02|P115-4:P115-5"));
-    add(new ReadOnly("B.02|P115-6:P115-7"));
-    add(new IgnoreState("B.02|P115-8:P115-9; P115-11:P115-12"));
-    add(new ClearSpaces("B.02|P115-14:P115-15"));
-    add(new ClearLine("B.02|P115-15:P115-16"));
-    add(new WrapText("B.02|P115-17:P115-18"));
-    add(new ClearAllLinesAndWrite("B.02|P115-21:P115-23"));
-    add(new ClearAllLines("B.02|P115-24:P115-26"));
-    add(new SingleLine("B.02|P115-12:P115-13"));
-    add(new Mid("B.02|P115-28:P115-29"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new SetControl("P96-18:P96-18"));
+    add(new SetAnalog("P96-18:P96-18"));
+    add(new SetDigital("P96-18:P96-18"));
+    add(new SetDiscrete("P96-18:P96-18"));
+    add(new SetStream("P96-18:P96-18"));
+    add(new NoCapability("P96-19:P96-20"));
+    add(new ControlNotPresent("P96-21:P96-21"));
+    add(new InvalidType("P96-23:P96-23"));
+    add(new InvalidAnalog("P96-24:P96-24"));
+    add(new InvalidDataLength("P96-25:P96-26"));
+    add(new InvalidDataType("P96-27:P96-27"));
+    add(new InvalidLanguage("P96-28:P96-29"));
+    add(new InvalidCtrlMode("P96-32:P96-32"));
+    add(new NullCtrlState("P96-33:P96-33"));
+    add(new InvalidDigital("P96-34:P96-34"));
+    add(new InvalidStreamLength("P96-35:P96-35"));
+    add(new InvalidTextCharacters("P96-36:P96-37"));
+    add(new PulseOn("P97-1:P97-2"));
+    add(new PulseOff("P97-2:P97-3"));
+    add(new ReadOnly("P97-4:P97-4"));
+    add(new IgnoreState("P97-6:P97-7; P97-9:P97-10"));
+    add(new ClearSpaces("P97-12:P97-13"));
+    add(new ClearLine("P97-13:P97-13"));
+    add(new WrapText("P97-14:P97-15"));
+    add(new ClearAllLinesAndWrite("P97-19:P97-21"));
+    add(new ClearAllLines("P97-22:P97-24"));
+    add(new SingleLine("P97-10:P97-11"));
+    add(new Mid("P97-26:P97-27"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

@@ -36,17 +36,15 @@ using namespace ns_saHpiIdrAreaAdd;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
-    add(new AddArea("B.02|P124-18:P124-18; P124-32-P124-33"));
-    add(new NoCapability("B.02|P124-19:P124-20"));
-    add(new IdrNotPresent("B.02|P124-21:P124-21"));
-    add(new UnspecifiedAreaType("B.02|P124-22:P124-23"));
-    add(new NullAreaId("B.02|P124-28:P124-28"));
-    add(new InvalidAreaType("B.02|P124-29:P124-29"));
-    add(new ReadOnly("B.02|P124-30:P124-30"));
-    add(new InvalidResource("B.02|P29-40:P29-42"));
-    add(new InvalidSession("B.02|P29-43:P29-45"));
-
+    add(new AddArea("P104-18:P104-18; P104-32-P104-33"));
+    add(new NoCapability("P104-19:P104-20"));
+    add(new IdrNotPresent("P104-21:P104-21"));
+    add(new UnspecifiedAreaType("P104-22:P104-23"));
+    add(new NullAreaId("P104-28:P104-28"));
+    add(new InvalidAreaType("P104-29:P104-29"));
+    add(new ReadOnly("P104-30:P104-30"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

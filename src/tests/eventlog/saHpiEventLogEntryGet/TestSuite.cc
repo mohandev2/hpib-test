@@ -39,20 +39,18 @@ using namespace ns_saHpiEventLogEntryGet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
-    add(new ForwardTraversal("B.02|P64-39:P64-39, P65-16:P65-18"));
-    add(new BackwardTraversal("B.02|P64-39:P64-39, P65-19:P65-21"));
-    add(new NoCapability("B.02|P65-1:P65-2"));
-    add(new EmptyEventLog("B.02|P65-5:P65-5"));
-    add(new EntryIdNotPresent("B.02|P65-6:P65-6"));
-    add(new NullPointers("B.02|P65-8:P65-8"));
-    add(new NoMoreEntries("B.02|P65-9:P65-9"));
-    add(new Selection("B.02|P65-11:P65-12"));
-    add(new NoRptEntry("B.02|P65-27:P65-29"));
-    add(new NoRdr("B.02|P65-30:P65-31"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new ForwardTraversal("P49-39:P49-39, P50-16:P50-18"));
+    add(new BackwardTraversal("P49-39:P49-39, P50-19:P50-21"));
+    add(new NoCapability("P50-1:P50-2"));
+    add(new EmptyEventLog("P50-5:P50-5"));
+    add(new EntryIdNotPresent("P50-6:P50-6"));
+    add(new NullPointers("P50-8:P50-8"));
+    add(new NoMoreEntries("P50-9:P50-9"));
+    add(new Selection("P50-11:P50-12"));
+    add(new NoRptEntry("P50-27:P50-29"));
+    add(new NoRdr("P50-30:P50-31"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

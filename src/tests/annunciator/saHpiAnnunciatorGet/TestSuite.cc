@@ -34,16 +34,13 @@ using namespace ns_saHpiAnnunciatorGet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
-
-    add(new GetAnnouncement("B.02|P148-19:P148-19"));
-    add(new NoCapability("B.02|P148-20:P148-21"));
-    add(new AnnunciatorNotPresent("B.02|P148-23:P148-23"));
-    add(new AnnouncementNotPresent("B.02|P148-24:P148-24"));
-    add(new NullAnnouncement("B.02|P148-25:P148-25"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new GetAnnouncement("P124-19:P124-19"));
+    add(new NoCapability("P124-20:P124-21"));
+    add(new AnnunciatorNotPresent("P124-23:P124-23"));
+    add(new AnnouncementNotPresent("P124-24:P124-24"));
+    add(new NullAnnouncement("P124-25:P124-25"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

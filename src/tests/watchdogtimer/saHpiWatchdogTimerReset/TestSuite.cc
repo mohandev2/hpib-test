@@ -33,13 +33,12 @@ using namespace ns_saHpiWatchdogTimerReset;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-    add(new ResetTimer("B.02|P143-14:P143-14"));
-    add(new NoCapability("B.02|P143-15:P143-16"));
-    add(new WatchdogNotPresent("B.02|P143-17:P143-17"));
-    add(new InvalidRequest("B.02|P143-18:P143-18"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new ResetTimer("P119-14:P119-14"));
+    add(new NoCapability("P119-15:P119-16"));
+    add(new WatchdogNotPresent("P119-17:P119-17"));
+    add(new InvalidRequest("P119-18:P119-18"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

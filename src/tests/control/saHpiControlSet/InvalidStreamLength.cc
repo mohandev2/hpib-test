@@ -16,9 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- * Modified By:
- * 	Akmal Muqeeth
- * 	Pushpa Datla	
  */
 
 #include "InvalidStreamLength.h"

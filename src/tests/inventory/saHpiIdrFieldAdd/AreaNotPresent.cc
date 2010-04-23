@@ -16,10 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * Changes
- * 09/07/30 anurag.saxena@emerson.com
- *          valid for WRITE_TC_ALL_IDR
  */
 
 #include "AreaNotPresent.h"
@@ -31,8 +27,7 @@ using namespace ns_saHpiIdrFieldAdd;
  * Constructor
  *****************************************************************************/
 
-AreaNotPresent::AreaNotPresent(char *line) 
-: WriteIdrTestCase(line, WRITE_TC_ALL_IDR) { 
+AreaNotPresent::AreaNotPresent(char *line) : WriteIdrTestCase(line) {
 }
 
 /*****************************************************************************
@@ -57,9 +52,7 @@ const char *AreaNotPresent::getDescription() {
  *****************************************************************************/
 
 const char *AreaNotPresent::getPrecondition() {
-    return "Requires a read-only or read-write Inventory, and Area identified\n"
-           "by <i>Field->AreaId</i> should NOT be read-only.\n";
-
+    return "Requires a read-write Inventory.";
 }
 
 /*****************************************************************************
@@ -89,8 +82,6 @@ HpiTestStatus AreaNotPresent::runWriteIdrTest(SaHpiSessionIdT sessionId,
 
     if (error == SA_ERR_HPI_NOT_PRESENT) {
         status.assertPass();
-    } else if (error == SA_ERR_HPI_READ_ONLY) {
-        status.assertNotSupport();
     } else {
         status.assertFailure(TRACE, IDR_FIELD_ADD,
                              SA_ERR_HPI_NOT_PRESENT, error);

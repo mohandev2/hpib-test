@@ -16,9 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * 09/07/29 lars.wetzel@emerson.com
- *          valid for READWRITE_IDR
  */
 
 #include "UnspecifiedAreaType.h"
@@ -29,7 +26,7 @@ using namespace ns_saHpiIdrAreaAdd;
  * Constructor
  *****************************************************************************/
 
-UnspecifiedAreaType::UnspecifiedAreaType(char *line) : WriteIdrTestCase(line, WRITE_TC_READWRITE_IDR) {
+UnspecifiedAreaType::UnspecifiedAreaType(char *line) : WriteIdrTestCase(line) {
 }
 
 /*****************************************************************************

@@ -16,9 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- * Modified By:
- * 	AKMAL MUQEETH
- * 	PUSHPA DATLA
  */
 
 #include "NullCtrlState.h"
@@ -85,7 +82,6 @@ HpiTestStatus NullCtrlState::runCtrlTest(SaHpiSessionIdT sessionId,
         if ((error == SA_ERR_HPI_INVALID_DATA) ||
             (error == SA_ERR_HPI_INVALID_REQUEST)) {
             status.assertNotSupport();
-
         } else if (error == SA_ERR_HPI_INVALID_PARAMS) {
             status.assertPass();
         } else {

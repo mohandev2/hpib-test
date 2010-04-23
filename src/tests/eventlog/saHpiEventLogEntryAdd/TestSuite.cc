@@ -33,7 +33,6 @@
 #include "OverflowOverwrite.h"
 #include "InvalidSession.h"
 #include "InvalidResource.h"
-#include "MissingCapability.h"
 
 using namespace ns_saHpiEventLogEntryAdd;
 
@@ -42,23 +41,20 @@ using namespace ns_saHpiEventLogEntryAdd;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-   
-    add(new AddEntry("B.02|P66-16:P66-16"));
-    add(new ValidDataType("B.02|P66-16:P66-16"));
-    add(new NoCapability("B.02|P66-17:P66-18"));
-    add(new DataLength("B.02|P66-22:P66-23"));
-    add(new NullEvtEntry("B.02|P66-25:P66-25"));
-    add(new InvalidEventType("B.02|P66-26:P66-27"));
-    add(new InvalidSeverity("B.02|P66-28:P66-28"));
-    add(new InvalidDataType("B.02|P66-31:P66-31"));
-    add(new InvalidDataField("B.02|P66-32:P66-32"));
-    add(new InvalidLanguage("B.02|P66-33:P66-34"));
-    add(new OverflowDrop("B.02|P66-35:P66-36"));
-    add(new OverflowOverwrite("B.02|P67-6:P67-10"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-    add(new MissingCapability("B.02|P66-32:P66-32"));
-    
+    add(new AddEntry("P51-16:P51-16"));
+    add(new ValidDataType("P51-16:P51-16"));
+    add(new NoCapability("P51-17:P51-18"));
+    add(new DataLength("P51-20:P51-21"));
+    add(new NullEvtEntry("P51-23:P51-23"));
+    add(new InvalidEventType("P51-24:P51-25"));
+    add(new InvalidSeverity("P51-26:P51-26"));
+    add(new InvalidDataType("P51-29:P51-29"));
+    add(new InvalidDataField("P51-30:P51-30"));
+    add(new InvalidLanguage("P51-31:P51-32"));
+    add(new OverflowDrop("P51-33:P51-34"));
+    add(new OverflowOverwrite("P52-6:P52-10"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

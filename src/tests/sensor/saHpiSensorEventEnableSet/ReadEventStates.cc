@@ -16,10 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- * 
- * Changes
- * 2009/05/08 - Lars.Wetzel@emerson.com
- *              return code ERR_BUSY leads to NotSupport at call SensorReadingGet
  */
 
 #include "ReadEventStates.h"
@@ -126,9 +122,9 @@ HpiTestStatus ReadEventStates::runSensorTest(SaHpiSessionIdT sessionId,
                 if (status.isOkay()) {
                     error = saHpiSensorReadingGet(sessionId, rptEntry->ResourceId,
                                                   sensorRec->Num, &reading, &eventState);
-		    if (error == SA_ERR_HPI_BUSY) {
-		      status.assertNotSupport();
-		    } else if (error == SA_ERR_HPI_ENTITY_NOT_PRESENT) {
+                    if (error == SA_ERR_HPI_ENTITY_NOT_PRESENT) {
+                        status.assertNotSupport();
+                    } else if (error == SA_ERR_HPI_BUSY) {
                         status.assertNotSupport();
                     } else if (error != SA_OK) {
                         status.assertFailure(TRACE, SENSOR_READING_GET, SA_OK, error);

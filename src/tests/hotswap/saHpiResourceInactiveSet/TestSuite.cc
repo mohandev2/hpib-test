@@ -33,21 +33,12 @@ using namespace ns_saHpiResourceInactiveSet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-    /*add(new Extract("P140-2:P140-3;P140-13:P140-13;P140-20:P140-28"));
+    add(new Extract("P140-2:P140-3;P140-13:P140-13;P140-20:P140-28"));
     add(new Insert("P140-2:P140-3;P140-13:P140-13;P140-29:P140-30"));
     add(new NoCapability("P140-14:P140-15"));
     add(new NotPending("P140-17:P140-17"));
     add(new InvalidResource("P29-40:P29-42"));
     add(new InvalidSession("P29-43:P29-45"));
-*/
-
-    add(new Extract("B.02|P195-2:P195-3;P195-13:P195-13;P195-20:P195-28"));
-    add(new Insert("B.02|P195-2:P195-3;P195-13:P195-13;P195-29:P195-30"));
-    add(new NoCapability("B.02|P195-14:P195-15"));
-    add(new NotPending("B.02|P195-17:P195-17"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
 }
 
 /*****************************************************************************

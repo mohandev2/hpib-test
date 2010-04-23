@@ -16,12 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * Changes
- * 2009/05/19 - Lars.Wetzel@emerson.com
- *              enhance isEqual for FUMI and DIMI RDR
- * 2009/11/04 - larswetzel@users.sourceforge.net
- *              Use the RDR_TYPE_MAX definition
  */
 
 #include "RdrHelper.h"
@@ -33,8 +27,6 @@
 #include "InventoryHelper.h"
 #include "WatchdogHelper.h"
 #include "AnnunciatorHelper.h"
-#include "DimiHelper.h"
-#include "FumiHelper.h"
 #include "HpiHelper.h"
 #include "TextBufferHelper.h"
 
@@ -63,13 +55,6 @@ SaHpiInstrumentIdT RdrHelper::getId(SaHpiRdrT *rdr) {
         case SAHPI_ANNUNCIATOR_RDR:
             id = (SaHpiInstrumentIdT) rdr->RdrTypeUnion.AnnunciatorRec.AnnunciatorNum;
             break;
-        case SAHPI_DIMI_RDR:
-            id = (SaHpiInstrumentIdT) rdr->RdrTypeUnion.DimiRec.DimiNum;
-            break;
-        case SAHPI_FUMI_RDR:
-            id = (SaHpiInstrumentIdT) rdr->RdrTypeUnion.FumiRec.Num;
-            break;
-
     }
 
     return id;
@@ -82,7 +67,7 @@ SaHpiInstrumentIdT RdrHelper::getId(SaHpiRdrT *rdr) {
 bool RdrHelper::isValid(SaHpiRdrT *rdr, Report &report) {
     bool valid = true;
 
-    if (rdr->RdrType <= SAHPI_NO_RECORD || rdr->RdrType > SAHPI_RDR_TYPE_MAX_VALID) {
+    if (rdr->RdrType <= SAHPI_NO_RECORD || rdr->RdrType > SAHPI_ANNUNCIATOR_RDR) {
         valid = false;
         report.add("Rdr->RdrType is invalid [%s].", HpiString::rdrType(rdr->RdrType));
     }
@@ -112,16 +97,6 @@ bool RdrHelper::isValid(SaHpiRdrT *rdr, Report &report) {
             break;
         case SAHPI_ANNUNCIATOR_RDR:
             if (!AnnunciatorHelper::isValid(&rdr->RdrTypeUnion.AnnunciatorRec, report)) {
-                valid = false;
-            }
-            break;
-        case SAHPI_DIMI_RDR:
-            if (!DimiHelper::isValid(&rdr->RdrTypeUnion.DimiRec, report)) {
-                valid = false;
-            }
-            break;
-        case SAHPI_FUMI_RDR:
-            if (!FumiHelper::isValid(&rdr->RdrTypeUnion.FumiRec, report)) {
                 valid = false;
             }
             break;
@@ -187,18 +162,6 @@ bool RdrHelper::isEqual(SaHpiRdrT *rdr1, SaHpiRdrT *rdr2, Report &report) {
         case SAHPI_ANNUNCIATOR_RDR:
             if (!AnnunciatorHelper::isEqual(&rdr1->RdrTypeUnion.AnnunciatorRec, 
                                             &rdr2->RdrTypeUnion.AnnunciatorRec, report)) {
-                equal = false;
-            }
-            break;
-        case SAHPI_DIMI_RDR:
-            if (!DimiHelper::isEqual(&rdr1->RdrTypeUnion.DimiRec, 
-                                     &rdr2->RdrTypeUnion.DimiRec, report)) {
-                equal = false;
-            }
-            break;
-        case SAHPI_FUMI_RDR:
-            if (!FumiHelper::isEqual(&rdr1->RdrTypeUnion.FumiRec, 
-                                     &rdr2->RdrTypeUnion.FumiRec, report)) {
                 equal = false;
             }
             break;

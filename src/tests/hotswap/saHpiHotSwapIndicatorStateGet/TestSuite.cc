@@ -33,13 +33,12 @@ using namespace ns_saHpiHotSwapIndicatorStateGet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-    add(new GetState("B.02|P204-16:P204-16;P204-23:P204-24"));
-    add(new NoHotSwapCapability("B.02|P204-18:P204-18"));
-    add(new NoIndicatorCapability("B.02|P204-19:P204-20"));
-    add(new NullState("B.02|P204-21:P204-21"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new GetState("P149-16:P149-16;P149-23:P149-24"));
+    add(new NoHotSwapCapability("P149-18:P149-18"));
+    add(new NoIndicatorCapability("P149-19:P149-20"));
+    add(new NullState("P149-21:P149-21"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

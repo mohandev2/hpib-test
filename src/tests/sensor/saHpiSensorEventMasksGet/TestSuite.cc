@@ -34,16 +34,14 @@ using namespace ns_saHpiSensorEventMasksGet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-  
-    add(new GetMasks("B.02|P106-20:P106-20"));
-    add(new NoCapability("B.02|P106-21:P106-22"));
-    add(new SensorNotPresent("B.02|P106-23:P106-23"));
-    add(new NullMask("B.02|P106-15:P106-18"));
-    add(new EvtDeasserts("B.02|P106-33:P106-34"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
+    add(new GetMasks("P89-20:P89-20"));
+    add(new NoCapability("P89-21:P89-22"));
+    add(new SensorNotPresent("P89-23:P89-23"));
+    add(new NullMask("P89-15:P89-18"));
+    add(new EvtDeasserts("P89-33:P89-34"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
-
 
 /*****************************************************************************
  * Return the name of the test suite.

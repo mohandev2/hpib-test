@@ -20,7 +20,6 @@
 
 #include "DataLength.h"
 #include "EventHelper.h"
-#include "EventLogHelper.h"
 
 using namespace ns_saHpiEventLogEntryAdd;
 
@@ -75,29 +74,25 @@ HpiTestStatus DataLength::runAddTest(SaHpiSessionIdT sessionId,
     SaHpiEventT event;
     SaHpiEventLogInfoT info;
 
-    if (EventLogHelper::hasEvtLogAddCapability(sessionId, resourceId)) {
-      SaErrorT error = saHpiEventLogInfoGet(sessionId, resourceId, &info);
-      if (error != SA_OK) {
+    SaErrorT error = saHpiEventLogInfoGet(sessionId, resourceId, &info);
+    if (error != SA_OK) {
         status.assertError(TRACE, EVENT_LOG_INFO_GET, SA_OK, error);
-      } else if (info.UserEventMaxSize >= SAHPI_MAX_TEXT_BUFFER_LENGTH) {
+    } else if (info.UserEventMaxSize >= SAHPI_MAX_TEXT_BUFFER_LENGTH) {
         // We are only using text buffers for this event
         // This test could only work if the UserEventMaxSize
         // is less than the maximum text buffer size.
         status.assertNotSupport();
-      } else {
+    } else {
 
         EventHelper::fill(&event, info.UserEventMaxSize + 1);
 
         error = saHpiEventLogEntryAdd(sessionId, resourceId, &event);
         if (error == SA_ERR_HPI_INVALID_DATA) {
-	  status.assertPass();
+            status.assertPass();
         } else {
-	  status.assertFailure(TRACE, EVENT_LOG_ENTRY_ADD,
-			       SA_ERR_HPI_INVALID_DATA, error);
+            status.assertFailure(TRACE, EVENT_LOG_ENTRY_ADD,
+                                 SA_ERR_HPI_INVALID_DATA, error);
         }
-      }
-    } else {
-      status.assertNotSupport();
     }
 
     return status;

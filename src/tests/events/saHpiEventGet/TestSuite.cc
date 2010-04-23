@@ -45,32 +45,30 @@ using namespace ns_saHpiEventGet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
+    add(new RptEntryAndRdr("P62-20:P62-24:P63-10:P63-10"));
+    add(new NoSubscription("P62-28:P62-28"));
+    add(new NullEvent("P62-30:P62-30"));
+    add(new NegativeTimeout("P62-31:P62-31"));
+    add(new Overflow("P62-36:P62-39"));
 
-    add(new RptEntryAndRdr("B.02|P78-20:P78-24:P79-10:P79-10"));
-    add(new NoSubscription("B.02|P78-28:P78-28"));
-    add(new NullEvent("B.02|P78-30:P78-30"));
-    add(new NegativeTimeout("B.02|P78-31:P78-31"));
-    add(new Overflow("B.02|P78-36:P78-39"));
+    add(new EventBeforeNormal("P63-1:P63-2"));
+    add(new EventBeforeImmediate("P63-1:P63-2"));
+    add(new EventBeforeBlock("P63-1:P63-2"));
 
-    add(new EventBeforeNormal("B.02|P79-1:P79-2"));
-    add(new EventBeforeImmediate("B.02|P79-1:P79-2"));
-    add(new EventBeforeBlock("B.02|P79-1:P79-2"));
+    add(new TimeoutNormal("P63-2:P63-3"));
+    add(new TimeoutImmediate("P63-3:P63-5"));
 
-    add(new TimeoutNormal("B.02|P79-2:P79-3"));
-    add(new TimeoutImmediate("B.02|P79-3:P79-5"));
+    add(new EventDuringNormal("P63-3:P63-4"));
+    add(new EventDuringBlock("P63-5:P63-6"));
 
-    add(new EventDuringNormal("B.02|P79-3:P79-4"));
-    add(new EventDuringBlock("B.02|P79-5:P79-6"));
+    add(new ResourceCapabilities("P63-8:P63-10"));
+    add(new NoRecord("P63-11:P63-13"));
 
-    add(new ResourceCapabilities("B.02|P79-8:P79-10"));
-    add(new NoRecord("B.02|P79-11:P79-13"));
+    add(new OverflowReset("P63-22:P63-23"));
+    add(new CloseSession("P63-26:P63-27"));
+    add(new Unsubscribe("P63-27:P63-30"));
 
-    add(new OverflowReset("B.02|P79-22:P79-23"));
-    add(new CloseSession("B.02|P79-26:P79-27"));
-    add(new Unsubscribe("B.02|P79-27:P79-30"));
-
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

@@ -40,20 +40,19 @@ using namespace ns_saHpiAnnunciatorGetNext;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
-    add(new GetAll("B.02|P146-24:P146-24"));
-    add(new SeverityTraversal("B.02|P146-17:P146-18"));
-    add(new UnacknowledgedTraversal("B.02|P146-19:P146-20"));
-    add(new NoCapability("B.02|P146-25:P146-26"));
-    add(new InvalidSeverity("B.02|P146-27:P146-27"));
-    add(new AnnunciatorNotPresent("B.02|P146-29:P146-29"));
-    add(new NoSeverityAnnouncements("B.02|P146-33:P146-35"));
-    add(new NoSeverityUnackAnnouncements("B.02|P146-33:P146-35"));
-    add(new NullAnnouncement("B.02|P146-36:P146-36"));
-    add(new Mismatch("B.02|P146-37:P146-38"));
-    add(new DeletedAnnouncement("B.02|P123-6:P123-7"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
+    add(new GetAll("P122-24:P122-24"));
+    add(new SeverityTraversal("P122-17:P122-18"));
+    add(new UnacknowledgedTraversal("P122-19:P122-20"));
+    add(new NoCapability("P122-25:P122-26"));
+    add(new InvalidSeverity("P122-27:P122-27"));
+    add(new AnnunciatorNotPresent("P122-29:P122-29"));
+    add(new NoSeverityAnnouncements("P122-33:P122-35"));
+    add(new NoSeverityUnackAnnouncements("P122-33:P122-35"));
+    add(new NullAnnouncement("P122-36:P122-36"));
+    add(new Mismatch("P122-37:P122-38"));
+    add(new DeletedAnnouncement("P123-6:P123-7"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

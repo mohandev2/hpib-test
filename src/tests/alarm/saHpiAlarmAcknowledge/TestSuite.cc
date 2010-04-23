@@ -36,17 +36,15 @@ using namespace ns_saHpiAlarmAcknowledge;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-    
-    add(new InvalidAlarmId("B.02|P87-16:P87-17"));	
-    add(new InvalidSeverity("B.02|P87-18:P87-19"));
-    add(new AcknowledgeAllAlarms("B.02|P87-28:P87-29"));
-    add(new AcknowledgeBySeverity("B.02|P87-30:P87-31"));
-    add(new AcknowledgeAlarm("B.02|P87-32:-34;P87-25:P87-26"));
-    add(new AcknowledgeAlarmTwice("B.02|P87-35:P87-36"));
-    add(new IgnoreSeverity("B.02|P87-37:P87-37"));
-    add(new NoSeverity("B.02|P88-1:P88-2"));
-    add(new InvalidSession("B.02|P36-17:P36-19"));
-
+    add(new InvalidAlarmId("P70-16:P70-17"));
+    add(new InvalidSeverity("P70-18:P70-19"));
+    add(new AcknowledgeAllAlarms("P70-28:P70-29"));
+    add(new AcknowledgeBySeverity("P70-30:P70-31"));
+    add(new AcknowledgeAlarm("P70-32:P70-34;P70-25:P70-26"));
+    add(new AcknowledgeAlarmTwice("P70-35:P70-36"));
+    add(new IgnoreSeverity("P70-37:P70-37"));
+    add(new NoSeverity("P71-1:P71-2"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

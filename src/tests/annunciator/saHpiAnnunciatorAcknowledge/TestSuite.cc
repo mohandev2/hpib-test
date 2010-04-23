@@ -39,19 +39,18 @@ using namespace ns_saHpiAnnunciatorAcknowledge;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-    add(new AcknowledgeAnnouncement("B.02|P149-21:P149-21;P149-34:P149-34"));
-    add(new NoCapability("B.02|P149-22:P149-23"));
-    add(new AnnunciatorNotPresent("B.02|P149-25:P149-25"));
-    add(new AnnouncementNotPresent("B.02|P149-26:P149-26"));
-    add(new InvalidSeverity("B.02|P149-27:P149-28"));
-    add(new AcknowledgeAll("B.02|P149-35:P149-36"));
-    add(new AcknowledgeSeverity("B.02|P150-1:P150-2"));
-    add(new AcknowledgeTwice("B.02|P150-6:P150-7"));
-    add(new IgnoreSeverity("B.02|P150-8:P150-8"));
-    add(new NoSeverity("B.02|P150-9:P150-10"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new AcknowledgeAnnouncement("P125-21:P125-21;P125-34:P125-34"));
+    add(new NoCapability("P125-22:P125-23"));
+    add(new AnnunciatorNotPresent("P125-25:P125-25"));
+    add(new AnnouncementNotPresent("P125-26:P125-26"));
+    add(new InvalidSeverity("P125-27:P125-28"));
+    add(new AcknowledgeAll("P125-35:P125-36"));
+    add(new AcknowledgeSeverity("P126-1:P126-2"));
+    add(new AcknowledgeTwice("P126-6:P126-7"));
+    add(new IgnoreSeverity("P126-8:P126-8"));
+    add(new NoSeverity("P126-9:P126-10"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

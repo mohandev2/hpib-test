@@ -34,14 +34,13 @@ using namespace ns_saHpiAnnunciatorModeSet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-    add(new SetMode("B.02|P156-24:P156-24"));
-    add(new NoCapability("B.02|P156-25:P156-26"));
-    add(new AnnunciatorNotPresent("B.02|P156-27:P156-28"));
-    add(new InvalidMode("B.02|P156-29:P156-29"));
-    add(new ReadOnly("B.02|P156-30:P156-30"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new SetMode("P131-24:P131-24"));
+    add(new NoCapability("P131-25:P131-26"));
+    add(new AnnunciatorNotPresent("P131-27:P131-28"));
+    add(new InvalidMode("P131-29:P131-29"));
+    add(new ReadOnly("P131-30:P131-30"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

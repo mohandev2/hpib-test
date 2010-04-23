@@ -18,13 +18,12 @@
  *     Donald A. Barre <dbarre@unh.edu>
  */
 
-#include <stdlib.h>
-
 #include <cstring>
 #include <iostream>
 #include <limits>
 #include <unistd.h>
 #include <termios.h>
+#include <stdlib.h>
 
 #include "UserPrompter.h"
 

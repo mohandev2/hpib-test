@@ -84,6 +84,7 @@ HpiTestStatus ClearLine::runCtrlTest(SaHpiSessionIdT sessionId,
     } else {
 
         // Save the original mode and state data so that it can be restored.
+
         origCtrlState.Type = SAHPI_CTRL_TYPE_TEXT;
         origCtrlState.StateUnion.Text.Line = 1;
         SaErrorT error = saHpiControlGet(sessionId, resourceId,
@@ -106,6 +107,7 @@ HpiTestStatus ClearLine::runCtrlTest(SaHpiSessionIdT sessionId,
 
                     // Retrieve the latest text buffer and verify that it
                     // corresponds to the empty string.
+
                     ctrlState.Type = SAHPI_CTRL_TYPE_TEXT;
                     ctrlState.StateUnion.Text.Line = 1;
                     error = saHpiControlGet(sessionId, resourceId, ctrlNum, NULL, &ctrlState);

@@ -50,12 +50,10 @@ HpiTestStatus EventLogTestCase::runSessionTest(SaHpiSessionIdT sessionId) {
     // test each resource that supports event logs
     SaHpiRptEntryT rptEntry;
     SaHpiEntryIdT nextEntryId = SAHPI_FIRST_ENTRY;
-    while ((status.isOkay() || status.isNotSupported()) 
-	    && nextEntryId != SAHPI_LAST_ENTRY) {
+    while (status.isOkay() && nextEntryId != SAHPI_LAST_ENTRY) {
         SaHpiEntryIdT entryId = nextEntryId;
         SaErrorT error = saHpiRptEntryGet(sessionId, entryId,
                                           &nextEntryId, &rptEntry);
-
         if (error == SA_ERR_HPI_NOT_PRESENT) {
             break;
         } else if (error != SA_OK) {

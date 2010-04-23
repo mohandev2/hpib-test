@@ -16,9 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * 09/07/28 lars.wetzel@emerson.com
- *          areaDelete is only possible with read-write IDR 
  */
 
 #include "ReadOnlyArea.h"
@@ -29,7 +26,7 @@ using namespace ns_saHpiIdrAreaDelete;
  * Constructor
  *****************************************************************************/
 
-ReadOnlyArea::ReadOnlyArea(char *line) : WriteIdrTestCase(line, WRITE_TC_READWRITE_IDR) {
+ReadOnlyArea::ReadOnlyArea(char *line) : WriteIdrTestCase(line) {
 }
 
 /*****************************************************************************

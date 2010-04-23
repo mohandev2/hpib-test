@@ -32,19 +32,11 @@ using namespace ns_saHpiHotSwapPolicyCancel;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-    /*add(new PolicyCancel("P138-17:P138-17"));
+    add(new PolicyCancel("P138-17:P138-17"));
     add(new NoCapability("P138-18:P138-19"));
     add(new NotPending("P138-21:P138-21"));
     add(new InvalidResource("P29-40:P29-42"));
     add(new InvalidSession("P29-43:P29-45"));
-*/
-
-    add(new PolicyCancel("B.02|P193-17:P193-17"));
-    add(new NoCapability("B.02|P193-18:P193-19"));
-    add(new NotPending("B.02|P193-21:P193-21"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
 }
 
 /*****************************************************************************

@@ -1,6 +1,6 @@
 # Place your HPI library file here.
 # Format: -l<HPI library name>
--lopenhpi
+#-lopenhpi
 # If necessary, specify the location
 # of any library directories here.
 # Format: -L<library directory>

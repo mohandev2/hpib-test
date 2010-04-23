@@ -39,7 +39,7 @@ using namespace ns_saHpiWatchdogTimerSet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-/*    add(new SetTimer("P117-20:P117-20"));
+    add(new SetTimer("P117-20:P117-20"));
     add(new NoCapability("P117-21:P117-22"));
     add(new WatchdogNotPresent("P117-23:P117-23"));
     add(new InvalidTimerUse("P117-25:P117-25"));
@@ -51,22 +51,6 @@ TestSuite::TestSuite() {
     add(new Restart("P118-6:P118-7"));
     add(new InvalidResource("P29-40:P29-42"));
     add(new InvalidSession("P29-43:P29-45"));
- */ 
-
-    add(new SetTimer("B.02|P141-20:P141-20"));
-    add(new NoCapability("B.02|P141-21:P141-22"));
-    add(new WatchdogNotPresent("B.02|P141-23:P141-23"));
-    add(new InvalidTimerUse("B.02|P141-25:P141-25"));
-    add(new InvalidTimerAction("B.02|P141-26:P141-26"));
-    add(new InvalidPretimerInterrupt("B.02|P141-27:P141-27"));
-    add(new InvalidPreTimeoutInterval("B.02|P141-32:P141-32"));
-    add(new NullWatchdog("B.02|P141-28:P141-28"));
-    add(new Running("B.02|P142-3:P142-6"));
-    add(new Restart("B.02|P142-6:P142-7"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
-
 }
 
 /*****************************************************************************

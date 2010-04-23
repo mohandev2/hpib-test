@@ -34,15 +34,13 @@ using namespace ns_saHpiDomainTagSet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
- add(new SetDomainTag("B.02|P45-13:P36-13"));
-    add(new InvalidDataType("B.02|P45-16:P45-16"));
-    add(new InvalidDataField("B.02|P45-17:P45-17"));
-    add(new InvalidLanguage("B.02|P45-18:P45-19"));
-    add(new NullDomainTag("B.02|P45-20:P45-20"));
-    add(new TwoSessions("B.02|P16-25:P16-25"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new SetDomainTag("P38-13:P36-13"));
+    add(new InvalidDataType("P38-16:P38-16"));
+    add(new InvalidDataField("P38-17:P38-17"));
+    add(new InvalidLanguage("P38-18:P38-19"));
+    add(new NullDomainTag("P38-20:P38-20"));
+    add(new TwoSessions("P15-11:P15-13"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

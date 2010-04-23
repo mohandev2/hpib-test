@@ -16,10 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * Changes     
- * 2009/05/19 - Lars.Wetzel@emerson.com
- *              Verify if proper capability is set
  */
 
 #include <time.h>
@@ -91,24 +87,14 @@ HpiTestStatus AbsoluteTime::runAddTest(SaHpiSessionIdT sessionId,
     } else {
         TimeMsec startTime = getCurrentTime();
         error = saHpiEventLogTimeSet(sessionId, resourceId, newTime);
-	if ((error == SA_ERR_HPI_INVALID_CMD) &&
-	    (!EventLogHelper::hasEvtLogTimerSetCapability(sessionId, resourceId))) {
-	  status.assertNotSupport();
-
-	} else if (error != SA_OK) {
-	  status.assertError(TRACE, EVENT_LOG_TIME_SET, SA_OK, error);
-
+        if (error != SA_OK) {
+            status.assertError(TRACE, EVENT_LOG_TIME_SET, SA_OK, error);
         } else {
             error = saHpiEventLogTimeGet(sessionId, resourceId, &time);
             if (error != SA_OK) {
                 status.assertError(TRACE, EVENT_LOG_TIME_GET, SA_OK, error);
-
             } else if (isNanoTimeEqual(time, newTime)) {
                 status.add(TRACE, testUserEvent(sessionId, resourceId, time));
-
-	    } else if (!EventLogHelper::hasEvtLogTimerSetCapability(sessionId,resourceId)) {
-	      status.assertFailure(TRACE, "Function is supported but CAPABILITY isn't set\n");
-
             } else {
                 status.assertFailure(TRACE,
                     "Check of new time failed to get a time that was "

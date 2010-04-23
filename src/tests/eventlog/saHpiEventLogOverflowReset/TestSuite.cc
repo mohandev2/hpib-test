@@ -22,7 +22,6 @@
 #include "OverflowReset.h"
 #include "OverflowNotResetable.h"
 #include "NoCapability.h"
-#include "MissingCapability.h"
 #include "OverflowTwice.h"
 #include "InvalidSession.h"
 #include "InvalidResource.h"
@@ -34,15 +33,12 @@ using namespace ns_saHpiEventLogOverflowReset;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
-    add(new OverflowReset("B.02|P74-13:P74-13"));
-    add(new OverflowNotResetable("B.02|P74-14:P74-15"));
-    add(new NoCapability("B.02|P74-16:P56-17"));
-    add(new MissingCapability("B.02|P74-16:P56-17"));
-    add(new OverflowTwice("B.02|P74-20:P74-22"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new OverflowReset("P58-13:P58-13"));
+    add(new OverflowNotResetable("P58-14:P58-15"));
+    add(new NoCapability("P58-16:P56-17"));
+    add(new OverflowTwice("P58-20:P58-22"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

@@ -32,13 +32,11 @@ using namespace ns_saHpiResourceResetStateGet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
-    add(new GetState("B.02|P213-18:P213-18"));
-    add(new NoCapability("B.02|P213-20:P213-21"));
-    add(new NullResetAction("B.02|P213-22:P213-22"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new GetState("P155-18:P155-18"));
+    add(new NoCapability("P155-20:P155-21"));
+    add(new NullResetAction("P155-22:P155-22"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

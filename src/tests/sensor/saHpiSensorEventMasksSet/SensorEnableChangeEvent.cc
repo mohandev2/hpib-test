@@ -386,7 +386,7 @@ HpiTestStatus SensorEnableChangeEvent::restoreSensors(SaHpiSessionIdT sessionId)
                                           sensorData[i].resourceId,
                                           sensorData[i].sensorNum, 
                                           sensorData[i].origAssertEventMask,
-                                          sensorData[i].origDeassertEventMask));
+                                          sensorData[i].origAssertEventMask));
     }
 
     return status;

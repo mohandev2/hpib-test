@@ -74,9 +74,7 @@ HpiTestStatus InvalidSeverity::runResourceTest(SaHpiSessionIdT sessionId,
         SaErrorT error = saHpiResourceSeveritySet(sessionId,
                                                   rptEntry->ResourceId,
                                                   (SaHpiSeverityT) invalidSeverity[i]);
-  
-if (error == SA_ERR_HPI_INVALID_PARAMS ) 
-     {
+        if (error == SA_ERR_HPI_INVALID_PARAMS) {
             status.assertPass();
         } else {
             status.assertFailure(TRACE, RESOURCE_SEVERITY_SET,

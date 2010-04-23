@@ -21,7 +21,6 @@
 #include "TestSuite.h"
 #include "Clear.h"
 #include "NoCapability.h"
-#include "MissingCapability.h"
 #include "OverflowFlag.h"
 #include "InvalidSession.h"
 #include "InvalidResource.h"
@@ -33,14 +32,11 @@ using namespace ns_saHpiEventLogClear;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
-    add(new Clear("B.02|P68-13:P68-13"));
-    add(new NoCapability("B.02|P68-14:P68-15"));
-    add(new MissingCapability("B.02|P68-14:P68-15"));
-    add(new OverflowFlag("B.02|P68-19:P68-19"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new Clear("P53-13:P53-13"));
+    add(new NoCapability("P53-14:P53-15"));
+    add(new OverflowFlag("P53-18:P53-18"));
+    add(new InvalidResource("P29-43:P29-45"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

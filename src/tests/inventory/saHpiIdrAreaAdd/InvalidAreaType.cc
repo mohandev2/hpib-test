@@ -16,9 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * 09/07/29 lars.wetzel@emerson.com
- *          valid for READWRITE_IDR
  */
 
 #include "InvalidAreaType.h"
@@ -29,7 +26,7 @@ using namespace ns_saHpiIdrAreaAdd;
  * Constructor
  *****************************************************************************/
 
-InvalidAreaType::InvalidAreaType(char *line) : WriteIdrTestCase(line, WRITE_TC_READWRITE_IDR) {
+InvalidAreaType::InvalidAreaType(char *line) : WriteIdrTestCase(line) {
 }
 
 /*****************************************************************************

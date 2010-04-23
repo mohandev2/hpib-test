@@ -34,14 +34,13 @@ using namespace ns_saHpiIdrInfoGet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-    add(new GetInfo("B.02|P121-17:P101-17"));
-    add(new NoCapability("B.02|P121-18:P101-19"));
-    add(new IdrNotPresent("B.02|P121-20:P101-20"));
-    add(new NullIdrInfo("B.02|P121-21:P101-21"));
-    add(new UpdateCounter("B.02|P121-23:P101-28"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new GetInfo("P101-17:P101-17"));
+    add(new NoCapability("P101-18:P101-19"));
+    add(new IdrNotPresent("P101-20:P101-20"));
+    add(new NullIdrInfo("P101-21:P101-21"));
+    add(new UpdateCounter("P101-23:P101-28"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

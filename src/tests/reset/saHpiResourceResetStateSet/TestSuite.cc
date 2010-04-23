@@ -35,17 +35,15 @@ using namespace ns_saHpiResourceResetStateSet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-    add(new ColdReset("B.02|P214-14:P214-14"));
-    add(new WarmReset("B.02|P214-15:P214-15"));
-    add(new Assert("B.02|P214-16:P214-18"));
-    add(new NoCapability("B.02|P214-22:P214-23"));
-    add(new InvalidResetAction("B.02|P214-24:P214-25"));
-    add(new InvalidRequest("B.02|P214-27:P214-28"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new ColdReset("P156-14:P156-14"));
+    add(new WarmReset("P156-15:P156-15"));
+    add(new Assert("P156-16:P156-18"));
+    add(new NoCapability("P156-22:P156-23"));
+    add(new InvalidResetAction("P156-24:P156-25"));
+    add(new InvalidRequest("P156-27:P156-28"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
-
 
 /*****************************************************************************
  * Return the name of the test suite.

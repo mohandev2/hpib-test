@@ -16,10 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * Changes
- * 09/07/30 anurag.saxena@emerson.com
- *          valid for WRITE_TC_ALL_IDR
  */
 
 #include "UnspecifiedFieldType.h"
@@ -31,8 +27,7 @@ using namespace ns_saHpiIdrFieldSet;
  * Constructor
  *****************************************************************************/
 
-UnspecifiedFieldType::UnspecifiedFieldType(char *line) 
-: WriteIdrTestCase(line, WRITE_TC_ALL_IDR) {
+UnspecifiedFieldType::UnspecifiedFieldType(char *line) : WriteIdrTestCase(line) {
 }
 
 /*****************************************************************************
@@ -58,10 +53,9 @@ const char *UnspecifiedFieldType::getDescription() {
  *****************************************************************************/
 
 const char *UnspecifiedFieldType::getPrecondition() {
-    return "Requires a read-only or read-write Inventory with a read-write\n"
-           "Area for which free space is available and a new field for\n"
-           "testing purposes is not rejected by the implementation,\n"
-           "i.e. SA_ERR_HPI_INVALID_DATA.";
+    return "Requires a read-write Inventory with a read-write Area for which\n"
+           "free space is available and a new field for testing purposes\n"
+           "is not rejected by the implementation, i.e. SA_ERR_HPI_INVALID_DATA.";
 }
 
 /*****************************************************************************

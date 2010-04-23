@@ -21,7 +21,6 @@
 #include "TestSuite.h"
 #include "SetState.h"
 #include "NoCapability.h"
-#include "MissingCapability.h"
 #include "AddEntryDisabled.h"
 #include "AddEntryEnabled.h"
 #include "GenEventDisabled.h"
@@ -36,7 +35,7 @@ using namespace ns_saHpiEventLogStateSet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-    /*add(new SetState("P57-16:P57-16"));
+    add(new SetState("P57-16:P57-16"));
     add(new NoCapability("P57-17:P57-18"));
     add(new AddEntryDisabled("P57-21:P57-22"));
     add(new AddEntryEnabled("P57-21:P57-22"));
@@ -44,18 +43,6 @@ TestSuite::TestSuite() {
     add(new GenEventEnabled("P57-22:P57-23"));
     add(new InvalidResource("P29-40:P29-42"));
     add(new InvalidSession("P29-43:P29-45"));
- */
-
-    add(new SetState("B.02|P73-16:P73-16"));
-    add(new NoCapability("B.02|P73-17:P73-18"));
-    add(new MissingCapability("B.02|P73-17:P73-18"));
-    add(new AddEntryDisabled("B.02|P73-21:P73-22"));
-    add(new AddEntryEnabled("B.02|P73-21:P73-22"));
-    add(new GenEventDisabled("B.02|P73-22:P73-23"));
-    add(new GenEventEnabled("B.02|P73-22:P73-23"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
 }
 
 /*****************************************************************************

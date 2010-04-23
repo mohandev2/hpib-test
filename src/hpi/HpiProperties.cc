@@ -16,15 +16,12 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- * 
- * Changes:
- * 09/10/20 Lars Wetzel <larswetzel@users.sourceforge.net>
- * 	        Add Version property
  */
-#include <stdlib.h>
 
 #include <iostream>
 #include <cstring>
+#include <unistd.h>
+#include <stdlib.h>
 
 #include "HpiProperties.h"
 
@@ -46,8 +43,6 @@ void HpiProperties::setDefaults() {
 
     invalidDomainId = INVALID_ID;
     invalidSessionId = INVALID_ID;
-    invalidVersion = INVALID_ID;
-    invalidInitOptionId = INVALID_ID;
 
     invalidResourceId = INVALID_ID;
     validResourceId = VALID_ID;
@@ -111,10 +106,6 @@ void HpiProperties::setDefaults() {
 void HpiProperties::setPropertyValue(const char *name, const char *value) {
     if (strcmp(name, "InvalidDomainId") == 0) {
         invalidDomainId = toUlong(name, value);
-    } else if (strcmp(name, "InvalidVersion") == 0) { 
-    		invalidVersion = toUlong(name, value);
-    } else if (strcmp(name, "InvalidInitOptionId") == 0) {
-    		invalidInitOptionId = atoi(value);  
     } else if (strcmp(name, "InvalidSessionId") == 0) {
         invalidSessionId = toUlong(name, value); 
     } else if (strcmp(name, "InvalidResourceId") == 0) {
@@ -225,22 +216,6 @@ unsigned long HpiProperties::toUlong(const char *name, const char *value) {
 
 SaHpiDomainIdT HpiProperties::getInvalidDomainId() {
     return invalidDomainId;
-}
-
-/*****************************************************************************
- * Return the invalid Version.
- *****************************************************************************/
-
-SaHpiVersionT HpiProperties::getInvalidVersion() {
-    return invalidVersion;
-}
-
-/*****************************************************************************
- * Return the invalid Initialization OptionId.
- *****************************************************************************/
-
-SaHpiInt32T HpiProperties::getInvalidInitOptionId() {
-	return invalidInitOptionId;
 }
 
 /*****************************************************************************

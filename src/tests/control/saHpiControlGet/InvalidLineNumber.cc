@@ -72,6 +72,7 @@ HpiTestStatus InvalidLineNumber::runCtrlTest(SaHpiSessionIdT sessionId,
     HpiTestStatus status;
     SaHpiCtrlModeT ctrlMode;
     SaHpiCtrlStateT ctrlState;
+    ctrlState.Type = SAHPI_CTRL_TYPE_TEXT;
 
     if (ctrlRec->WriteOnly || !isTextControl(ctrlRec)) {
         status.assertNotSupport();

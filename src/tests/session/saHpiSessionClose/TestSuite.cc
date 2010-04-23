@@ -30,11 +30,9 @@ using namespace ns_saHpiSessionClose;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
-    add(new CloseSession("B.02|P40-10:P40-10"));
-    add(new CloseTwice("B.02|P40-2:P40-2"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new CloseSession("P34-10:P34-10"));
+    add(new CloseTwice("P34-2:P34-2"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

@@ -36,17 +36,15 @@ using namespace ns_saHpiParmControl;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
-    add(new AutoExtractTimeout("B.02|P208-22:P208-22;P207-5:P207-5"));
-    add(new SensorEnableState("B.02|P208-22:P208-22;P207-6:P207-6"));
-    add(new SensorEventEnableState("B.02|P208-22:P208-22;P207-7:P207-7"));
-    add(new SensorEventMasks("B.02|P208-22:P208-22;P207-8:P207-8"));
-    add(new SensorThresholds("B.02|P208-22:P208-22;P207-9:P207-9"));
-    add(new NoCapability("B.02|P208-23:P208-24"));
-    add(new InvalidAction("B.02|P208-25:P208-25"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new AutoExtractTimeout("P153-22:P153-22;P152-5:P152-5"));
+    add(new SensorEnableState("P153-22:P153-22;P152-6:P152-6"));
+    add(new SensorEventEnableState("P153-22:P153-22;P152-7:P152-7"));
+    add(new SensorEventMasks("P153-22:P153-22;P152-8:P152-8"));
+    add(new SensorThresholds("P153-22:P153-22;P152-9:P152-9"));
+    add(new NoCapability("P153-23:P153-24"));
+    add(new InvalidAction("P153-25:P153-25"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

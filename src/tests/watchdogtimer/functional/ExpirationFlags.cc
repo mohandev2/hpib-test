@@ -16,10 +16,7 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- * 
- * Changes
- *  09/11/01 <larswetzel@users.sourceforge.net>
- *           Eliminate compile warning
+ *
  */
 
 #include "ExpirationFlags.h"
@@ -91,7 +88,7 @@ HpiTestStatus ExpirationFlags::runSessionTest(SaHpiSessionIdT sessionId) {
  *****************************************************************************/
 
 void ExpirationFlags::addWatchdog(SaHpiSessionIdT sessionId,
-                                  SaHpiResourceIdT resourceId,
+				  SaHpiResourceIdT resourceId,
                                   SaHpiWatchdogNumT watchdogNum,
                                   SaHpiWatchdogT &watchdog) {
 
@@ -102,9 +99,6 @@ void ExpirationFlags::addWatchdog(SaHpiSessionIdT sessionId,
         watchdogData[watchdogCount].timerUseExpFlags = 0;
         watchdogCount++;
     }
-    
-    // To overcome a warning of unused sessionId
-    saHpiDiscover(sessionId);         
 }
 
 /*****************************************************************************

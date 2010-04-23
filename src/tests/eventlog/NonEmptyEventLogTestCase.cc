@@ -26,7 +26,7 @@
  *****************************************************************************/
 
 NonEmptyEventLogTestCase::NonEmptyEventLogTestCase(char *line)
-: EventLogTestCase(DISABLE_LOG, line) {
+: EventLogTestCase(true, line) {
     this->forceAdd = false;
 }
 
@@ -35,7 +35,7 @@ NonEmptyEventLogTestCase::NonEmptyEventLogTestCase(char *line)
  *****************************************************************************/
 
 NonEmptyEventLogTestCase::NonEmptyEventLogTestCase(bool newForceAdd, char *line)
-: EventLogTestCase(DISABLE_LOG, line) {
+: EventLogTestCase(true, line) {
     this->forceAdd = newForceAdd;
 }
 

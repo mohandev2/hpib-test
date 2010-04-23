@@ -16,8 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *     Lars Wetzel     <lars.wetzel@emerson.com>
- *
  */
 
 #ifndef __EVENTLOGHELPER_H__
@@ -25,12 +23,6 @@
 
 #include "SafTest.h"
 #include "HpiTestStatus.h"
-
-#define FULL_EVT_CAPAPILITIES (SAHPI_EVTLOG_CAPABILITY_ENTRY_ADD | \
-			       SAHPI_EVTLOG_CAPABILITY_CLEAR | \
-			       SAHPI_EVTLOG_CAPABILITY_TIME_SET | \
-			       SAHPI_EVTLOG_CAPABILITY_STATE_SET | \
-			       SAHPI_EVTLOG_CAPABILITY_OVERFLOW_RESET)
 
 /*****************************************************************************
  * EventLog Helper
@@ -57,29 +49,6 @@ public:
 
     static HpiTestStatus findEvent(SaHpiSessionIdT sessionId, SaHpiResourceIdT resourceId, 
                                    SaHpiEventT *event, bool *found);
-
-    static bool         isValidCapability(SaHpiEventLogCapabilitiesT eventLogCapabilities);
-
-    static bool         hasEvtLogAddCapability(SaHpiSessionIdT sessionId, 
-					       SaHpiResourceIdT resourceId);
-    
-    static bool         hasEvtLogClearCapability(SaHpiSessionIdT sessionId, 
-						 SaHpiResourceIdT resourceId);
-
-    static bool         hasEvtLogTimerSetCapability(SaHpiSessionIdT sessionId, 
-						    SaHpiResourceIdT resourceId);
-
-    static bool         hasEvtLogStateSetCapability(SaHpiSessionIdT sessionId, 
-						    SaHpiResourceIdT resourceId);
-
-    static bool         hasEvtLogOverflowResetCapability(SaHpiSessionIdT sessionId, 
-							 SaHpiResourceIdT resourceId);
-
-    static bool         isSupportedEvtLogCapability(SaHpiSessionIdT sessionId, 
-						    SaHpiResourceIdT resourceId,
-						    SaHpiEventLogCapabilitiesT eventLogCapabilities);
-
-    
 };
 
 #endif

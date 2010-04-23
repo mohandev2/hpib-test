@@ -16,16 +16,11 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * Changes:
- * 2009/10/12 larswetzel@users.sourceforge.net
- *            Add saHpiRdrUpdateCountGet test cases
  */
 
 #include "TestSuite.h"
 #include "saHpiRdrGet/TestSuite.h"
 #include "saHpiRdrGetByInstrumentId/TestSuite.h"
-#include "saHpiRdrUpdateCountGet/TestSuite.h"
 
 using namespace ns_rdr;
 
@@ -36,7 +31,6 @@ using namespace ns_rdr;
 TestSuite::TestSuite() { 
     add(new ns_saHpiRdrGet::TestSuite());
     add(new ns_saHpiRdrGetByInstrumentId::TestSuite());
-    add(new ns_saHpiRdrUpdateCountGet::TestSuite());
 }
 
 /*****************************************************************************

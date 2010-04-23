@@ -16,10 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * Changes
- * 09/07/30 anurag.saxena@emerson.com
- *          valid for WRITE_TC_ALL_IDR
  */
 
 #include "ReservedAreaId.h"
@@ -31,8 +27,7 @@ using namespace ns_saHpiIdrFieldDelete;
  * Constructor
  *****************************************************************************/
 
-ReservedAreaId::ReservedAreaId(char *line) 
-: WriteIdrTestCase(line, WRITE_TC_ALL_IDR) {
+ReservedAreaId::ReservedAreaId(char *line) : WriteIdrTestCase(line) {
 }
 
 /*****************************************************************************
@@ -57,7 +52,7 @@ const char *ReservedAreaId::getDescription() {
  *****************************************************************************/
 
 const char *ReservedAreaId::getPrecondition() {
-    return "Requires a read-only or read-write Inventory.";
+    return "Requires a read-write Inventory.";
 }
 
 /*****************************************************************************

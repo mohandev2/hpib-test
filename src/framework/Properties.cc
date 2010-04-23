@@ -18,7 +18,6 @@
  *     Donald A. Barre <dbarre@unh.edu>
  */
 
-#include <stdlib.h>
 #include <cstring>
 #include <iostream>
 #include <fstream>
@@ -68,7 +67,7 @@ void Properties::initialize(const char *filename) {
             line[0] = '\0';
             in >> line;
             if (strlen(line) != 0) {
-                char *loc = strchr(line, '=');
+                char *loc = index(line, '=');
                 if (loc == NULL) {
                     cout << "Invalid property line: " << line << endl;
                     exit(1);

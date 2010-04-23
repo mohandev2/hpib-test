@@ -34,13 +34,13 @@ using namespace ns_saHpiRptEntryGet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-    add(new GetAll("B.02|P49-19:P49-19"));
-    add(new EntryIdNotPresent("B.02|P49-21:P49-21"));
-    add(new NullRptEntry("B.02|P49-24:P49-24"));
-    add(new NullNextEntryId("B.02|P49-25:P49-25"));
-    add(new ReservedValue("B.02|P49-26:P49-26"));
-    add(new AutoUpdate("B.02|P41-4:P41-8"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
+    add(new GetAll("P40-19:P40-19"));
+    add(new EntryIdNotPresent("P40-21:P40-21"));
+    add(new NullRptEntry("P40-24:P40-24"));
+    add(new NullNextEntryId("P40-25:P40-25"));
+    add(new ReservedValue("P40-26:P40-26"));
+    add(new AutoUpdate("P41-4:P41-8"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

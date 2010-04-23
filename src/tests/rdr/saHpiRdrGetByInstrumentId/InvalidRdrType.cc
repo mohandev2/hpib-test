@@ -73,7 +73,7 @@ SaErrorT InvalidRdrType::getExpectedReturn() {
 HpiTestStatus InvalidRdrType::runResourceTest(SaHpiSessionIdT sessionId,
                                               SaHpiRptEntryT *rptEntry) {
     HpiTestStatus status;
-    int invalidRdrType = (int) SAHPI_FUMI_RDR + 1;
+    int invalidRdrType = (int) SAHPI_ANNUNCIATOR_RDR + 1;
 
     if (!hasRdrCapability(rptEntry)) {
         status.assertNotSupport();

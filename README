@@ -23,6 +23,19 @@
 The HPI Test Suite provides a set of conformance test cases for the SAF HPI APIs,
 independent of a particular implementation.
 
+1.1 Issues
+
+Any issues discovered in this distribution of the Service Availability
+Forum's HPI B.01.01 Test Suite should be directed towards:
+	compliance@saforum.org 
+
+1.2 Results Submittal
+
+The results files generated from this test suite, when appropriate, should
+be submitted to the Service Availability Forum via the directions posted on
+the results submittal website, located at URL:
+	http://www.saforum.org/compliance/submit
+
 *********************************************************************************
 2.0 Building
 

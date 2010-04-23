@@ -16,14 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * Changes:
- * 09/06/24 saxena.anurag@emerson.com
- *          Add getInvalidEntityPath
- * 09/08/06 lars.wetzel@emerson.com
- *          Small chg of getInvalidEntityPath
- * 09/10/28 larswetzel@users.sourceforge.net
- *          Add isChildOf
  */
 
 #include <cstring>
@@ -40,53 +32,6 @@
 void ResourceHelper::fillEntityPath(SaHpiEntityPathT *entityPath) {
     entityPath->Entry[0].EntityType = SAHPI_ENT_ROOT;
     entityPath->Entry[0].EntityLocation = 0;
-}
-
-/*****************************************************************************
- * Fill a entity path with an invalid value.
- *****************************************************************************/
-
-void ResourceHelper::getInvalidEntityPath(SaHpiEntityPathT *entityPath) {
-    entityPath->Entry[0].EntityType = SAHPI_ENT_AMC;
-    entityPath->Entry[0].EntityLocation = 1;
-    entityPath->Entry[1].EntityType = SAHPI_ENT_ROOT;
-    entityPath->Entry[1].EntityLocation = 0;
-}
-
-/*****************************************************************************
- * Check if childPath is a child of parentPath.
- *****************************************************************************/
-
-bool ResourceHelper::isChildOf(SaHpiEntityPathT *childPath, SaHpiEntityPathT *parentPath) {
-    int childLength = 0;
-    int parentLength = 0;
-    int counter = 0;
-    int diffLength, i;
-    
-    for ( i = 0; i < SAHPI_MAX_ENTITY_PATH; i++) {
-        counter++;	
-        if (childPath->Entry[i].EntityType == SAHPI_ENT_ROOT) {
-            childLength = counter;
-            break;
-        }
-        if (parentPath->Entry[i].EntityType == SAHPI_ENT_ROOT) {
-            parentLength = counter;
-        }
-    }
-
-    // The parent path should be shorter than the child path
-    if ((parentLength == 0) || (childLength <= parentLength))
-        return false; 
-
-    diffLength = childLength - parentLength;
-    for (i = 0; i < parentLength; i++) {
-        if (parentPath->Entry[i].EntityType != childPath->Entry[i+diffLength].EntityType) {
-            return false;
-        } else if (parentPath->Entry[i].EntityLocation != childPath->Entry[i+diffLength].EntityLocation) {
-            return false;
-        }
-    }
-    return true;
 }
 
 /*****************************************************************************

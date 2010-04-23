@@ -32,15 +32,12 @@ using namespace ns_saHpiEventLogInfoGet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
-    add(new GetInfo("B.02|P62-18:P62-18"));
-    add(new NoCapability("B.02|P62-19:P62-20"));
-    add(new NullInfo("B.02|P62-22:P62-22"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new GetInfo("P48-18:P48-18"));
+    add(new NoCapability("P48-19:P48-20"));
+    add(new NullInfo("P48-22:P48-22"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
-
 
 /*****************************************************************************
  * Return the name of the test suite.

@@ -16,14 +16,9 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * Changes     
- * 2009/05/25 - lars.wetzel@emerson.com
- *              Add prepareTestData()
  */
 
 #include "AddEventLogTestCase.h"
-#include "TextBufferHelper.h"
 #include "EventLogHelper.h"
 
 /*****************************************************************************
@@ -58,33 +53,4 @@ HpiTestStatus AddEventLogTestCase::runLogTest(SaHpiSessionIdT sessionId,
     }
 
     return status;
-}
-
-HpiTestStatus AddEventLogTestCase::prepareTestData(SaHpiSessionIdT sessionId,
-						   SaHpiResourceIdT resourceId,
-						   SaHpiTextBufferT *buffer) {
-  HpiTestStatus status;
-  SaHpiEventLogInfoT info;
-
-  // Check if the event log supports adding using events
-  if (!EventLogHelper::hasEvtLogAddCapability(sessionId, resourceId)) {
-    status.assertNotSupport();
-
-  } else {
-    // Check if the buffer data size is supported by the event log
-    SaErrorT error = saHpiEventLogInfoGet(sessionId, resourceId, &info);
-    if (error != SA_OK) {
-      status.assertError(TRACE, EVENT_LOG_INFO_GET, SA_OK, error);
-    } else {
-      if (info.UserEventMaxSize < SAHPI_MAX_TEXT_BUFFER_LENGTH) {
-	TextBufferHelper::fill(buffer, info.UserEventMaxSize); 
-      } else {
-	TextBufferHelper::fill(buffer, SAHPI_MAX_TEXT_BUFFER_LENGTH);
-      }
-      status.assertPass();
-    }
-  
-  }
-
-  return status;
 }

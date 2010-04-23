@@ -32,12 +32,11 @@ using namespace ns_saHpiEventLogTimeGet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-    add(new GetTime("B.02|P69-16:P69-16;P69-25:P69-26"));
-    add(new NoCapability("B.02|P69-17:P69-18"));
-    add(new NullTime("B.02|P69-20:P69-20"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P29-18"));
-
+    add(new GetTime("P54-16:P54-16;P54-25:P54-26"));
+    add(new NoCapability("P54-17:P54-18"));
+    add(new NullTime("P54-20:P54-20"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

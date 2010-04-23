@@ -21,7 +21,6 @@
 #include "InvalidDataField.h"
 #include "TextBufferHelper.h"
 #include "EventHelper.h"
-#include "EventLogHelper.h"
 
 using namespace ns_saHpiEventLogEntryAdd;
 
@@ -79,22 +78,18 @@ HpiTestStatus InvalidDataField::runAddTest(SaHpiSessionIdT sessionId,
                                   SAHPI_TL_TYPE_ASCII6,
                                   SAHPI_TL_TYPE_BCDPLUS };
 
-    if (EventLogHelper::hasEvtLogAddCapability(sessionId, resourceId)) {
-      for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 3; i++) {
         TextBufferHelper::fillInvalidData(&buf, dataType[i]);
         EventHelper::fill(&event, &buf);
 
         SaErrorT error = saHpiEventLogEntryAdd(sessionId, resourceId, &event);
         if (error == SA_ERR_HPI_INVALID_PARAMS) {
-	  status.assertPass();
+            status.assertPass();
         } else {
-	  status.assertFailure(TRACE, EVENT_LOG_ENTRY_ADD,
-			       SA_ERR_HPI_INVALID_PARAMS, error,
-			       "DataType is %s", HpiString::dataType(dataType[i]));
+            status.assertFailure(TRACE, EVENT_LOG_ENTRY_ADD,
+                              SA_ERR_HPI_INVALID_PARAMS, error,
+                              "DataType is %s", HpiString::dataType(dataType[i]));
         }
-      }
-    } else {
-      status.assertNotSupport();
     }
 
     return status;

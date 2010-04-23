@@ -25,7 +25,6 @@
 #include "InvalidFormat.h"
 #include "NoCapability.h"
 #include "NonThresholdSensor.h"
-#include "NullSensorThresholds.h"
 #include "SensorNotPresent.h"
 #include "NonWritableThreshold.h"
 #include "MinRange.h"
@@ -43,24 +42,21 @@ using namespace ns_saHpiSensorThresholdsSet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
-    add(new SetUpCritical("B.02|P100-16:P100-16"));
-    add(new MultiSet("B.02|P100-16:P100-16"));
-    add(new InOrder("B.02|P100-16:P100-16"));
-    add(new InvalidFormat("B.02|P100-17:P100-18"));
-    add(new NoCapability("B.02|P100-19:P100-20"));
-    add(new SensorNotPresent("B.02|P100-21:P100-21"));
-    add(new NonWritableThreshold("B.02|P100-23:P100-23"));
-    add(new NonThresholdSensor("B.02|P100-24:P100-25"));
-    add(new NullSensorThresholds("B.02|P100-24:P100-25"));
-    add(new MinRange("B.02|P100-26:P100-27"));
-    add(new MaxRange("B.02|P100-26:P100-27"));
-    add(new OutOfOrder("B.02|P100-29:P100-29"));
-    add(new NegativeHysteresis("B.02|P100-30:P100-30"));
+    add(new SetUpCritical("P82-16:P82-16"));
+    add(new MultiSet("P82-16:P82-16"));
+    add(new InOrder("P82-16:P82-16"));
+    add(new InvalidFormat("P82-17:P82-18"));
+    add(new NoCapability("P82-19:P82-20"));
+    add(new SensorNotPresent("P82-21:P82-21"));
+    add(new NonWritableThreshold("P82-23:P82-23"));
+    add(new NonThresholdSensor("P82-24:P82-25"));
+    add(new MinRange("P82-26:P82-27"));
+    add(new MaxRange("P82-26:P82-27"));
+    add(new OutOfOrder("P82-29:P82-29"));
+    add(new NegativeHysteresis("P82-30:P82-30"));
     add(new Reject());
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

@@ -30,9 +30,9 @@ using namespace ns_saHpiWatchdogFunctional;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-    add(new Event("B.02|P140-16:P140-18"));
-    add(new PretimerEvent("B.02|P241-11:P241-12"));
-    add(new ExpirationFlags("B.02|P241-50:P241-54;P242-36:P242-38"));
+    add(new Event("P114-16:P114-18"));
+    add(new PretimerEvent("P181-11:P181-12"));
+    add(new ExpirationFlags("P181-50:P181-54;P182-36:P182-38"));
 }
 
 /*****************************************************************************

@@ -21,7 +21,6 @@
 #include "ValidDataType.h"
 #include "TextBufferHelper.h"
 #include "EventHelper.h"
-#include "EventLogHelper.h"
 
 using namespace ns_saHpiEventLogEntryAdd;
 
@@ -80,8 +79,7 @@ HpiTestStatus ValidDataType::runAddTest(SaHpiSessionIdT sessionId,
                                   SAHPI_TL_TYPE_BCDPLUS, 
                                   SAHPI_TL_TYPE_BINARY };
 
-    if (EventLogHelper::hasEvtLogAddCapability(sessionId, resourceId)) { 
-      for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 5; i++) {
         TextBufferHelper::fillByDataType(&buf, dataType[i]);
         EventHelper::fill(&event, &buf);
 
@@ -89,11 +87,11 @@ HpiTestStatus ValidDataType::runAddTest(SaHpiSessionIdT sessionId,
         if (error == SA_ERR_HPI_INVALID_DATA) {
             status.assertNotSupport();
         } else if (error == SA_OK) {
-	  status.assertPass();
+            status.assertPass();
         } else {
-	  status.assertFailure(TRACE, EVENT_LOG_ENTRY_ADD, SA_OK, error);
+            status.assertFailure(TRACE, EVENT_LOG_ENTRY_ADD, SA_OK, error);
         }
-      }
     }
+
     return status;
 }

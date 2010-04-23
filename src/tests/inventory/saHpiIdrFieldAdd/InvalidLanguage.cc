@@ -28,8 +28,7 @@ using namespace ns_saHpiIdrFieldAdd;
  * Constructor
  *****************************************************************************/
 
-InvalidLanguage::InvalidLanguage(char *line) 
-: WriteIdrTestCase(line, WRITE_TC_ALL_IDR) {
+InvalidLanguage::InvalidLanguage(char *line) : WriteIdrTestCase(line) {
 }
 
 /*****************************************************************************
@@ -55,9 +54,9 @@ const char *InvalidLanguage::getDescription() {
  *****************************************************************************/
 
 const char *InvalidLanguage::getPrecondition() {
-    return "Requires a read-only or read-write Inventory with a read-write\n"
-           "Area for which free space is available and the new field is not\n"
-           "rejected by the implementation, i.e. SA_ERR_HPI_INVALID_DATA.";
+    return "Requires a read-write Inventory with a read-write Area for which\n"
+           "free space is available and the new field is not rejected by the\n"
+           "implementation, i.e. SA_ERR_HPI_INVALID_DATA.";
 }
 
 /*****************************************************************************
@@ -133,11 +132,8 @@ HpiTestStatus InvalidLanguage::addField(SaHpiSessionIdT sessionId,
         } else if (error != SA_ERR_HPI_INVALID_PARAMS) {
             status.assertFailure(TRACE, IDR_FIELD_ADD, SA_ERR_HPI_INVALID_PARAMS, error);
             if (error == SA_OK) {
-              error =  saHpiIdrFieldDelete(sessionId, resourceId, idrId, areaId, field.FieldId);
-            if (error != SA_OK)
-              status.assertError(TRACE, IDR_FIELD_DELETE, SA_OK, error);
- 
-           }
+                saHpiIdrFieldDelete(sessionId, resourceId, idrId, areaId, field.FieldId);
+            }
         } else {
             status.assertPass();
         }

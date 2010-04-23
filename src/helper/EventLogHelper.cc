@@ -16,7 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *     Lars Wetzel     <lars.wetzel@emerson.com>
  */
 
 #include "EventLogHelper.h"
@@ -211,53 +210,5 @@ HpiTestStatus EventLogHelper::findEvent(SaHpiSessionIdT sessionId,
     }
 
     return status;
-}
-
-/*****************************************************************************
- * Check the EventLog Capabilities
- *****************************************************************************/
-bool EventLogHelper::isSupportedEvtLogCapability(SaHpiSessionIdT sessionId, 
-						SaHpiResourceIdT resourceId,
-						SaHpiEventLogCapabilitiesT eventLogCapabilities) {
-
-  SaHpiEventLogCapabilitiesT evtLogCap;
-  HpiTestStatus status;
-
-  SaErrorT error = saHpiEventLogCapabilitiesGet(sessionId, resourceId, &evtLogCap);
-  if (error != SA_OK) {
-    status.assertError(TRACE, EVENT_LOG_CAPABILITIES_GET, SA_OK, error);
-  } 
-  
-  return (eventLogCapabilities & evtLogCap);
-}
-
-
-bool  EventLogHelper::isValidCapability(SaHpiEventLogCapabilitiesT capabilities) {
-  return (capabilities <= FULL_EVT_CAPAPILITIES);
-}
-
-bool  EventLogHelper::hasEvtLogAddCapability(SaHpiSessionIdT sessionId, 
-					     SaHpiResourceIdT resourceId) {
-  return isSupportedEvtLogCapability(sessionId, resourceId, SAHPI_EVTLOG_CAPABILITY_ENTRY_ADD);
-}
-    
-bool EventLogHelper::hasEvtLogClearCapability(SaHpiSessionIdT sessionId, 
-					     SaHpiResourceIdT resourceId) {
-  return isSupportedEvtLogCapability(sessionId, resourceId, SAHPI_EVTLOG_CAPABILITY_CLEAR);
-}
-
-bool EventLogHelper::hasEvtLogTimerSetCapability(SaHpiSessionIdT sessionId, 
-						SaHpiResourceIdT resourceId){
-  return isSupportedEvtLogCapability(sessionId, resourceId, SAHPI_EVTLOG_CAPABILITY_TIME_SET);
-}
-
-bool EventLogHelper::hasEvtLogStateSetCapability(SaHpiSessionIdT sessionId, 
-						SaHpiResourceIdT resourceId){
-  return isSupportedEvtLogCapability(sessionId, resourceId, SAHPI_EVTLOG_CAPABILITY_STATE_SET);
-}
-
-bool EventLogHelper::hasEvtLogOverflowResetCapability(SaHpiSessionIdT sessionId, 
-						     SaHpiResourceIdT resourceId){
-  return isSupportedEvtLogCapability(sessionId, resourceId, SAHPI_EVTLOG_CAPABILITY_OVERFLOW_RESET);
 }
 

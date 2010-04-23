@@ -30,11 +30,9 @@ using namespace ns_saHpiDomainInfoGet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
- add(new GetDomainInfo("B.02|P43-22:P43-22"));
-    add(new NullDomainInfo("B.02|P43-23:P43-23"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new GetDomainInfo("P36-22:P36-22"));
+    add(new NullDomainInfo("P36-23:P36-23"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

@@ -17,7 +17,6 @@
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
  */
-#include <cstring>
 #include <string.h>
 
 #include "LocationMgr.h"
@@ -65,20 +64,19 @@ const char *LocationMgr::getLocation() {
     char idBuf[50];
 
     if ( buf == NULL )
-	return NULL;
-
+            return NULL;
     strcpy(buf, "");
     if (locationCount > 0) {
         strcat(buf, "[");
         strcat(buf, location[0].name);
         strcat(buf, ":");
-	snprintf(idBuf, 50, "%d", location[0].id);
+        snprintf(idBuf, 50, "%d", location[0].id);
         strcat(buf, idBuf);
         for (int i = 1; i < locationCount; i++) {
             strcat(buf, "; ");
             strcat(buf, location[i].name);
             strcat(buf, ":");
-	    snprintf(idBuf, 50, "%d", location[i].id);
+            snprintf(idBuf, 50, "%d", location[i].id);
             strcat(buf, idBuf);
         }
         strcat(buf, "] ");

@@ -160,8 +160,8 @@ HpiTestStatus ClearAllLinesAndWrite::verifyTextBuffers(SaHpiSessionIdT sessionId
 
             status.assertPass();
             for (int lineNum = 2; lineNum <= maxLines && status.isOkay(); lineNum++) {
-            ctrlState.Type = SAHPI_CTRL_TYPE_TEXT;    
-            ctrlState.StateUnion.Text.Line = lineNum;
+                ctrlState.Type = SAHPI_CTRL_TYPE_TEXT;
+                ctrlState.StateUnion.Text.Line = lineNum;
                 error = saHpiControlGet(sessionId, resourceId, ctrlNum, NULL, &ctrlState);
                 if (error != SA_OK) {
                     status.assertError(TRACE, CONTROL_GET, SA_OK, error);

@@ -397,6 +397,7 @@ HpiTestStatus ControlTestCase::setControlTextBuffer(SaHpiSessionIdT sessionId,
     buffer.fill(byteValue, numChars);
 
     setDefaultCtrlState(ctrlRec, &ctrlState);
+    ctrlState.Type = SAHPI_CTRL_TYPE_TEXT;
     ctrlState.StateUnion.Text.Line = lineNum;
     ctrlState.StateUnion.Text.Text = buffer.getTextBuffer();
 

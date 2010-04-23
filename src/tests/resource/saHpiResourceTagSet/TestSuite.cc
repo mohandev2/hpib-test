@@ -35,15 +35,14 @@ using namespace ns_saHpiResourceTagSet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-    add(new SetTag("B.02|P53-14:P53-14"));
-    add(new InvalidDataType("B.02|P53-17:P53-17"));
-    add(new InvalidDataField("B.02|P53-18:P53-18"));
-    add(new InvalidLanguage("B.02|P53-19:P53-20"));
-    add(new NullResourceTag("B.02|P53-21:P53-21"));
-    add(new Scope("B.02|P53-27:P53-28"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new SetTag("P44-14:P44-14"));
+    add(new InvalidDataType("P44-17:P44-17"));
+    add(new InvalidDataField("P44-18:P44-18"));
+    add(new InvalidLanguage("P44-19:P44-20"));
+    add(new NullResourceTag("P44-21:P44-21"));
+    add(new Scope("P44-27:P44-28"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

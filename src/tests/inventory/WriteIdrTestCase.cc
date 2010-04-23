@@ -16,11 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * 09/07/28 lars.wetzel@emerson.com
- *          Introduction of ReadIdrAttribute
- *          Child classes have to define for which kind of IDR
- *          they are valid
  */
 
 #include "WriteIdrTestCase.h"
@@ -29,18 +24,15 @@
  * Constructor
  *****************************************************************************/
 
-WriteIdrTestCase::WriteIdrTestCase(int IdrAttribute) : IdrTestCase() {
-  this->ReadIdrAttribute = IdrAttribute;
+WriteIdrTestCase::WriteIdrTestCase() : IdrTestCase() {
 }
 
 /*****************************************************************************
  * Constructor
  *****************************************************************************/
 
-WriteIdrTestCase::WriteIdrTestCase(char *line, int IdrAttribute) : IdrTestCase(line) {
-  this->ReadIdrAttribute = IdrAttribute;
+WriteIdrTestCase::WriteIdrTestCase(char *line) : IdrTestCase(line) {
 }
-
 
 /*****************************************************************************
  * Before running the main test, we must verify that we can actually
@@ -58,18 +50,8 @@ HpiTestStatus WriteIdrTestCase::runIdrTest(SaHpiSessionIdT sessionId,
 
     if (error != SA_OK) {
         status.assertError(TRACE, IDR_INFO_GET, SA_OK, error);
-    } else if (ReadIdrAttribute == WRITE_TC_READONLY_IDR) {
-      if (idrInfo.ReadOnly) {
-	status.add(TRACE, runWriteIdrTest(sessionId, rptEntry, idrRec));
-      } else {
+    } else if (idrInfo.ReadOnly) {
         status.assertNotSupport();
-      }
-    } else if (ReadIdrAttribute == WRITE_TC_READWRITE_IDR) {
-      if (!idrInfo.ReadOnly) {
-	status.add(TRACE, runWriteIdrTest(sessionId, rptEntry, idrRec));
-      } else {
-        status.assertNotSupport();
-      }
     } else {
         status.add(TRACE, runWriteIdrTest(sessionId, rptEntry, idrRec));
     }

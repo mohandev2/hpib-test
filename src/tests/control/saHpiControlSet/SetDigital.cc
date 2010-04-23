@@ -78,32 +78,30 @@ HpiTestStatus SetDigital::runCtrlTest(SaHpiSessionIdT sessionId,
     SaHpiResourceIdT resourceId = rptEntry->ResourceId;
 
     if (ctrlRec->WriteOnly || 
-	!isDigitalControl(ctrlRec) || !canSetControlState(ctrlRec)) {
+            !isDigitalControl(ctrlRec) || !canSetControlState(ctrlRec)) {
         status.assertNotSupport();
     } else {
-      SaErrorT error = saHpiControlGet(sessionId, resourceId,
-				       ctrlNum, &ctrlMode, &ctrlState);
-      if (error != SA_OK) {
-	status.assertError(TRACE, CONTROL_GET, SA_OK, error);
-      } else  {
-	status.add(TRACE, setDigitalValue(sessionId, resourceId,
-					  ctrlRec, SAHPI_CTRL_STATE_OFF));
+        SaErrorT error = saHpiControlGet(sessionId, resourceId,
+                                         ctrlNum, &ctrlMode, &ctrlState);
+        if (error != SA_OK) {
+            status.assertError(TRACE, CONTROL_GET, SA_OK, error);
+        } else {
+            status.add(TRACE, setDigitalValue(sessionId, resourceId,
+                                              ctrlRec, SAHPI_CTRL_STATE_OFF));
 
-	status.add(TRACE, setDigitalValue(sessionId, resourceId,
-					  ctrlRec, SAHPI_CTRL_STATE_ON));
+            status.add(TRACE, setDigitalValue(sessionId, resourceId,
+                                              ctrlRec, SAHPI_CTRL_STATE_ON));
 
-	// Restore original mode and state
+            // Restore original mode and state
 
-	error = saHpiControlSet(sessionId, resourceId,
-				ctrlNum, ctrlMode, &ctrlState);
-	if ((error != SA_OK) &&
-	    (error != SA_ERR_HPI_INVALID_DATA) &&
-	    (error != SA_ERR_HPI_INVALID_REQUEST) &&
-	    (error != SA_ERR_HPI_UNSUPPORTED_PARAMS)) {
-	  status.assertError(TRACE, CONTROL_SET, SA_OK, error);
-	}
-          
-       }
+            error = saHpiControlSet(sessionId, resourceId,
+                                    ctrlNum, ctrlMode, &ctrlState);
+            if ((error != SA_OK) &&
+                (error != SA_ERR_HPI_INVALID_DATA) &&
+                (error != SA_ERR_HPI_INVALID_REQUEST)) {
+                status.assertError(TRACE, CONTROL_SET, SA_OK, error);
+            }
+        }
     }
 
     return status;
@@ -126,16 +124,12 @@ HpiTestStatus SetDigital::setDigitalValue(SaHpiSessionIdT sessionId,
     SaErrorT error = saHpiControlSet(sessionId, resourceId, ctrlNum,
                                      SAHPI_CTRL_MODE_MANUAL, &newCtrlState);
     if ((error == SA_ERR_HPI_INVALID_DATA) ||
-        (error == SA_ERR_HPI_INVALID_REQUEST) ||
-	(error == SA_ERR_HPI_UNSUPPORTED_PARAMS)) {
-      status.assertNotSupport();
-
+        (error == SA_ERR_HPI_INVALID_REQUEST)) {
+        status.assertNotSupport();
     } else if (error == SA_OK) {
-      status.assertPass();
-
+        status.assertPass();
     } else {
-      status.assertFailure(TRACE, CONTROL_SET, SA_OK, error);
-
+        status.assertFailure(TRACE, CONTROL_SET, SA_OK, error);
     }
 
     return status;

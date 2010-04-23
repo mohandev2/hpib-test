@@ -16,9 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * 09/07/28 lars.wetzel@emerson.com
- *          Indroduction of IdrAttribute and defines
  */
 
 #ifndef __WRITEIDRTESTCASE_H___
@@ -33,18 +30,11 @@
  * The base class for IDR tests that need to write to the IDR.
  *****************************************************************************/
 
-#define WRITE_TC_READONLY_IDR  0
-#define WRITE_TC_READWRITE_IDR 1
-#define WRITE_TC_ALL_IDR       2
-
 class WriteIdrTestCase : public IdrTestCase
 {
-private:
-  int ReadIdrAttribute;
-
 public:
-    WriteIdrTestCase(int  IdrAttribute);
-    WriteIdrTestCase(char* line, int IdrAttribute);
+    WriteIdrTestCase();
+    WriteIdrTestCase(char* line);
 
 protected:
     HpiTestStatus runIdrTest(SaHpiSessionIdT sessionId,

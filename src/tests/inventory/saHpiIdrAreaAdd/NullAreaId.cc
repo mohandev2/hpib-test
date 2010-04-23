@@ -16,13 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * Changes
- * 09/06/25 lars.wetzel@emerson.com
- *          areaType: PRODUCT_INFO -> OEM
- *
- * 09/07/29 lars.wetzel@emerson.com
- *          valid for READWRITE_IDR
  */
 
 #include "NullAreaId.h"
@@ -33,7 +26,7 @@ using namespace ns_saHpiIdrAreaAdd;
  * Constructor
  *****************************************************************************/
 
-NullAreaId::NullAreaId(char *line) : WriteIdrTestCase(line, WRITE_TC_READWRITE_IDR) {
+NullAreaId::NullAreaId(char *line) : WriteIdrTestCase(line) {
 }
 
 /*****************************************************************************
@@ -80,7 +73,7 @@ HpiTestStatus NullAreaId::runWriteIdrTest(SaHpiSessionIdT sessionId,
     SaErrorT error = saHpiIdrAreaAdd(sessionId,
                                      rptEntry->ResourceId,
                                      idrRec->IdrId,
-                                     SAHPI_IDR_AREATYPE_OEM, NULL);
+                                     SAHPI_IDR_AREATYPE_PRODUCT_INFO, NULL);
     if (error == SA_ERR_HPI_INVALID_PARAMS) {
         status.assertPass();
     } else {

@@ -21,7 +21,6 @@
 #include "InvalidLanguage.h"
 #include "TextBufferHelper.h"
 #include "EventHelper.h"
-#include "EventLogHelper.h"
 
 using namespace ns_saHpiEventLogEntryAdd;
 
@@ -77,8 +76,7 @@ HpiTestStatus InvalidLanguage::runAddTest(SaHpiSessionIdT sessionId,
     SaHpiTextTypeT dataType[] = { SAHPI_TL_TYPE_UNICODE, SAHPI_TL_TYPE_TEXT };
     int invalidLanguage = (int) SAHPI_LANG_ZULU + 1;
 
-    if (EventLogHelper::hasEvtLogAddCapability(sessionId, resourceId)) {  
-      for (int i = 0; i < 2; i++) {
+    for (int i = 0; i < 2; i++) {
         TextBufferHelper::fillByDataType(&buf, dataType[i]);
         buf.Language = (SaHpiLanguageT) invalidLanguage;
         EventHelper::fill(&event, &buf);
@@ -87,14 +85,11 @@ HpiTestStatus InvalidLanguage::runAddTest(SaHpiSessionIdT sessionId,
         if (error == SA_ERR_HPI_INVALID_PARAMS) {
             status.assertPass();
         } else {
-	  status.assertFailure(TRACE, EVENT_LOG_ENTRY_ADD,
-			       SA_ERR_HPI_INVALID_PARAMS, error);
+            status.assertFailure(TRACE, EVENT_LOG_ENTRY_ADD,
+                                 SA_ERR_HPI_INVALID_PARAMS, error);
         }
-      }
-
-    } else {
-      status.assertNotSupport();
     }
+
     return status;
 }
 

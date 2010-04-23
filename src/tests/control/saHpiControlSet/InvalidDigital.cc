@@ -16,8 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- * Modified By: Akmal
- * 		Pushpa
  */
 
 #include "InvalidDigital.h"
@@ -92,10 +90,7 @@ HpiTestStatus InvalidDigital::runCtrlTest(SaHpiSessionIdT sessionId,
                                          rptEntry->ResourceId, ctrlRec->Num,
                                          SAHPI_CTRL_MODE_MANUAL, &ctrlState);
 
-
-        if (error == SA_ERR_HPI_INVALID_PARAMS) 
-        {
- 
+        if (error == SA_ERR_HPI_INVALID_PARAMS) {
             status.assertPass();
         } else {
             status.assertFailure(TRACE, CONTROL_SET,
