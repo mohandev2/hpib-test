@@ -77,22 +77,6 @@ SaHpiDomainIdT HpiTestCase::getInvalidDomainId() {
 }
 
 /*****************************************************************************
- * Return an invalid Version.
- *****************************************************************************/
-
-SaHpiVersionT HpiTestCase::getInvalidVersion() {
-    return getProperties()->getInvalidVersion();
-}
-
-/*****************************************************************************
- * Return an invalid Initialization OptionId.
- *****************************************************************************/
-
-SaHpiInt32T HpiTestCase::getInvalidInitOptionId() {
-    return getProperties()->getInvalidInitOptionId();
-}
-
-/*****************************************************************************
  * Return an invalid Session ID.
  *****************************************************************************/
 

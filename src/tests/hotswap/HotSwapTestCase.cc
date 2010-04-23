@@ -16,10 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * Changes:
- * 2009/11/04 - larswetzel@users.sourceforge.net
- *              Control SAHPI_HS_CAPABILITY_AUTOINSERT_IMMEDIATE
  */
 
 #include "HotSwapTestCase.h"
@@ -128,10 +124,6 @@ HpiTestStatus HotSwapTestCase::gatherHsInfo(SaHpiSessionIdT sessionId,
                         }
                     }
                 }
-            }
-            if (rptEntry->HotSwapCapabilities & SAHPI_HS_CAPABILITY_AUTOINSERT_IMMEDIATE) {
-                hsAutoInsertTimeout = SAHPI_TIMEOUT_IMMEDIATE;
-                hsAutoInsertReadOnly = true;
             }
         }
     }

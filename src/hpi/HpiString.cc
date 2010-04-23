@@ -20,8 +20,6 @@
  * Changes
  * 2009/05/19 - Lars.Wetzel@emerson.com / Anton.Pak@pigeonpoint.com
  *              enhancements to be HPI-B.02.01 compliant
- * 2009/10/19 - larswetzel@users.sourceforge.net
- * 	            enhancements to be HPI-B.03.01 compliant
  */
 
 #include <cstring>
@@ -37,8 +35,6 @@ const char *HpiString::function(HpiFunctionId funcId) {
 
     switch (funcId) {
         case VERSION_GET                  : return "saHpiVersionGet()";
-        case INITIALIZE                   : return "saHpiInitialize()";
-        case FINALIZE                     : return "saHpiFinalize()";
 
         case SESSION_OPEN                 : return "saHpiSessionOpen()";
         case SESSION_CLOSE                : return "saHpiSessionClose()";
@@ -55,7 +51,6 @@ const char *HpiString::function(HpiFunctionId funcId) {
         case RESOURCE_ID_GET              : return "saHpiResourceIdGet()";
         case RESOURCE_FAILED_REMOVE       : return "saHpiResourceFailedRemove()";
         case GET_ID_BY_ENTITY_PATH        : return "saHpiGetIdByEntityPath()";
-        case MY_ENTITY_PATH_GET           : return "saHpiMyEntityPathGet()";
         case GET_CHILD_ENTITY_PATH        : return "saHpiGetChildEntityPath()";
 
         case EVENT_LOG_INFO_GET           : return "saHpiEventLogInfoGet()";
@@ -82,7 +77,6 @@ const char *HpiString::function(HpiFunctionId funcId) {
 
         case RDR_GET                      : return "saHpiRdrGet()";
         case RDR_GET_BY_INSTRUMENT_ID     : return "saHpiRdrGetByInstrumentId()";
-        case RDR_UPDATE_COUNT_GET         : return "saHpiRdrUpdateCountGet()";
 
         case SENSOR_READING_GET           : return "saHpiSensorReadingGet()";
         case SENSOR_THRESHOLDS_GET        : return "saHpiSensorThresholdsGet()";

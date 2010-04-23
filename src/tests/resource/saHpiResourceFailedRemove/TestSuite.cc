@@ -16,16 +16,15 @@
  * Place - Suite 330, Boston, MA 02111-1307 USA.
  *
  *  Authors:
- *  Akmal Muqeeth <aax6@unh.edu>
- *
- *  Changes:
- *  09/11/04 <larswetzel@users.sourceforge.net>
- *           Remove NoFruCapability test case
- */
+*  Akmal Muqeeth <aax6@unh.edu>
+*
+
+*/
 
 #include "TestSuite.h"
 #include "InvalidSession.h"
 #include "ResourceIdNotPresent.h"
+#include "NoFruCapability.h"
 #include "FailedRemove.h"
 #include "InvalidRequest.h"
 
@@ -40,6 +39,7 @@ TestSuite::TestSuite() {
     
     add(new InvalidSession("B.02 |P36-43:P36-45"));
     add(new ResourceIdNotPresent("B.02 | P59-21:P59-21"));
+    add(new NoFruCapability("B.02 | P59-23:P59-24"));
     add(new FailedRemove("B.02 | P59-23:P59-24"));
     add(new InvalidRequest("B.02 | P59-23:P59-24"));
 }

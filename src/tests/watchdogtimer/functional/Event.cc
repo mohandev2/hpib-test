@@ -16,10 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * Changes
- *  09/11/01 <larswetzel@users.sourceforge.net>
- *           Eliminate compile warning
  */
 
 #include "Event.h"
@@ -113,7 +109,7 @@ HpiTestStatus Event::runSessionTest(SaHpiSessionIdT sessionId) {
 *****************************************************************************/
 
 void Event::addWatchdog(SaHpiSessionIdT sessionId,
-                        SaHpiResourceIdT resourceId,
+			SaHpiResourceIdT resourceId,
                         SaHpiWatchdogNumT watchdogNum,
                         SaHpiWatchdogT &watchdog) {
 
@@ -124,9 +120,6 @@ void Event::addWatchdog(SaHpiSessionIdT sessionId,
         watchdogData[watchdogCount].foundEvent = false;
         watchdogCount++;
     }
-
-    // To overcome a warning of unused sessionId
-    saHpiDiscover(sessionId);     
 }
 
 /*****************************************************************************
