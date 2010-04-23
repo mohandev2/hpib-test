@@ -1,0 +1,152 @@
+<html>
+<head>
+<style type="text/css">
+<!--
+    dt { font-weight:bold }
+-->
+</style>
+</head>
+<body>
+<h1>HPI Test Framework</h1>
+<p>
+The HPI Test Framework is an infrastructure for creating an HPI Test Suite.
+</p>
+
+<h2>HPI Test Suites and Test Cases</h2>
+<p>
+All HPI test suites and test cases are derived from <code>HpiTestSuite</code> and
+<code>HpiTestCase</code>, respectively.  The following shows the class diagram for test
+suites and test cases.
+</p>
+
+<img src="images/hpi.jpg" width="652" height="721" />
+
+<p>
+In the above class diagram, pay careful attention to the classes derived from
+<code>HpiTestCase</code>.  The following describes the purpose of each of these different
+types of HPI test cases.
+</p>
+
+<dl>
+<dt>HpiGenTestCase</dt>
+<dd>
+The <code>HpiGenTestCase</code> is the base class for test cases that don't need to test
+against all of the domains.  Either the test cases doesn't test against any domain
+or it only needs to test against the default domain.
+</dd>
+
+<dt>HpiDomainTestCase</dt>
+<dd>
+The <code>HpiDomainTestCase</code> is the base class for those test cases that must
+test against each domain in the HPI system.  It is the responsibility of the derived
+class to open a session for the domain.
+</dd>
+
+<dt>HpiSessionTestCase</dt>
+<dd>
+The <code>HpiSessionTestCase</code> is the base class for the test cases that must
+test against each domain and for which a session must be openned.  For a threaded
+application, this class will also set a timer that will expire before the default
+test timeout period.  If this timer expires, it is assumed that the test case is
+blocked.  The session is then closed in an attempt to unblock the test case so
+that the application will not terminate.
+</dd>
+
+<dt>HpiResourceTestCase</dt>
+<dd>
+The <code>HpiResourceTestCase</code> is the base class for the test cases that must
+test against all of the resources in all of the domains.  Sessions will be openned
+for each domain and the RPT will be traversed for each domain.
+</dd>
+
+<dt>HpiRdrTestCase</dt>
+<dd>
+The <code>HpiRdrTestCase</code> is the base class for the test cases that must
+test against all of the RDR entries in all of the domains.  Sessions will be openned
+for each domain and the RPT will be traversed for each domain.  For each resource
+in the RPT that supports RDRs, the child test case will be invoked to test against
+each RDR entry in that resource.
+</dd>
+
+</dl>
+
+<h2>HPI Test Status</h2>
+
+<p>
+As shown in the below class diagram, <code>HpiTestStatus</code> is derived from <code>TestStatus</code>.
+It provides extra methods for setting the state and adding messages based upon HPI error codes.
+</p>
+
+<img src="images/hpistatus.jpg" width="176" height="236" />
+
+<h2>The HPI Executive and HPI Properties</h2>
+
+<p>
+The following class diagram shows the class derivation for <code>HpiExecutive</code> and 
+<code>HpiProperties</code>.  <code>HpiExecutive</code> provides extends <code>Executive</code> by 
+obtaining the Domain IDs in the HPI system before running the test cases.  It also
+contains a reference to an instance of <code>HpiProperties</code> which contains all of
+the runtime properties that can be changed by the property file <code>~/.hpitest</code>.
+</p>
+
+<img src="images/hpiexec.jpg" width="476" height="242" />
+
+<h2>Other Classes</h2>
+
+<p>
+The following are some other classes that make up the HPI Test Framework.
+</p>
+
+<dl>
+<dt>
+ErrorList
+</dt>
+<dd>
+Some test cases might expect two or more possible HPI error codes.  The
+<code>ErrorList</code> is used to specify those expected error codes.
+</dd>
+
+<dt>
+HpiInvalidResourceTestCase
+</dt>
+<dd>
+Many HPI functions require testing an Invalid Resource ID.  Those test
+cases should be derived from <code>HpiInvalidResourceTestCase</code>.
+</dd>
+
+<dt>
+HpiInvalidSessionTestCase
+</dt>
+<dd>
+Many HPI functions require testing an Invalid Session ID.  Those test
+cases should be derived from <code>HpiInvalidSessionTestCase</code>.
+</dd>
+
+<dt>
+HpiNoCapabilityTestCase
+</dt>
+<dd>
+Many HPI functions require testing a resource that does not support
+the capability needed for that function.  Those test
+cases should be derived from <code>HpiNoCapabilityTestCase</code>.
+</dd>
+
+<dt>
+HpiString
+</dt>
+<dd>
+<code>HpiString</code> is used to translate enumerations and other values into strings.
+</dd>
+
+<dt>
+IdList
+</dt>
+<dd>
+The <code>IdList</code> contains a list of HPI Domain IDs.  Currently used for
+the list of domains that must be tested.
+</dd>
+
+</dl>
+
+</body>
+</html>

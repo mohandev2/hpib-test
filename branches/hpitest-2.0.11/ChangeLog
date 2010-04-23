@@ -1,0 +1,50 @@
+2009/08/06 hpi-b 2.0.11 lars.wetzel@emerson.com
+	- Enh GetIdbyEntityPath/GetResInst 
+	- Fix GetChildEntityPath/OutOfRangeInstanceId and GetChildEntityPath
+	- Fix ResourceHelper::getInvalidEntityPath
+	- Fix Mantis 248: ResourceFailedRemove/NoFruCapability
+
+2009/08/03 hpi-b 2.0.10 lars.wetzel@emerson.com
+	- Inventory:
+	  Change class WriteIdrTestCase
+	  Enhance class InventoryHelper
+	  Deletion of ReadOnlyIdr and ReadOnlyArea tc in
+	  ...IdrField... functions
+          Small fixes
+
+2009/06/25 hpi-b 2.0.9 lars.wetzel@emerson.com
+	- FruExtration: Fix for Mantis #193
+	- Inventory: Small fixes
+	- Inventory: Change area type from PRODUCT_INFO to OEM
+	- saHpiIdrFieldAddById DuplicatedField from Akmal 
+	- saHpiGetChildEntityPath testcase from Anurag
+	- hpitest-2 parts of patch for hpitest-1.0.6 from Anton	
+	- saHpiIdrAreaAddById: 
+	DuplicatedArea and InvalidAreaType fixed by Akmal
+	- invalid TextBuffer test cases completed for
+	saHpiAnnunciatorAdd and saHpiAlarmAdd 
+	- saHpiGetIdByEntityPath: Fix from Anton
+	- saAlarmGet: Slightly format changes
+	- patching hpi-b 2.0.8 with
+	EntityPathMissingTc.patch (saHpiGetIdByEntityPath: finished)
+	dimi_fumi_rdr.patch (DimiHelper/FumiHelper from Anton)
+
+2009/05/27 hpi-b 2.0.8 lars.wetzel@emerson.com
+	- saHpiGetIdByEntityPath: fix
+	- tc FailedRemove.cc: finished 
+	- patching hpi-b 2.0.7 with
+	  NoUpMinorEvent.patch (EventMasksSet fix)
+	  all_lines.patch (ControlGet fix)
+	  EventLogCap2.patch (EventLog enhancements and fix)
+
+2009/05/19 hpi-b 2.0.7 lars wetzel (lars.wetzel@emerson.com)
+	- SensorHelper: Allow more SensorTypes
+	- RdrHelper: Add comparision of the Fumi and Dimi values 
+	- eventlog: Add comments to the changes of the good cases	
+	- HpiString: enhancements to be HPI-B.02.01 compliant
+	- generating version 2.0.7 by patching 2.0.5 with 
+	  hpitest-2.CR.1.patch2 (watchdog isssues)
+	  hpitest-2.0.5.evtLogPatch (eventlog enhancements)
+	  hpitest-2.0.5.reviewpatch (fixes)
+	  names.patch (HpiString fix)
+	  ReadEventStates.patch (ReadEventStates fix)

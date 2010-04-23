@@ -1,0 +1,135 @@
+<html>
+<head>
+<style type="text/css">
+<!--
+    dt { font-weight:bold }
+-->
+</style>
+</head>
+<body>
+<h1>Base Test Framework</h1>
+<p>
+The Base Test Framework is a generic infrastructure for creating test suites.
+</p>
+
+<h2>Test Suites and Test Cases</h2>
+<p>
+All test suites and test cases are derived from <code>BaseTestSuite</code> and
+<code>BaseTestCase</code>, respectively.  Test suites maintain a list of child tests.
+These child tests are either other test suites or test cases, but cannot be
+a mixture of the two.  In simple terms, a full test suite is organized as a
+tree.  The root node and the interior nodes of the tree are test suites.
+The leaf nodes are test cases.  
+</p>
+
+<p>
+After a test case has been executed, it stores the result in a <code>TestStatus</code>.
+</p>
+
+<p>
+The following shows the class diagram for tests.
+</p>
+
+<p>
+<img src="images/basetest.jpg" width="620" height="287" />
+</p>
+
+<h2>Test Status</h2>
+
+<p>
+As mentioned above, each test case maintains the results of its execution in a <code>TestStatus</code>.
+The below figure shows the class diagram for the <code>TestStatus</code>.  As can be seen, a <code>TestStatus</code>
+consist of a state (UNKNOWN, PASS, FAIL, NOT_SUPPORT, ERROR, BLOCK) and an optional set of messages.
+The messages are typically used to indicate the reason for an error or a failure.  Each message
+consists of a string and a stack trace.  The stack trace indicates where in the source code that the error
+or failure occurred.  The stack trace consists of one or more <code>StackTraceEntry</code>s.  Each stack trace
+entry consists of the source code filename, function name, and line number.
+</p>
+
+<p>
+<img src="images/status.jpg" width="716" height="101" />
+</p>
+
+<h2>The Controller, Executive, and HtmlGenerator</h2>
+
+<p>
+The <code>Controller</code> is responsible for what action to take when the test application is
+run, based upon the command line options.  For example, it may be necessary to execute the
+test cases or to create a set of web pages documenting the test cases.  The following figure 
+shows the class diagram for the Controller.
+</p>
+
+<p>
+<img src="images/framework.jpg" width="663" height="500" />
+</p>
+
+<p>
+The <code>Arguments</code> class is responsible for parsing the command line arguments.
+</p>
+
+<p>
+The <code>HtmlGenerator</code> is used by the <code>Controller</code> when it is necessary to generate
+the set of web pages.
+</p>
+
+<p>
+The <code>Executive</code> is used by the <code>Controller</code> when it is necessary to execute
+one or more test cases.  The <code>Controller</code> provides the <code>Executive</code> with the 
+information from the command line arguments as to the names of which test cases to run 
+and which to exclude.  The <code>Executive</code> works by obtaining a list of all of the test
+cases from the root test suite, i.e. the test suite tree is recursively traversed to 
+obtain all of the test cases at the leafs of the tree.   Based upon the names given by
+the <code>Controller</code>, the <code>Executive</code> executes those test cases.
+</p>
+
+<p>
+During execution of a test case, the test case can reference the <code>Executive</code>.  In this
+way, test cases can make use of the <code>UserPrompter</code>.  The <code>UserPrompter</code> simply
+prints a message for the user and waits for that user to press the Enter key.
+</p>
+
+<h2>Other Classes</h2>
+
+<p>
+The following are some other classes that make up the Base Test Framework.
+</p>
+
+<dl>
+<dt>AppExit</dt>
+<dd><code>AppExit</code> is used to terminate the test application when a fatal block occurs.
+A fatal block occurs when a test case does not teminate within the specified timeout period.
+A message is printed indicating the offending test case and with some possible reasons as
+to why this has occurred.  Corrective action is required by the user.</dd>
+
+<dt>HtmlToc</dt>
+<dd><code>HtmlToc</code> is used to build the table of contents, i.e. the set of hyperlinks on 
+left side of the web page showing the test suites.</dd>
+
+<dt>LocationMgr</dt>
+<dd><code>LocationMgr</code> is used to maintain which <i>location</i> that is being tested.  This
+is a very abstract concept.  In terms of HPI, a location may be a domain, a resource, or an
+rdr entry.  The <code>LocationMgr</code> mantains a stack in order to keep track of which <i>location</i>
+is being tested.  For example, a resource might be identified as follows: [Domain:1; Resource:3].
+When a message is added to a <code>TestStatus</code>, the current <i>location</i> is appended to the
+message.
+</dd>
+
+<dt>Properties</dt>
+<dd><code>Properties</code> is used to maintain the runtime properties, such as the timeout period
+for test cases.</dd>
+
+<dt>Report</dt>
+<dd>A <code>Report</code> is simply a set of text messages that are appended together.  For an example
+of its use, consider the comparison of two HPI structures.  For each field that is different, a
+text message can be added to the <code>Report</code>.  A final big string can then be obtained from the
+<code>Report</code>.
+</dd>
+
+<dt>Summary</dt>
+<dd>The <code>Summary</code> is used to keep track of the total number of passed test cases, failed test
+cases, etc..</dd>
+
+</dl>
+
+</body>
+</html>

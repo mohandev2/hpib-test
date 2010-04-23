@@ -1,0 +1,13 @@
+2009/11/02 hpi-b 3.1.1 larswetzel@users.sourceforge.net
+	Based on hpi-b 2.0.11 following changes were made
+	- Add test cases for saHpiInitialize
+	- Add test cases for saHpiFinalize
+	- Add test cases for saHpiMyEntityPathGet
+	- Add test cases for saHpiRdrUpdateCount
+	- Redesign test case saHpiResourceFailedRemove/FailedRemove
+	- Del test case saHpiResourceFailedRemove/NoFruCapability
+	- Clean up saHpiResourcePowerStateSet/SameState.cc
+	- Clean up addWatchdog warnings
+	- Replace some tabs by blanks
+	- Chg HotSwapTestCase.cc for SAHPI_HS_CAPABILITY_AUTOINSERT_IMMEDIATE
+	
