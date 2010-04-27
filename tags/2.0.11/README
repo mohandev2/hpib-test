@@ -1,0 +1,382 @@
+#
+# Copyright (c) 2006, University of New Hampshire
+#
+# This program is free software; you can redistribute it and/or modify it
+# under the terms and conditions of the GNU General Public License,
+# version 2, as published by the Free Software Foundation.
+#
+# This program is distributed in the hope it will be useful, but WITHOUT
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+# FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+# more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+# Place - Suite 330, Boston, MA 02111-1307 USA.
+#
+# Authors:
+#       Donald Barre  <dbarre@unh.edu>
+
+1.0 Introduction & History
+
+This HPI test suite was initially developed with funds provided by the
+Service Availability(TM) Forum - http://www.saforum.org
+
+The work was supported by the SA Forum HPI working group in reviewing test cases,
+evaluating and following up on the implementation and generally defining the
+correct test suite behavior.  The result is a test suite that provides a
+set of conformance test cases for the SA Forum HPI APIs, independent of a
+particular implementation.
+
+If your HPI implementation passes these test cases we hope that you will
+seriously consider to also register your product at the Service Availability
+Forum's Implementation Registry:
+
+http://www.saforum.org/Implementation-Registry~221386~16627.htm
+
+As of year 2010, the work has been taken over by an independent set of dedicated
+persons who will continue to maintain and evolve the test suite in line with
+the originaly set guidelines of providing an independent HPI test suite for
+implementations.
+
+*********************************************************************************
+2.0 Building
+
+The test suite is built using GNU's Autotools.  To build the test suite,
+follow the below instructions.
+
+a. A default SaHpi.h is included in the top-level include directory.
+   If necessary that header file can be replaced in order to correctly
+   build on your platform.
+
+b. Modify the LDFLAGS file.  The LDFLAGS file contains the name of the 
+   HPI library to link against and optionally the directory where that
+   HPI library is located.
+
+c. Decide to build the test suite in threaded or non-threaded mode.  In
+   thread mode, pthreads are used.  Run "./configure" with the desired option.
+
+          ./configure --with-threads
+           
+           or
+
+          ./configure --without-threads
+
+   Building with threads is the default, i.e. executing "./configure" 
+   with no options is same as using "--with-threads."
+
+d. Build the "hpitest" executable by entering "make" at the command line.
+
+*********************************************************************************
+3.0 Running the HPI Test Suite
+
+The following is the usage of the "hpitest" executable.
+
+    hpitest [OPTION]... [TESTNAME]...
+
+    -m                   include the manual test cases
+    -i=FILENAME          file containing the names of the tests to include
+    -e=FILENAME          file containing the names of the tests to exclude
+    -l, --list           list the names of all of the test cases
+    -H, --html           create the HTML web pages
+    -h, --help           show this help
+    -v, --version        show version
+
+The TESTNAMEs may be name of test suites and/or the names of specific test cases.
+Also, when the TESTNAMEs are case insensitive.  When the test cases are executed,
+all output will be sent to standard output and a log file will also be kept.  The
+name of the log file is "log".
+
+The following are some examples:
+
+Example 1: Run all of the test cases excluding the manual tests.
+
+    hpitest
+
+Example 2: Run only the test cases in the domain test suite.
+
+    hpitest domain
+
+Example 3: Run only the test cases in the session and domain test suites
+           and include any manual tests.
+
+    hpitest -m session domain
+
+Example 4: Run a specific test case.
+
+    hpitest domain/saHpiDomainInfoGet/InvalidSession
+
+Example 5: Print a list of all of the test cases to standard output.
+
+    hpitest -l
+
+Example 6: Run the test cases listed in the file "tests.txt".
+
+    hpitest -i=tests.txt
+
+Example 7: Generate the HTML web pages.
+
+    hpitest --html
+
+*********************************************************************************
+4.0 HPI Test Case Statuses
+
+Initially, before execution, each test case is assigned a status of UNKNOWN.
+Upon completion of its execution, it is assigned a status corresponding to
+the execution.  The statuses are:
+
+    PASS        : The test case passed.  The function or feature that is being
+                  tested performed as expected.
+    NOTSUPPORT  : This test case cannot be executed because 
+                  the preconditions have not been met.
+    ERROR       : An unexpected error occurred during the execution of the
+                  test case, i.e. an HPI function unexpectedly returned an
+                  error code rather than SA_OK.  Errors typically occur during
+                  any necessary test setup and/or cleanup.
+    FAIL        : The test case failed.  The function or feature that is being
+                  tested failed to operate as expected.
+    BLOCK       : The test case did not complete during the test timeout period.
+                  (See the below section on blocking.)
+    UNKNOWN     : The test case did not return a valid status.
+
+*********************************************************************************
+4.1 More On Blocking
+
+Under normal operation, all test cases should be able to complete during the
+test timeout period.  If a test case cannot complete, the harness will attempt
+to force the the test case to complete.  For example, if a session has been
+openned, the harness will use a separate thread to close the session in the
+hope that this will cause the test case to become unblocked.  If all attempts
+to unblock the test case fail, the test application will abort.  The reason
+for aborting is that the HPI Implementation may be in an unstable state.
+Continuing with other tests would most likely be useless in that situation.
+The user will be informed as to the offending test case.  Until the problem
+is resolved, that test case can be excluded by using the "-e" command line
+option as described above.
+
+*********************************************************************************
+5.0 HPI Test Configuration File
+
+When executing the HPI test cases, "hpitest" uses a variety of properties that
+can be changed via a configuration file.  The name of the optional configuraiton
+file is ".hpitest" and it MUST be in the user's home directory.  It contains a
+list of name/value pairs.  For example, the properties InvalidDomainId and
+InvalidSessionId use a default value of 0xDEADBEEF.  If the user wishes to change
+that value, entries would be placed into the ".hpitest" file which might look
+like the following:
+
+        InvalidDomainId=0xFEEDFACE
+        InvalidSessionId=0xFEEDFACE
+
+The following are the available properties that can be changed in the
+configuration file.
+
+Name: TestTimeout
+Default: 120
+Description: The number of seconds to wait before determining that a 
+             test case is blocked and thus will not finish executing.
+             The minimum allowed time is 60 seconds.
+
+Name: InvalidDomainId
+Default: 0xDEADBEEF
+Description: Used in HPI function calls when an invalid Domain Id is needed,
+             i.e. a Domain Id that does not exist.
+
+Name: InvalidSessionId
+Default: 0xDEADBEEF
+Description: Used in HPI function calls when an invalid Session Id is needed.
+
+Name: ValidResourceId
+Default: 0x1
+Description: Used in HPI function calls when an valid Resource Id is needed,
+             i.e. a Resource Id that is legal.  Typically used in conjuction
+             with an Invalid Session Id.
+
+Name: InvalidResourceId
+Default: 0xDEADBEEF
+Description: Used in HPI function calls when an invalid Resource Id is needed,
+             i.e. a Resource Id that does not correspond to any resource in
+             the domain.
+
+Name: InvalidEntryId
+Default: 0xDEADBEEF
+Description: Used in HPI function calls when an invalid Entry Id is needed,
+             i.e. an Entry Id that does not correspond to any entry in a table.
+             It is used for accessing the following tables: DRT, EventLog, 
+             RDR, and RPT.
+
+Name: ValidInstrumentId
+Default: 0x1
+Description: Used in HPI function calls when an valid Instrument Id is needed,
+             i.e. an Instrument Id that is legal.  Typically used in conjuction
+             with an Invalid Session Id when accessing an RDR table.
+
+Name: InvalidInstrumentId
+Default: 0xDEADBEEF
+Description: Used in HPI function calls when an invalid Instrument Id is needed,
+             i.e. an Instrument Id that does not correspond to any entries in
+             the RDR table.
+
+Name: ValidAlarmId
+Default: 0x1
+Description: Used in HPI function calls when a valid Alarm Id is needed,
+             i.e. an Alarm Id that is legal.  Typically used in conjunction
+             with invalid values, such as an invalid Session Id.
+
+Name: ValidRdrType
+Default: SAHPI_SENSOR_RDR
+Description: Use in calls to saHpiRdrGetByInstrumentId() when a valid RDR Type
+             is needed.
+
+Name: ValidSensorNum
+Default: 0x1
+Description: Used in HPI function calls when a valid Sensor Num is needed,
+             i.e. a Sensor Num that is legal.  Typically used in conjunction
+             with invalid values, such as an invalid Session Id.
+
+Name: InvalidSensorNum
+Default: 0xDEADBEEF
+Description: Used in HPI function calls when an invalid Sensor Num is needed,
+             i.e. a Sensor Num that does not correspond to any Sensors.
+
+Name: ValidCtrlNum
+Default: 0x1
+Description: Used in HPI function calls when a valid Ctrl Num is needed,
+             i.e. a Ctrl Num that is legal.  Typically used in conjunction
+             with invalid values, such as an invalid Session Id.
+
+Name: InvalidCtrlNum
+Default: 0xDEADBEEF
+Description: Used in HPI function calls when an invalid Ctrl Num is needed,
+             i.e. a Ctrl Num that does not correspond to any Controls.
+
+Name: InvalidIdrId
+Default: 0xDEADBEEF
+Description: Used in HPI function calls when an invalid IDR Id is needed,
+             i.e. an IDR Id that does not correspond to any IDR.
+
+Name: ValidIdrAreaId
+Default: 0x1
+Description: Used in HPI function calls when a valid IDR Area Id is needed,
+             i.e. an IDR Area Id that is legal.  Typically used in conjunction
+             with invalid values, such as an invalid Session Id.
+
+Name: InvalidIdrAreaId
+Default: 0xDEADBEEF
+Description: Used in HPI function calls when an invalid IDR Area Id is needed,
+             i.e. an IDR Area Id that does not correspond to any Area in an IDR.
+
+Name: ValidIdrFieldId
+Default: 0x1
+Description: Used in HPI function calls when a valid IDR Field Id is needed,
+             i.e. an IDR Field Id that is legal.  Typically used in conjunction
+             with invalid values, such as an invalid Session Id.
+
+Name: InvalidIdrFieldId
+Default: 0xDEADBEEF
+Description: Used in HPI function calls when an invalid IDR Field Id is needed,
+             i.e. an IDR Field Id that does not correspond to any Field in an IDR.
+
+Name: ValidWatchdogNum
+Default: 0x1
+Description: Used in HPI function calls when a valid Watchdog Num is needed,
+             i.e. a Watchdog Num that is legal.  Typically used in conjunction
+             with invalid values, such as an invalid Session Id.
+
+Name: InvalidWatchdogNum
+Default: 0xDEADBEEF
+Description: Used in HPI function calls when an invalid Watchdog Num is needed,
+             i.e. a Watchdog Num that does not correspond to any Watchdog Timer.
+
+Name: ValidAnnunciatorNum
+Default: 0x1
+Description: Used in HPI function calls when a valid Annunciator Num is needed,
+             i.e. an Annunciator Num that is legal.  Typically used in conjunction
+             with invalid values, such as an invalid Session Id.
+
+Name: InvalidAnnunciatorNum
+Default: 0xDEADBEEF
+Description: Used in HPI function calls when an invalid Annunciator Num is needed,
+             i.e. an Annunciator Num that does not correspond to any Annunciator.
+
+Name: ValidAnnouncementId
+Default: 0x1
+Description: Used in HPI function calls when a valid Announcement Id is needed,
+             i.e. an Announcement Id that is legal.  Typically used in conjunction
+             with invalid values, such as an invalid Session Id.
+
+Name: InvalidAnnouncementId
+Default: 0xDEADBEEF
+Description: Used in HPI function calls when an invalid Announcement Id is needed,
+             i.e. an Announcement Id that does not correspond to any announcement in
+             any Annunciator.
+
+Name: MaxEventQueueSize
+Default: 1000
+Description: The maximum size of an event queue.  This is typically used
+             to cause an event queue to overflow.
+
+Name: MaxEventRetries
+Default: 10
+Description: Some event test cases will retry the test if it initially fails
+             due to unexpected system events.  This property sets the maximum
+             number of retries that will be attempted.
+
+Name: EventDelayTime
+Default: 6
+Description: The amount of time, in seconds, to allow for event processing.
+             In other words, the amount of time it takes for an event to show
+             up in a user's event queue.  Some of the events are user events
+             added via SaHpiEventAdd(), sensor events, and FRU events from 
+             insertions and/or removals.  Be aware that the clock used to measure
+             the EventDelayTime is only accurate to about +/- one second.
+
+Name: HsTestTimeout
+Default: 600
+Description: The test timeout in seconds for the Hot Swap Tests that are derived
+             from src/tests/hotswap/HotSwapTestCase.  While the TestTimeout
+             property is appropriate for the vast majority of tests, some
+             hot swap tests require more time than normal tests.
+
+Name: AutoInsertPolicyTime
+Default: 5000
+Description: The time in milliseconds to execute the Auto Insert Policy.
+
+Name: AutoExtractPolicyTime
+Default: 5000
+Description: The time in milliseconds to execute the Auto Extract Policy.
+
+Name: PowerOnTime
+Default: 5000
+Description: The maximum time in milliseconds to power on an entity. 
+
+Name: PowerOffTime
+Default: 5000
+Description: The maximum time in milliseconds to power off an entity.
+
+Name: PowerCycleTransitionTime
+Default: 10000
+Description: The maximum time in milliseconds between when an entity 
+             is powered off and when it is powered back on during a
+             power cycle. In other words, the maximum power cycle time
+             is PowerOffTime + PowerCycleTransitionTime + PowerOnTime.
+
+Name: WarmResetTime
+Default: 5000
+Description: The time in milliseconds to execute a Warm Reset. 
+
+Name: ColdResetTime
+Default: 5000
+Description: The time in milliseconds to execute a Cold Reset. 
+
+Name: EpsilonTime
+Default: 100
+Description: The time in milliseconds for comparing time values.  In other words,
+             two times values are considered equivalent if their difference is
+             within the EpsilonTime.
+
+Name: ForceDiscovery
+Default: false
+Description: For a domain discovery whenever a new session is openned.
+
+
