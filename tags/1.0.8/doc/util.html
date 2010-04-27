@@ -1,0 +1,78 @@
+<html>
+<head>
+<style type="text/css">
+<!--
+	dt { font-weight:bold }
+-->
+</style>
+</head>
+<body>
+<h1>Utilities</h1>
+
+<p>
+The Utility classes are a set of commonly used non-HPI classes.
+</p>
+
+<dl>
+
+<dt>
+List
+</dt>
+<dd>
+A <code>List</code> is used to store a list of objects.
+</dd>
+
+<dt>
+ListItem
+</dt>
+<dd>
+A <code>ListItem</code> stores one object reference within a <code>List</code>.  
+</dd>
+
+<dt>
+ListIterator
+</dt>
+<dd>
+A <code>ListIterator</code> is used to iterator through a <code>List</code>.
+</dd>
+
+<dt>
+StringBuffer
+</dt>
+<dd>
+The <code>StringBuffer</code> maintains a set of character buffers.  Code segments
+use <code>StringBuffer</code> to obtain a temporary character buffer.  The <code>StringBuffer</code>
+cycles through its character buffers which are never deallocated.  This is useful when
+a function wishes to return a <code>char*</code> without requiring the caller to free the
+memory.
+</dd>
+
+<dt>
+Time
+</dt>
+<dd>
+Contains some static methods to obtain the current time in milliseconds and to convert
+millisecond time to a printable string.
+</dd>
+
+<dt>
+Timer
+</dt>
+<dd>
+The <code>Timer</code> class is used for callback notifications based upon time.  It maintains
+an accuracy of one second.  The <code>add()</code> methods are used to install a callback function.
+When a callback function is added, a unique ID is returned.  That ID can be used to pause/resume
+the timer for that callback or to remove the function callback timer.
+</dd>
+
+<dt>
+Util
+</dt>
+<dd>
+Contains a set of commonly used constants and macros in the header file.
+</dd>
+
+</dl>
+
+</body>
+</html>
