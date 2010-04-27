@@ -17,26 +17,30 @@
 # Authors:
 #       Donald Barre  <dbarre@unh.edu>
  
+1.0 Introduction & History
 
-1.0 Introduction
+This HPI test suite was initially developed with funds provided by the
+Service Availability(TM) Forum - http://www.saforum.org
 
-The HPI Test Suite provides a set of conformance test cases for the SAF HPI APIs,
-independent of a particular implementation.
+The work was supported by the SA Forum HPI working group in reviewing test cases,
+evaluating and following up on the implementation and generally defining the
+correct test suite behavior.  The result is a test suite that provides a
+set of conformance test cases for the SA Forum HPI APIs, independent of a
+particular implementation.
 
-1.1 Issues
+If your HPI implementation passes these test cases we hope that you will
+seriously consider to also register your product at the Service Availability
+Forum's Implementation Registry:
 
-Any issues discovered in this distribution of the Service Availability
-Forum's HPI B.01.01 Test Suite should be directed towards:
-	compliance@saforum.org 
+http://www.saforum.org/Implementation-Registry~221386~16627.htm
 
-1.2 Results Submittal
-
-The results files generated from this test suite, when appropriate, should
-be submitted to the Service Availability Forum via the directions posted on
-the results submittal website, located at URL:
-	http://www.saforum.org/compliance/submit
+As of year 2010, the work has been taken over by an independent set of dedicated
+persons who will continue to maintain and evolve the test suite in line with
+the originaly set guidelines of providing an independent HPI test suite for
+implementations.
 
 *********************************************************************************
+
 2.0 Building
 
 The test suite is built using GNU's Autotools.  To build the test suite,
