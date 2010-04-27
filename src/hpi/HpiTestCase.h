@@ -58,8 +58,6 @@ protected:
      *********************************************************/
 
     SaHpiDomainIdT getInvalidDomainId();
-    SaHpiVersionT getInvalidVersion();
-    SaHpiInt32T getInvalidInitOptionId();
     SaHpiSessionIdT getInvalidSessionId();
 
     SaHpiResourceIdT getValidResourceId();

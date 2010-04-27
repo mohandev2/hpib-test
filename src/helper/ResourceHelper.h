@@ -20,8 +20,6 @@
  * Changes:
  * 09/06/24 saxena.anurag@emerson.com
  *          Add getInvalidEntityPath
- * 09/10/28 <larswetzel@users.sourceforge.net>
- *          Add isChildOf
  */
 
 #ifndef __RESOURCEHELPER_H__
@@ -40,7 +38,6 @@ class ResourceHelper
 public:
     static void fillEntityPath(SaHpiEntityPathT *entityPath);
     static void getInvalidEntityPath(SaHpiEntityPathT *entityPath);
-    static bool isChildOf(SaHpiEntityPathT *childPath, SaHpiEntityPathT *parentPath);
     static bool isEqual(SaHpiRptEntryT *rptEntry1, SaHpiRptEntryT *rptEntry2);
     static bool isEqual(SaHpiRptEntryT *rptEntry1, SaHpiRptEntryT *rptEntry2, Report &report);
     static bool isEqual(SaHpiResourceInfoT *info1, SaHpiResourceInfoT *info2, Report &report);

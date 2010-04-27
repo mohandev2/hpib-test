@@ -23,23 +23,7 @@
 #define __FAILEDREMOVE_H__
 
 #include "SafTest.h"
-#include "HpiSessionTestCase.h"
-#include "EventHandler.h"
-#include "ResourcesList.h"
-#include "IdList.h"
-
-/*****************************************************************************
- * Constants
- *****************************************************************************/
-// Times in sec 
-// how long the test case waits for events after calling saHpiFailedRemove
-#ifndef MAX_EVENTWAITTIME
-#define MAX_EVENTWAITTIME 10
-#endif
-// how long the test case waits until the removal of the resources is checked
-#ifndef MAX_RPTWAITTIME
-#define MAX_RPTWAITTIME 1
-#endif
+#include "HpiResourceTestCase.h"
 
 /*****************************************************************************
  * No FRU Capability Test Case
@@ -47,24 +31,12 @@
 
 namespace ns_saHpiResourceFailedRemove
 {
-    class FailedRemove : public HpiSessionTestCase, public EventHandler
+    class FailedRemove : public HpiResourceTestCase
     {
-    private:
-        ResourcesList *origRPT;
-        IdList *failedList;
-        IdList *rootList;
-        IdList *foundFailedResources;
-        
-        void findAllRootEntities();
-        HpiTestStatus testFailedResources(SaHpiSessionIdT sessionId);	
-        HpiTestStatus pollEvents(SaHpiSessionIdT sessionId, long timeout);
-        HpiTestStatus handleEvent(SaHpiSessionIdT sessionId, SaHpiEventT *event);
-        bool isEventProcessingDone();
-        	
     public:
         FailedRemove(char *line);
 
-        HpiTestStatus runSessionTest(SaHpiSessionIdT sessionId);
+        HpiTestStatus runResourceTest(SaHpiSessionIdT sessionId, SaHpiRptEntryT *rptEntry);
 
         const char *getName();
 

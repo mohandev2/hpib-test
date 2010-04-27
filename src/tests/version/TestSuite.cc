@@ -16,16 +16,10 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * Changes:
- * 2009/10/19 - larswetzel@users.sourceforge.net
- *              Add saHpiFinalize and saHpiInitialize test suites
  */
 
 #include "TestSuite.h"
 #include "saHpiVersionGet/TestSuite.h"
-#include "saHpiFinalize/TestSuite.h"
-#include "saHpiInitialize/TestSuite.h"
 
 using namespace ns_version;
 
@@ -35,8 +29,6 @@ using namespace ns_version;
 
 TestSuite::TestSuite() { 
     add(new ns_saHpiVersionGet::TestSuite());
-    add(new ns_saHpiInitialize::TestSuite());
-    add(new ns_saHpiFinalize::TestSuite());
 }
 
 /*****************************************************************************

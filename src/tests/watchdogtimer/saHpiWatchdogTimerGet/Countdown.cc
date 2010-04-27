@@ -17,10 +17,6 @@
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
  *     Lars Wetzel <Lars.Wetzel@emerson.com>
- * 
- * Changes:
- *  09/11/01 <larswetzel@users.sourceforge.net>
- *           Eliminate compile warning
  */
 
 #include "Countdown.h"
@@ -96,7 +92,7 @@ HpiTestStatus Countdown::runSessionTest(SaHpiSessionIdT sessionId) {
 *****************************************************************************/
 
 void Countdown::addWatchdog(SaHpiSessionIdT sessionId,
-                            SaHpiResourceIdT resourceId,
+			    SaHpiResourceIdT resourceId,
                             SaHpiWatchdogNumT watchdogNum,
                             SaHpiWatchdogT &watchdog) {
 
@@ -106,9 +102,6 @@ void Countdown::addWatchdog(SaHpiSessionIdT sessionId,
         watchdogData[watchdogCount].origWatchdog = watchdog;
         watchdogCount++;
     }
-    
-    // To overcome a warning of unused sessionId
-    saHpiDiscover(sessionId);         
 }
 
 /*****************************************************************************

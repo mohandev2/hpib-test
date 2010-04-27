@@ -20,8 +20,6 @@
  * Changes
  * 2009/05/19 - Lars.Wetzel@emerson.com
  *              enhance isEqual for FUMI and DIMI RDR
- * 2009/11/04 - larswetzel@users.sourceforge.net
- *              Use the RDR_TYPE_MAX definition
  */
 
 #include "RdrHelper.h"
@@ -82,7 +80,7 @@ SaHpiInstrumentIdT RdrHelper::getId(SaHpiRdrT *rdr) {
 bool RdrHelper::isValid(SaHpiRdrT *rdr, Report &report) {
     bool valid = true;
 
-    if (rdr->RdrType <= SAHPI_NO_RECORD || rdr->RdrType > SAHPI_RDR_TYPE_MAX_VALID) {
+    if (rdr->RdrType <= SAHPI_NO_RECORD || rdr->RdrType > SAHPI_FUMI_RDR) {
         valid = false;
         report.add("Rdr->RdrType is invalid [%s].", HpiString::rdrType(rdr->RdrType));
     }

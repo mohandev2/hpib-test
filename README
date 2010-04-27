@@ -16,7 +16,7 @@
 #
 # Authors:
 #       Donald Barre  <dbarre@unh.edu>
- 
+
 1.0 Introduction & History
 
 This HPI test suite was initially developed with funds provided by the
@@ -40,7 +40,6 @@ the originaly set guidelines of providing an independent HPI test suite for
 implementations.
 
 *********************************************************************************
-
 2.0 Building
 
 The test suite is built using GNU's Autotools.  To build the test suite,
