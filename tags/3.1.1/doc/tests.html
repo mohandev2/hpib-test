@@ -1,0 +1,20 @@
+<html>
+<body>
+<h1>HPI Tests</h1>
+
+<p>
+The HPI Test Suites and Test Cases are organized in a hierarchical tree-like fashion
+and that is reflected in the directory structure.  Also, to avoid naming conflicts,
+C++ namespaces are used.  The below diagram gives a small example on how the test suites
+and test cases are organized.  The <code>RootTestSuite</code> is the top-level test suite
+that contains all of the test suites and test cases.  Note that there are many C++ test
+suites with the same name (<code>TestSuite</code>), but they use different namespaces.
+Likewise, test cases are in the same namespace as the test suite that contains them.
+It should be noted that the namespace corresponds to the directory that the C++ source
+file is in.
+</p>
+
+<img src="images/tests.jpg" width="578" height="563" />
+
+</body>
+</html>

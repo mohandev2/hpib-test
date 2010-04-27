@@ -1,0 +1,237 @@
+<html>
+<head>
+<style type="text/css">
+<!--
+	dt { font-weight:bold }
+-->
+</style>
+</head>
+<body>
+<h1>HPI Helpers</h1>
+<p>
+The HPI Helpers are a set of classes that can be used by the HPI test cases.
+To put it simply, they provide for code re-use.
+</p>
+
+<dl>
+
+<dt>
+AlarmHelper
+</dt>
+<dd>
+Contains a set of static methods for working with the <code>SaHpiAlarmT</code> structure as well
+as modifying and querying the DAT.
+</dd>
+
+<dt>
+AlarmSet
+</dt>
+<dd>
+Represents a set of alarms.  
+</dd>
+
+<dt>
+AnnouncementSet
+</dt>
+<dd>
+Represents a set of Annunciator announcements.
+</dd>
+
+<dt>
+AnnunciatorHelper
+</dt>
+<dd>
+Contains a set of static methods for working with the <code>SaHpiAnnunciatorRecT</code>
+and <code>SaHpiAnnouncementT</code> structures.
+</dd>
+
+<dt>
+CharBuffer
+</dt>
+<dd>
+This class makes simplifies the handling of characters.  In HPI, characters are
+represented by bytes.  The <code>CharBuffer</code> class converts those bytes to characters
+depending upon the data type: Unicode, Text, etc.  To put it simply, working with
+the actual characters is simpler than working with a byte stream.  It is also
+possible to convert a <code>CharBuffer</code> to a <code>SaHpiTextBufferT</code> for use with
+the HPI functions.
+</dd>
+
+<dt>
+ConditionHelper
+</dt>
+<dd>
+Contains a set of static methods for working with the <code>SaHpiConditionT</code> structure.
+</dd>
+
+<dt>
+ControlHelper
+</dt>
+<dd>
+Contains a set of static methods for working with the <code>SaHpiCtrlRecT</code> structure.
+</dd>
+
+<dt>
+EventHandler
+</dt>
+<dd>
+The <code>EventHandler</code> class acts as an interface.  Derived classes that extend
+<code>EventHandler</code> are able to register for callbacks for various types of event handling.
+</dd>
+
+<dt>
+EventHelper
+</dt>
+<dd>
+Contains a set of static methods for working with HPI events.  Some of the methods allow
+for manipulation of the <code>SaHpiEventT</code> structure.  Others allow for the waiting of
+events, generating of events, and clearing of the event queue.
+</dd>
+
+<dt>
+EventLogHelper
+</dt>
+<dd>
+Contains a set of static methods for working the an Event Log.  Methods are availble for
+determining if the Event Log is empty, adding entries to the log, filling the log entirely, 
+overflowing the log, making room for adding new entries, and for finding entries in the log.
+</dd>
+
+<dt>
+EventMatcher
+</dt>
+<dd>
+The <code>EventMatcher</code> is used to match against events, typically those that
+are being retrieved from the event queue.  The <code>EventMatcher</code> supports
+the following attributes: Source, EventType, Severity, HotSwapState, SensorNum, 
+SensorAssertion, and SensorEventState.  If and only if an attribute is set, then an incoming
+event must match the values for those attributes that are set.
+</dd>
+
+<dt>
+HotSwapHelper
+</dt>
+<dd>
+Contains a set of static methods for determining if the AutoInsertTimeout or AutoExtractTimeout
+values can be changed.
+</dd>
+
+<dt>
+HpiHelper
+</dt>
+<dd>
+Contains a set of generic static methods pertaining to HPI.
+</dd>
+
+<dt>
+InventoryHelper
+</dt>
+<dd>
+Contains a set of static methods for working with IDRs, Areas, and Fields.
+</dd>
+
+<dt>
+MinorAlarmGenerator
+</dt>
+<dd>
+The <code>MinorAlarmGenerator</code>, as its name implies, is used to generate a
+minor alarm.  It does this by finding a sensor threshold for which an UpMinor event
+can be generated.  A method is also provided for clearing the alarm at a later time.
+</dd>
+
+<dt>
+NameHelper
+</dt>
+<dd>
+Contains a set of static methods for working with the <code>SaHpiNameT</code> structure.
+</dd>
+
+<dt>
+RdrHelper
+</dt>
+<dd>
+Contains a set of static methods for working with the <code>SaHpiRdrT</code> structure.
+</dd>
+
+<dt>
+ResourceHelper
+</dt>
+<dd>
+Contains a set of static methods for working with RPT entries, entity paths, and resource info.
+</dd>
+
+<dt>
+SensorHelper
+</dt>
+<dd>
+Contains a set of static methods for working with sensors.  This includes sensor records,
+readings, thresholds, etc.
+</dd>
+
+<dt>
+TextBufferHelper
+</dt>
+<dd>
+Contains a set of static methods for working with Text Buffers.
+</dd>
+
+<dt>
+UpMinorEventGenerator
+</dt>
+<dd>
+<p>
+The <code>UpMinorEventGenerator</code> is, as its name implies, used to generate
+an UpMinor event.  The sensor's UpMinor threshold value is changed to be equal
+to its LowMinor value.  Since the sensor's current reading will be between the
+LowMinor and UpMinor values, the reading is now above the UpMinor.  This should
+normally cause the UpMinor event to be generated.
+The following is the typical sequence of steps for 
+using this class.
+</p>
+<ol>
+
+<li>
+Create an instance of <code>UpMinorEventGenerator</code> for a specific sensor.
+</li>
+
+<li>
+Use the method <code>canAssertEvent()</code> to determine if an event can be generated
+for this sensor.  This might result in the sensor's settings being modified, i.e. a
+disabled sensor may become enabled.
+</li>
+
+<li>
+Optionally, invoke one of the methods to disable the sensor, event generation, or remove
+an event mask.  These methods are only used by test cases that verify that the
+event does not get generated. 
+</li>
+
+<li>
+Invoke <code>assertEvent()</code> to cause the event (or non-event) to occur.
+</li>
+
+<li>
+Invoke <code>deassertEvent()</code> to clear the event.
+</li>
+
+<li>
+Invoke <code>restoreSensor()</code> to restore the sensor to its original values, i.e.
+if the sensor was originally disabled, it will be disabled again.
+</li>
+
+</ol>
+</dd>
+
+<dt>
+WatchdogHelper
+</dt>
+<dd>
+Contains a set of static methods for working with watchdog data structures.
+</dd>
+
+</dl>
+
+</body>
+</html>
+
+
