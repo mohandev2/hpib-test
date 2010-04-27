@@ -36,10 +36,6 @@ class AddEventLogTestCase : public EventLogTestCase
 private:
     SaHpiUint32T available;
 
- protected:
-    HpiTestStatus prepareTestData(SaHpiSessionIdT sessionId,
-				  SaHpiResourceIdT resourceId,
-				  SaHpiTextBufferT *buffer);
 public:
     AddEventLogTestCase(char *line);
     AddEventLogTestCase(SaHpiUint32T available, char *line);

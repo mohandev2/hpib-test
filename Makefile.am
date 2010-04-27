@@ -77,8 +77,6 @@ hpitest_SOURCES = \
 	./src/hpi/HpiGenTestCase.cc \
 	./src/hpi/HpiInvalidSessionTestCase.cc \
 	./src/hpi/HpiNoCapabilityTestCase.cc \
-	./src/hpi/HpiInvalidCommandTestCase.cc \
-	./src/hpi/HpiInvalidCommandTestCase.h \
 	./src/hpi/HpiTestSuite.h \
 	./src/hpi/SafTest.h \
 	./src/hpi/HpiInvalidResourceTestCase.cc \
@@ -88,8 +86,6 @@ hpitest_SOURCES = \
 	./src/hpi/HpiInvalidResourceTestCase.h \
 	./src/hpi/HpiNoCapabilityTestCase.h \
 	./src/hpi/IdList.cc \
-	./src/hpi/HpiLibraryTestCase.h \
-	./src/hpi/HpiLibraryTestCase.cc \
 	./src/tests/RootTestSuite.h \
 	./src/tests/RootTestSuite.cc \
 	./src/tests/session/TestSuite.cc \
@@ -128,26 +124,6 @@ hpitest_SOURCES = \
 	./src/tests/version/saHpiVersionGet/TestSuite.cc \
 	./src/tests/version/saHpiVersionGet/GetVersion.cc \
 	./src/tests/version/saHpiVersionGet/TestSuite.h \
-	./src/tests/version/saHpiInitialize/Initialize.cc \
-	./src/tests/version/saHpiInitialize/Initialize.h \
-	./src/tests/version/saHpiInitialize/BackwardCompatibility.cc \
-	./src/tests/version/saHpiInitialize/BackwardCompatibility.h \
-	./src/tests/version/saHpiInitialize/InvalidRequest.cc \
-	./src/tests/version/saHpiInitialize/InvalidRequest.h \
-	./src/tests/version/saHpiInitialize/InvalidVersion.cc \
-	./src/tests/version/saHpiInitialize/InvalidVersion.h \
-	./src/tests/version/saHpiInitialize/InvalidParams.cc \
-	./src/tests/version/saHpiInitialize/InvalidParams.h \
-	./src/tests/version/saHpiInitialize/InvalidData.cc \
-	./src/tests/version/saHpiInitialize/InvalidData.h \
-	./src/tests/version/saHpiInitialize/TestSuite.h \
-	./src/tests/version/saHpiInitialize/TestSuite.cc \
-	./src/tests/version/saHpiFinalize/Finalize.h \
-	./src/tests/version/saHpiFinalize/Finalize.cc \
-	./src/tests/version/saHpiFinalize/InvalidRequest.cc \
-	./src/tests/version/saHpiFinalize/InvalidRequest.h \
-	./src/tests/version/saHpiFinalize/TestSuite.h \
-	./src/tests/version/saHpiFinalize/TestSuite.cc \
 	./src/tests/domain/TestSuite.cc \
 	./src/tests/domain/TestSuite.h \
 	./src/tests/domain/saHpiDomainInfoGet/TestSuite.cc \
@@ -220,14 +196,6 @@ hpitest_SOURCES = \
 	./src/tests/resource/saHpiResourceIdGet/GetResourceId.cc \
 	./src/tests/resource/saHpiResourceIdGet/InvalidSession.cc \
 	./src/tests/resource/saHpiResourceIdGet/GetResourceId.h \
-	./src/tests/resource/saHpiMyEntityPathGet/TestSuite.h \
-	./src/tests/resource/saHpiMyEntityPathGet/TestSuite.cc \
-	./src/tests/resource/saHpiMyEntityPathGet/InvalidSession.h \
-	./src/tests/resource/saHpiMyEntityPathGet/InvalidSession.cc \
-	./src/tests/resource/saHpiMyEntityPathGet/NullEntityPath.h \
-	./src/tests/resource/saHpiMyEntityPathGet/NullEntityPath.cc \
-	./src/tests/resource/saHpiMyEntityPathGet/GetEntityPath.h \
-	./src/tests/resource/saHpiMyEntityPathGet/GetEntityPath.cc \
 	./src/tests/resource/saHpiRptEntryGet/NullRptEntry.cc \
 	./src/tests/resource/saHpiRptEntryGet/InvalidSession.h \
 	./src/tests/resource/saHpiRptEntryGet/GetAll.h \
@@ -270,54 +238,6 @@ hpitest_SOURCES = \
 	./src/tests/resource/saHpiRptEntryGetByResourceId/HotSwapNotPresent.cc \
 	./src/tests/resource/saHpiRptEntryGetByResourceId/HotSwapNotPresent.h \
 	./src/tests/resource/saHpiRptEntryGetByResourceId/GetResource.cc \
-	./src/tests/resource/saHpiGetChildEntityPath/FirstEntryInstanceId.cc \
-	./src/tests/resource/saHpiGetChildEntityPath/FirstEntryInstanceId.h \
-	./src/tests/resource/saHpiGetChildEntityPath/GetChildEntityPath.cc \
-	./src/tests/resource/saHpiGetChildEntityPath/GetChildEntityPath.h \
-	./src/tests/resource/saHpiGetChildEntityPath/InvalidParentEntityPath.cc \
-	./src/tests/resource/saHpiGetChildEntityPath/InvalidParentEntityPath.h \
-	./src/tests/resource/saHpiGetChildEntityPath/OutOfRangeInstanceId.cc \
-	./src/tests/resource/saHpiGetChildEntityPath/OutOfRangeInstanceId.h \
-	./src/tests/resource/saHpiGetChildEntityPath/InvalidSession.cc \
-	./src/tests/resource/saHpiGetChildEntityPath/InvalidSession.h \
-	./src/tests/resource/saHpiGetChildEntityPath/NullInstanceId.cc \
-	./src/tests/resource/saHpiGetChildEntityPath/NullInstanceId.h \
-	./src/tests/resource/saHpiGetChildEntityPath/NullRptUpdateCount.cc \
-	./src/tests/resource/saHpiGetChildEntityPath/NullRptUpdateCount.h \
-	./src/tests/resource/saHpiGetChildEntityPath/ReservedValueIns.cc \
-	./src/tests/resource/saHpiGetChildEntityPath/ReservedValueIns.h \
-	./src/tests/resource/saHpiGetChildEntityPath/TestSuite.cc \
-	./src/tests/resource/saHpiGetChildEntityPath/TestSuite.h \
-	./src/tests/resource/saHpiGetIdByEntityPath/InvalidSession.cc \
-	./src/tests/resource/saHpiGetIdByEntityPath/InvalidSession.h \
-	./src/tests/resource/saHpiGetIdByEntityPath/NullInstrumentId.cc \
-	./src/tests/resource/saHpiGetIdByEntityPath/NullInstrumentId.h \
-	./src/tests/resource/saHpiGetIdByEntityPath/NullInstanceId.cc \
-	./src/tests/resource/saHpiGetIdByEntityPath/NullInstanceId.h \
-	./src/tests/resource/saHpiGetIdByEntityPath/ReservedValueIns.cc \
-	./src/tests/resource/saHpiGetIdByEntityPath/ReservedValueIns.h \
-	./src/tests/resource/saHpiGetIdByEntityPath/NullResourceId.cc \
-	./src/tests/resource/saHpiGetIdByEntityPath/NullResourceId.h \
-	./src/tests/resource/saHpiGetIdByEntityPath/NullRptUpdateCount.cc \
-	./src/tests/resource/saHpiGetIdByEntityPath/NullRptUpdateCount.h \
-	./src/tests/resource/saHpiGetIdByEntityPath/InvalidInstrumentId.cc \
-	./src/tests/resource/saHpiGetIdByEntityPath/InvalidInstrumentId.h \
-	./src/tests/resource/saHpiGetIdByEntityPath/ResInstNotPresent.cc \
-	./src/tests/resource/saHpiGetIdByEntityPath/ResInstNotPresent.h \
-	./src/tests/resource/saHpiGetIdByEntityPath/GetResInst.cc \
-	./src/tests/resource/saHpiGetIdByEntityPath/GetResInst.h \
-	./src/tests/resource/saHpiGetIdByEntityPath/TestSuite.cc \
-	./src/tests/resource/saHpiGetIdByEntityPath/TestSuite.h \
-	./src/tests/resource/saHpiResourceFailedRemove/InvalidSession.cc \
-	./src/tests/resource/saHpiResourceFailedRemove/InvalidSession.h \
-	./src/tests/resource/saHpiResourceFailedRemove/ResourceIdNotPresent.cc \
-	./src/tests/resource/saHpiResourceFailedRemove/ResourceIdNotPresent.h \
-	./src/tests/resource/saHpiResourceFailedRemove/FailedRemove.cc \
-	./src/tests/resource/saHpiResourceFailedRemove/FailedRemove.h \
-	./src/tests/resource/saHpiResourceFailedRemove/InvalidRequest.cc \
-	./src/tests/resource/saHpiResourceFailedRemove/InvalidRequest.h \
-	./src/tests/resource/saHpiResourceFailedRemove/TestSuite.cc \
-	./src/tests/resource/saHpiResourceFailedRemove/TestSuite.h \
 	./src/tests/eventlog/TestSuite.h \
 	./src/tests/eventlog/TestSuite.cc \
 	./src/tests/eventlog/EventLogTestCase.h \
@@ -344,8 +264,6 @@ hpitest_SOURCES = \
 	./src/tests/eventlog/saHpiEventLogClear/InvalidSession.h \
 	./src/tests/eventlog/saHpiEventLogClear/Clear.cc \
 	./src/tests/eventlog/saHpiEventLogClear/NoCapability.cc \
-	./src/tests/eventlog/saHpiEventLogClear/MissingCapability.cc \
-	./src/tests/eventlog/saHpiEventLogClear/MissingCapability.h \
 	./src/tests/eventlog/saHpiEventLogClear/TestSuite.h \
 	./src/tests/eventlog/saHpiEventLogClear/TestSuite.cc \
 	./src/tests/eventlog/saHpiEventLogClear/NoCapability.h \
@@ -403,8 +321,6 @@ hpitest_SOURCES = \
 	./src/tests/eventlog/saHpiEventLogEntryAdd/InvalidSeverity.cc \
 	./src/tests/eventlog/saHpiEventLogEntryAdd/InvalidSeverity.h \
 	./src/tests/eventlog/saHpiEventLogEntryAdd/InvalidDataType.cc \
-	./src/tests/eventlog/saHpiEventLogEntryAdd/MissingCapability.cc \
-	./src/tests/eventlog/saHpiEventLogEntryAdd/MissingCapability.h \
 	./src/tests/eventlog/saHpiEventLogEntryAdd/ValidDataType.h \
 	./src/tests/eventlog/saHpiEventLogEntryAdd/InvalidDataType.h \
 	./src/tests/eventlog/saHpiEventLogEntryAdd/InvalidLanguage.cc \
@@ -425,8 +341,6 @@ hpitest_SOURCES = \
 	./src/tests/eventlog/saHpiEventLogTimeSet/RelativeTime.cc \
 	./src/tests/eventlog/saHpiEventLogTimeSet/InvalidResource.h \
 	./src/tests/eventlog/saHpiEventLogTimeSet/NoCapability.cc \
-	./src/tests/eventlog/saHpiEventLogTimeSet/MissingCapability.cc \
-	./src/tests/eventlog/saHpiEventLogTimeSet/MissingCapability.h \
 	./src/tests/eventlog/saHpiEventLogTimeSet/InvalidTime.cc \
 	./src/tests/eventlog/saHpiEventLogTimeSet/InvalidSession.h \
 	./src/tests/eventlog/saHpiEventLogTimeSet/TestSuite.cc \
@@ -460,8 +374,6 @@ hpitest_SOURCES = \
 	./src/tests/eventlog/saHpiEventLogStateSet/TestSuite.h \
 	./src/tests/eventlog/saHpiEventLogStateSet/AddEntryDisabled.h \
 	./src/tests/eventlog/saHpiEventLogStateSet/NoCapability.cc \
-	./src/tests/eventlog/saHpiEventLogStateSet/MissingCapability.cc \
-	./src/tests/eventlog/saHpiEventLogStateSet/MissingCapability.h \
 	./src/tests/eventlog/saHpiEventLogStateSet/SetState.cc \
 	./src/tests/eventlog/saHpiEventLogStateSet/InvalidResource.cc \
 	./src/tests/eventlog/saHpiEventLogStateSet/GenEventDisabled.cc \
@@ -473,8 +385,6 @@ hpitest_SOURCES = \
 	./src/tests/eventlog/saHpiEventLogOverflowReset/InvalidSession.cc \
 	./src/tests/eventlog/saHpiEventLogOverflowReset/InvalidResource.h \
 	./src/tests/eventlog/saHpiEventLogOverflowReset/NoCapability.cc \
-	./src/tests/eventlog/saHpiEventLogOverflowReset/MissingCapability.cc \
-	./src/tests/eventlog/saHpiEventLogOverflowReset/MissingCapability.h \
 	./src/tests/eventlog/saHpiEventLogOverflowReset/OverflowReset.h \
 	./src/tests/eventlog/saHpiEventLogOverflowReset/InvalidSession.h \
 	./src/tests/eventlog/saHpiEventLogOverflowReset/OverflowReset.cc \
@@ -486,18 +396,6 @@ hpitest_SOURCES = \
 	./src/tests/eventlog/saHpiEventLogOverflowReset/InvalidResource.cc \
 	./src/tests/eventlog/saHpiEventLogOverflowReset/OverflowNotResetable.cc \
 	./src/tests/eventlog/saHpiEventLogOverflowReset/OverflowNotResetable.h \
-	./src/tests/eventlog/saHpiEventLogCapabilitiesGet/GetCapabilities.cc \
-	./src/tests/eventlog/saHpiEventLogCapabilitiesGet/GetCapabilities.h \
-	./src/tests/eventlog/saHpiEventLogCapabilitiesGet/InvalidResource.cc \
-	./src/tests/eventlog/saHpiEventLogCapabilitiesGet/InvalidResource.h \
-	./src/tests/eventlog/saHpiEventLogCapabilitiesGet/InvalidSession.cc \
-	./src/tests/eventlog/saHpiEventLogCapabilitiesGet/InvalidSession.h \
-	./src/tests/eventlog/saHpiEventLogCapabilitiesGet/NoCapability.cc \
-	./src/tests/eventlog/saHpiEventLogCapabilitiesGet/NoCapability.h \
-	./src/tests/eventlog/saHpiEventLogCapabilitiesGet/NullCapabilities.cc \
-	./src/tests/eventlog/saHpiEventLogCapabilitiesGet/NullCapabilities.h \
-	./src/tests/eventlog/saHpiEventLogCapabilitiesGet/TestSuite.cc \
-	./src/tests/eventlog/saHpiEventLogCapabilitiesGet/TestSuite.h \
 	./src/tests/events/TestSuite.h \
 	./src/tests/events/TestSuite.cc \
 	./src/tests/events/SubscribeTestCase.cc \
@@ -607,18 +505,6 @@ hpitest_SOURCES = \
 	./src/tests/rdr/saHpiRdrGet/LastEntry.h \
 	./src/tests/rdr/saHpiRdrGet/NullNextEntryId.cc \
 	./src/tests/rdr/saHpiRdrGet/NullRdr.h \
-	./src/tests/rdr/saHpiRdrUpdateCountGet/InvalidSession.cc \
-	./src/tests/rdr/saHpiRdrUpdateCountGet/InvalidSession.h \
-	./src/tests/rdr/saHpiRdrUpdateCountGet/InvalidResource.h \
-	./src/tests/rdr/saHpiRdrUpdateCountGet/InvalidResource.cc \
-	./src/tests/rdr/saHpiRdrUpdateCountGet/NoCapability.cc \
-	./src/tests/rdr/saHpiRdrUpdateCountGet/NoCapability.h \
-	./src/tests/rdr/saHpiRdrUpdateCountGet/NullCounter.cc \
-	./src/tests/rdr/saHpiRdrUpdateCountGet/NullCounter.h \
-	./src/tests/rdr/saHpiRdrUpdateCountGet/GetUpdateCount.cc \
-	./src/tests/rdr/saHpiRdrUpdateCountGet/GetUpdateCount.h \
-	./src/tests/rdr/saHpiRdrUpdateCountGet/TestSuite.h \
-	./src/tests/rdr/saHpiRdrUpdateCountGet/TestSuite.cc \
 	./src/tests/rdr/saHpiRdrGetByInstrumentId/NoInstrumentCapability.h \
 	./src/tests/rdr/saHpiRdrGetByInstrumentId/InvalidSession.h \
 	./src/tests/rdr/saHpiRdrGetByInstrumentId/InvalidSession.cc \
@@ -692,15 +578,9 @@ hpitest_SOURCES = \
 	./src/tests/alarm/saHpiAlarmAdd/OutOfSpace.cc \
 	./src/tests/alarm/saHpiAlarmAdd/InvalidSeverity.cc \
 	./src/tests/alarm/saHpiAlarmAdd/InvalidAlarmCond.cc \
-	./src/tests/alarm/saHpiAlarmAdd/InvalidDataType.cc \
-	./src/tests/alarm/saHpiAlarmAdd/InvalidDataType.h \
-	./src/tests/alarm/saHpiAlarmAdd/InvalidLanguage.cc \
-	./src/tests/alarm/saHpiAlarmAdd/InvalidLanguage.h \
 	./src/tests/alarm/saHpiAlarmAdd/InvalidSeverity.h \
 	./src/tests/alarm/saHpiAlarmAdd/IdAndTimestamp.cc \
 	./src/tests/alarm/saHpiAlarmAdd/InvalidAlarmCond.h \
-	./src/tests/alarm/saHpiAlarmAdd/InvalidTextCharacters.cc \
-	./src/tests/alarm/saHpiAlarmAdd/InvalidTextCharacters.h \
 	./src/tests/alarm/saHpiAlarmAdd/AddAlarm.cc \
 	./src/tests/alarm/saHpiAlarmAdd/AddAlarm.h \
 	./src/tests/alarm/saHpiAlarmAcknowledge/TestSuite.h \
@@ -868,8 +748,6 @@ hpitest_SOURCES = \
 	./src/tests/sensor/saHpiSensorThresholdsSet/OutOfOrder.cc \
 	./src/tests/sensor/saHpiSensorThresholdsSet/NonThresholdSensor.cc \
 	./src/tests/sensor/saHpiSensorThresholdsSet/NonWritableThreshold.cc \
-	./src/tests/sensor/saHpiSensorThresholdsSet/NullSensorThresholds.cc \
-	./src/tests/sensor/saHpiSensorThresholdsSet/NullSensorThresholds.h \
 	./src/tests/sensor/saHpiSensorEventEnableGet/InvalidResource.h \
 	./src/tests/sensor/saHpiSensorEventEnableGet/InvalidResource.cc \
 	./src/tests/sensor/saHpiSensorEventEnableGet/InvalidSession.cc \
@@ -1130,28 +1008,6 @@ hpitest_SOURCES = \
 	./src/tests/inventory/saHpiIdrAreaAdd/UnspecifiedAreaType.cc \
 	./src/tests/inventory/saHpiIdrAreaAdd/UnspecifiedAreaType.h \
 	./src/tests/inventory/saHpiIdrAreaAdd/InvalidAreaType.cc \
-	./src/tests/inventory/saHpiIdrAreaAddById/InvalidResource.cc \
-	./src/tests/inventory/saHpiIdrAreaAddById/InvalidAreaId.cc \
-	./src/tests/inventory/saHpiIdrAreaAddById/InvalidAreaId.h \
-	./src/tests/inventory/saHpiIdrAreaAddById/InvalidResource.h \
-	./src/tests/inventory/saHpiIdrAreaAddById/AddArea.h \
-	./src/tests/inventory/saHpiIdrAreaAddById/NoCapability.cc \
-	./src/tests/inventory/saHpiIdrAreaAddById/InvalidSession.h \
-	./src/tests/inventory/saHpiIdrAreaAddById/NoCapability.h \
-	./src/tests/inventory/saHpiIdrAreaAddById/ReadOnly.cc \
-	./src/tests/inventory/saHpiIdrAreaAddById/TestSuite.cc \
-	./src/tests/inventory/saHpiIdrAreaAddById/ReadOnly.h \
-	./src/tests/inventory/saHpiIdrAreaAddById/TestSuite.h \
-	./src/tests/inventory/saHpiIdrAreaAddById/AddArea.cc \
-	./src/tests/inventory/saHpiIdrAreaAddById/IdrNotPresent.h \
-	./src/tests/inventory/saHpiIdrAreaAddById/IdrNotPresent.cc \
-	./src/tests/inventory/saHpiIdrAreaAddById/InvalidSession.cc \
-	./src/tests/inventory/saHpiIdrAreaAddById/InvalidAreaType.h \
-	./src/tests/inventory/saHpiIdrAreaAddById/UnspecifiedAreaType.cc \
-	./src/tests/inventory/saHpiIdrAreaAddById/UnspecifiedAreaType.h \
-	./src/tests/inventory/saHpiIdrAreaAddById/InvalidAreaType.cc \
-	./src/tests/inventory/saHpiIdrAreaAddById/DuplicateArea.cc \
-	./src/tests/inventory/saHpiIdrAreaAddById/DuplicateArea.h \
 	./src/tests/inventory/saHpiIdrAreaDelete/InvalidResource.cc \
 	./src/tests/inventory/saHpiIdrAreaDelete/IdrNotPresent.h \
 	./src/tests/inventory/saHpiIdrAreaDelete/InvalidSession.h \
@@ -1223,6 +1079,7 @@ hpitest_SOURCES = \
 	./src/tests/inventory/saHpiIdrFieldAdd/NullField.h \
 	./src/tests/inventory/saHpiIdrFieldAdd/InvalidSession.cc \
 	./src/tests/inventory/saHpiIdrFieldAdd/IgnoreReadOnly.cc \
+	./src/tests/inventory/saHpiIdrFieldAdd/ReadOnlyIdr.cc \
 	./src/tests/inventory/saHpiIdrFieldAdd/ReadOnlyArea.h \
 	./src/tests/inventory/saHpiIdrFieldAdd/NoCapability.h \
 	./src/tests/inventory/saHpiIdrFieldAdd/TestSuite.h \
@@ -1232,38 +1089,11 @@ hpitest_SOURCES = \
 	./src/tests/inventory/saHpiIdrFieldAdd/InvalidDataType.h \
 	./src/tests/inventory/saHpiIdrFieldAdd/UnspecifiedFieldType.cc \
 	./src/tests/inventory/saHpiIdrFieldAdd/InvalidLanguage.h \
+	./src/tests/inventory/saHpiIdrFieldAdd/ReadOnlyIdr.h \
 	./src/tests/inventory/saHpiIdrFieldAdd/InvalidTextCharacters.cc \
 	./src/tests/inventory/saHpiIdrFieldAdd/AreaNotPresent.cc \
 	./src/tests/inventory/saHpiIdrFieldAdd/UnspecifiedFieldType.h \
 	./src/tests/inventory/saHpiIdrFieldAdd/InvalidTextCharacters.h \
-	./src/tests/inventory/saHpiIdrFieldAddById/AddField.cc \
-	./src/tests/inventory/saHpiIdrFieldAddById/AddField.h \
-	./src/tests/inventory/saHpiIdrFieldAddById/InvalidResource.cc \
-	./src/tests/inventory/saHpiIdrFieldAddById/InvalidFieldType.h \
-	./src/tests/inventory/saHpiIdrFieldAddById/InvalidResource.h \
-	./src/tests/inventory/saHpiIdrFieldAddById/IdrNotPresent.cc \
-	./src/tests/inventory/saHpiIdrFieldAddById/NoCapability.cc \
-	./src/tests/inventory/saHpiIdrFieldAddById/IgnoreReadOnly.h \
-	./src/tests/inventory/saHpiIdrFieldAddById/InvalidFieldType.cc \
-	./src/tests/inventory/saHpiIdrFieldAddById/NullField.cc \
-	./src/tests/inventory/saHpiIdrFieldAddById/IdrNotPresent.h \
-	./src/tests/inventory/saHpiIdrFieldAddById/InvalidSession.h \
-	./src/tests/inventory/saHpiIdrFieldAddById/ReadOnlyArea.cc \
-	./src/tests/inventory/saHpiIdrFieldAddById/TestSuite.cc \
-	./src/tests/inventory/saHpiIdrFieldAddById/NullField.h \
-	./src/tests/inventory/saHpiIdrFieldAddById/InvalidSession.cc \
-	./src/tests/inventory/saHpiIdrFieldAddById/IgnoreReadOnly.cc \
-	./src/tests/inventory/saHpiIdrFieldAddById/ReadOnlyArea.h \
-	./src/tests/inventory/saHpiIdrFieldAddById/NoCapability.h \
-	./src/tests/inventory/saHpiIdrFieldAddById/TestSuite.h \
-	./src/tests/inventory/saHpiIdrFieldAddById/InvalidDataType.cc \
-	./src/tests/inventory/saHpiIdrFieldAddById/UnspecifiedFieldType.cc \
-	./src/tests/inventory/saHpiIdrFieldAddById/InvalidLanguage.h \
-	./src/tests/inventory/saHpiIdrFieldAddById/InvalidLanguage.cc \
-	./src/tests/inventory/saHpiIdrFieldAddById/InvalidDataType.h \
-	./src/tests/inventory/saHpiIdrFieldAddById/UnspecifiedFieldType.h \
-	./src/tests/inventory/saHpiIdrFieldAddById/DuplicateField.h \
-	./src/tests/inventory/saHpiIdrFieldAddById/DuplicateField.cc \
 	./src/tests/inventory/saHpiIdrFieldSet/InvalidFieldType.cc \
 	./src/tests/inventory/saHpiIdrFieldSet/FieldNotPresent.cc \
 	./src/tests/inventory/saHpiIdrFieldSet/AreaNotPresent.cc \
@@ -1280,6 +1110,7 @@ hpitest_SOURCES = \
 	./src/tests/inventory/saHpiIdrFieldSet/InvalidResource.h \
 	./src/tests/inventory/saHpiIdrFieldSet/InvalidFieldType.h \
 	./src/tests/inventory/saHpiIdrFieldSet/InvalidLanguage.cc \
+	./src/tests/inventory/saHpiIdrFieldSet/ReadOnlyArea.cc \
 	./src/tests/inventory/saHpiIdrFieldSet/InvalidLanguage.h \
 	./src/tests/inventory/saHpiIdrFieldSet/NullField.cc \
 	./src/tests/inventory/saHpiIdrFieldSet/ReadOnlyField.cc \
@@ -1290,6 +1121,9 @@ hpitest_SOURCES = \
 	./src/tests/inventory/saHpiIdrFieldSet/SetField.cc \
 	./src/tests/inventory/saHpiIdrFieldSet/InvalidTextCharacters.h \
 	./src/tests/inventory/saHpiIdrFieldSet/TestSuite.h \
+	./src/tests/inventory/saHpiIdrFieldSet/ReadOnlyIdr.cc \
+	./src/tests/inventory/saHpiIdrFieldSet/ReadOnlyArea.h \
+	./src/tests/inventory/saHpiIdrFieldSet/ReadOnlyIdr.h \
 	./src/tests/inventory/saHpiIdrFieldSet/IgnoreReadOnly.cc \
 	./src/tests/inventory/saHpiIdrFieldSet/UnspecifiedFieldType.h \
 	./src/tests/inventory/saHpiIdrFieldSet/ReadOnlyField.h \
@@ -1314,7 +1148,9 @@ hpitest_SOURCES = \
 	./src/tests/inventory/saHpiIdrFieldDelete/ReadOnlyArea.cc \
 	./src/tests/inventory/saHpiIdrFieldDelete/ReadOnlyField.cc \
 	./src/tests/inventory/saHpiIdrFieldDelete/ReadOnlyArea.h \
+	./src/tests/inventory/saHpiIdrFieldDelete/ReadOnlyIdr.cc \
 	./src/tests/inventory/saHpiIdrFieldDelete/ReadOnlyField.h \
+	./src/tests/inventory/saHpiIdrFieldDelete/ReadOnlyIdr.h \
 	./src/tests/inventory/saHpiIdrFieldDelete/ReservedAreaId.cc \
 	./src/tests/inventory/saHpiIdrFieldDelete/ReservedFieldId.cc \
 	./src/tests/inventory/saHpiIdrFieldDelete/TestSuite.h \
@@ -1427,10 +1263,6 @@ hpitest_SOURCES = \
 	./src/tests/annunciator/saHpiAnnunciatorGet/InvalidSession.cc \
 	./src/tests/annunciator/saHpiAnnunciatorGet/InvalidSession.h \
 	./src/tests/annunciator/saHpiAnnunciatorGet/NoCapability.cc \
-	./src/tests/annunciator/saHpiAnnunciatorGet/FirstEntry.cc \
-	./src/tests/annunciator/saHpiAnnunciatorGet/FirstEntry.h \
-	./src/tests/annunciator/saHpiAnnunciatorGet/LastEntry.cc \
-	./src/tests/annunciator/saHpiAnnunciatorGet/LastEntry.h \
 	./src/tests/annunciator/saHpiAnnunciatorGet/AnnunciatorNotPresent.cc \
 	./src/tests/annunciator/saHpiAnnunciatorGet/NullAnnouncement.cc \
 	./src/tests/annunciator/saHpiAnnunciatorGet/NoCapability.h \
@@ -1488,10 +1320,6 @@ hpitest_SOURCES = \
 	./src/tests/annunciator/saHpiAnnunciatorAdd/InvalidSeverity.cc \
 	./src/tests/annunciator/saHpiAnnunciatorAdd/AddAnnouncement.cc \
 	./src/tests/annunciator/saHpiAnnunciatorAdd/AddAnnouncement.h \
-	./src/tests/annunciator/saHpiAnnunciatorAdd/InvalidNameLength.cc \
-	./src/tests/annunciator/saHpiAnnunciatorAdd/InvalidNameLength.h \
-	./src/tests/annunciator/saHpiAnnunciatorAdd/InvalidTextCharacters.cc \
-	./src/tests/annunciator/saHpiAnnunciatorAdd/InvalidTextCharacters.h \
 	./src/tests/annunciator/saHpiAnnunciatorModeGet/AnnunciatorNotPresent.cc \
 	./src/tests/annunciator/saHpiAnnunciatorModeGet/TestSuite.h \
 	./src/tests/annunciator/saHpiAnnunciatorModeGet/NullMode.cc \
@@ -1839,14 +1667,6 @@ hpitest_SOURCES = \
 	./src/helper/MinorAlarmGenerator.cc \
 	./src/helper/CharBuffer.cc \
 	./src/helper/CharBuffer.h \
-	./src/helper/DimiHelper.h \
-	./src/helper/DimiHelper.cc \
-	./src/helper/FumiHelper.h \
-	./src/helper/FumiHelper.cc \
-	./src/helper/ResourcesList.h \
-	./src/helper/ResourcesList.cc \
-	./src/helper/ResourcesListEntry.h \
-	./src/helper/ResourcesListEntry.cc \
 	./src/helper/MinorAlarmGenerator.h \
 	./src/framework/BaseTestSuite.h \
 	./src/framework/StatusMessage.cc \

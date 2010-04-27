@@ -71,11 +71,9 @@ HpiTestStatus InvalidAlarmCond::runSessionTest(SaHpiSessionIdT sessionId) {
         AlarmHelper::fill(&newAlarm);
         newAlarm.AlarmCond.Type = condType[i];
         SaErrorT error = saHpiAlarmAdd(sessionId, &newAlarm);
-        if (error == SA_ERR_HPI_INVALID_PARAMS) 
-        {
+        if (error == SA_ERR_HPI_INVALID_PARAMS) {
             status.assertPass();
-        } else 
-        {
+        } else {
             status.assertFailure(TRACE, ALARM_ADD,
                                  SA_ERR_HPI_INVALID_PARAMS, error,
                                  "Alarm->AlarmCond.Type: %s",

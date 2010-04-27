@@ -33,14 +33,12 @@ using namespace ns_saHpiControlTypeGet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
- add(new GetType("B.02|P111-17:P111-17"));
-    add(new NoCapability("B.02|P111-18:P111-19"));
-    add(new ControlNotPresent("B.02|P111-20:P111-20"));
-    add(new NullType("B.02|P111-21:P111-21"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new GetType("P93-17:P93-17"));
+    add(new NoCapability("P93-18:P93-19"));
+    add(new ControlNotPresent("P93-20:P93-20"));
+    add(new NullType("P93-21:P93-21"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

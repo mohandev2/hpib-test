@@ -31,12 +31,10 @@ using namespace ns_saHpiAutoInsertTimeoutSet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
-    add(new SetTimeout("B.02|P197-16:P197-16"));
-    add(new ReadOnly("B.02|P197-17:P197-18"));
-    add(new NegativeTimeout("B.02|P197-19:P197-20"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new SetTimeout("P142-16:P142-16"));
+    add(new ReadOnly("P142-17:P142-18"));
+    add(new NegativeTimeout("P142-19:P142-20"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

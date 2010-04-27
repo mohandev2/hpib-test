@@ -34,15 +34,13 @@ using namespace ns_saHpiSensorTypeGet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
-    add(new GetType("B.02|P102-18:P102-18"));
-    add(new NoCapability("B.02|P102-19:P102-20"));
-    add(new SensorNotPresent("B.02|P102-21:P102-21"));
-    add(new NullType("B.02|P102-23:P102-23"));
-    add(new NullCategory("B.02|P102-24:P102-24"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new GetType("P84-18:P84-18"));
+    add(new NoCapability("P84-19:P84-20"));
+    add(new SensorNotPresent("P84-21:P84-21"));
+    add(new NullType("P84-23:P84-23"));
+    add(new NullCategory("P84-24:P84-24"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

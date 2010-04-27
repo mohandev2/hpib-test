@@ -39,20 +39,18 @@ using namespace ns_saHpiAnnunciatorDelete;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
-    add(new DeleteAnnouncement("B.02|P153-20:P153-20"));
-    add(new SeverityDelete("B.02|P153-2:P153-4"));
-    add(new NoCapability("B.02|P153-21:P153-22"));
-    add(new InvalidSeverity("B.02|P153-25:P153-26"));
-    add(new AnnunciatorNotPresent("B.02|P153-28:P153-28"));
-    add(new AnnouncementNotPresent("B.02|P153-29:P153-30"));
-    add(new ReadOnly("B.02|P153-31:P153-31"));
-    add(new IgnoreSeverity("B.02|P153-34:P153-35"));
-    add(new DeleteAll("B.02|P153-36:P153-38"));
-    add(new NoSeverity("B.02|P154-1:P154-2"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new DeleteAnnouncement("P128-20:P128-20"));
+    add(new SeverityDelete("P128-2:P128-4"));
+    add(new NoCapability("P128-21:P128-22"));
+    add(new InvalidSeverity("P128-25:P128-26"));
+    add(new AnnunciatorNotPresent("P128-28:P128-28"));
+    add(new AnnouncementNotPresent("P128-29:P128-30"));
+    add(new ReadOnly("P128-31:P128-31"));
+    add(new IgnoreSeverity("P128-34:P128-35"));
+    add(new DeleteAll("P128-36:P128-38"));
+    add(new NoSeverity("P129-1:P129-2"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

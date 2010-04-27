@@ -38,19 +38,17 @@ using namespace ns_saHpiAlarmDelete;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
-    add(new DeleteUserAlarm("B.02|P90-17:P90-17;P90-26:P90-27"));
-    add(new InvalidSeverity("B.02|P90-18:P90-19"));
-    add(new InvalidAlarmId("B.02|P90-20:P90-21"));
-    add(new NonUserAlarm("B.02|P90-22:P90-22"));
-    add(new OnlyUserAlarms1("B.02|P90-24:P90-25"));
-    add(new OnlyUserAlarms2("B.02|P90-24:P90-25"));
-    add(new IgnoreSeverity("B.02|P90-27:P90-28"));
-    add(new DeleteBySeverity("B.02|P90-29:P90-30"));
-    add(new DeleteAllUserAlarms("B.02|P90-30:P90-31"));
-    add(new NoSeverity("B.02|P90-32:P90-33"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new DeleteUserAlarm("P73-17:P73-17;P73-26:P73-27"));
+    add(new InvalidSeverity("P73-18:P73-19"));
+    add(new InvalidAlarmId("P73-20:P73-21"));
+    add(new NonUserAlarm("P73-22:P73-22"));
+    add(new OnlyUserAlarms1("P73-24:P73-25"));
+    add(new OnlyUserAlarms2("P73-24:P73-25"));
+    add(new IgnoreSeverity("P73-27:P73-28"));
+    add(new DeleteBySeverity("P73-29:P73-30"));
+    add(new DeleteAllUserAlarms("P73-30:P73-31"));
+    add(new NoSeverity("P73-32:P73-33"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

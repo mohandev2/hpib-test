@@ -15,22 +15,18 @@
  * Place - Suite 330, Boston, MA 02111-1307 USA.
  *
  * Author(s):
- *     Akmal Muqeeth <aax6@unh.edu>
+ *     Donald A. Barre <dbarre@unh.edu>
  */
 
 #include "TestSuite.h"
 #include "saHpiIdrInfoGet/TestSuite.h"
 #include "saHpiIdrAreaHeaderGet/TestSuite.h"
 #include "saHpiIdrAreaAdd/TestSuite.h"
-#include "saHpiIdrAreaAddById/TestSuite.h"
 #include "saHpiIdrAreaDelete/TestSuite.h"
 #include "saHpiIdrFieldGet/TestSuite.h"
 #include "saHpiIdrFieldAdd/TestSuite.h"
-#include "saHpiIdrFieldAddById/TestSuite.h"
 #include "saHpiIdrFieldSet/TestSuite.h"
 #include "saHpiIdrFieldDelete/TestSuite.h"
-
-
 
 using namespace ns_inventory;
 
@@ -42,11 +38,9 @@ TestSuite::TestSuite() {
     add(new ns_saHpiIdrInfoGet::TestSuite());
     add(new ns_saHpiIdrAreaHeaderGet::TestSuite());
     add(new ns_saHpiIdrAreaAdd::TestSuite());
-    add(new ns_saHpiIdrAreaAddById::TestSuite());
     add(new ns_saHpiIdrAreaDelete::TestSuite());
     add(new ns_saHpiIdrFieldGet::TestSuite());
     add(new ns_saHpiIdrFieldAdd::TestSuite());
-    add(new ns_saHpiIdrFieldAddById::TestSuite());
     add(new ns_saHpiIdrFieldSet::TestSuite());
     add(new ns_saHpiIdrFieldDelete::TestSuite());
 }

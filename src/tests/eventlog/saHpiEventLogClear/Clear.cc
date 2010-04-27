@@ -16,10 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * Changes     
- * 2009/05/19 - Lars.Wetzel@emerson.com
- *              Verify if proper capability is set 
  */
 
 #include "Clear.h"
@@ -74,26 +70,17 @@ HpiTestStatus Clear::runNonEmptyTest(SaHpiSessionIdT sessionId, SaHpiResourceIdT
     HpiTestStatus status;
 
     SaErrorT error = saHpiEventLogClear(sessionId, resourceId);
-    if ((error == SA_ERR_HPI_INVALID_CMD) &&
-	(!EventLogHelper::hasEvtLogClearCapability(sessionId, resourceId))) {
-      status.assertNotSupport();
-
-    } else if (error != SA_OK) {
+    if (error != SA_OK) {
         status.assertFailure(TRACE, EVENT_LOG_CLEAR, SA_OK, error);
-
     } else {
         bool isEmpty;
         status.add(TRACE, EventLogHelper::isEmpty(sessionId, resourceId, &isEmpty));
         if (status.isOkay()) {
             if (isEmpty) {
                 status.assertPass();
-
-            } else if (!EventLogHelper::hasEvtLogClearCapability(sessionId,resourceId)) {
-	      status.assertFailure(TRACE,"Function is supported but CAPABILITY isn't set\n"); 
-
-	    } else {
-	      status.assertFailure(TRACE, 
-				   "The EventLog is not empty after clearing it!");
+            } else {
+                status.assertFailure(TRACE, 
+                        "The EventLog is not empty after clearing it!");
             }
         }
     }

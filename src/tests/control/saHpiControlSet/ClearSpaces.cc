@@ -137,7 +137,7 @@ HpiTestStatus ClearSpaces::runMyTest(SaHpiSessionIdT sessionId,
 
                 // Retrieve the latest text buffer and verify that it
                 // corresponds to the "shorter" string.
-                
+               
                 ctrlState.Type = SAHPI_CTRL_TYPE_TEXT;
                 ctrlState.StateUnion.Text.Line = lineNum;
                 SaErrorT error = saHpiControlGet(sessionId, resourceId,

@@ -16,10 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * Changes
- * 2009/05/19 - Lars.Wetzel@emerson.com
- *              Allow Sensor->Types > OEM
  */
 
 #include "SensorHelper.h"
@@ -765,18 +761,12 @@ bool SensorHelper::isIntOrFloat(SaHpiSensorRecT *sensorRec) {
 
 /*****************************************************************************
  * Is this a valid sensor type?
- * 2009/05/19 
- * Allow all values (header file: consider new types 'valid but unknown')
- * The test makes only sense if the SAF type is compared to the original value, 
- * like e.g. the corresponding IPMI value (s.a. Mapping Spec)
  *****************************************************************************/
 
 bool SensorHelper::isValidType(SaHpiSensorTypeT type) {
-    return ((type >= SAHPI_TEMPERATURE && type <= SAHPI_VERSION_CHANGE) ||
+    return ((type >= SAHPI_TEMPERATURE && type <= SAHPI_BATTERY) ||
             (type == SAHPI_OPERATIONAL) || 
-            (type >= SAHPI_OEM_SENSOR)  ||
-            (type == SAHPI_COMM_CHANNEL_LINK_STATE)  ||
-            (type == SAHPI_MANAGEMENT_BUS_STATE));
+            (type == SAHPI_OEM_SENSOR));
 }
 
 /*****************************************************************************

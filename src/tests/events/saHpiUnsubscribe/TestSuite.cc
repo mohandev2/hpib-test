@@ -31,12 +31,10 @@ using namespace ns_saHpiUnsubscribe;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
-    add(new Unsubscribe("B.02|P77-10:P77-10"));
-    add(new NoSubscription("B.02|P77-11:P77-11"));
-    add(new Clear("B.02|P77-14:P77-15"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new Unsubscribe("P61-10:P61-10"));
+    add(new NoSubscription("P61-11:P61-11"));
+    add(new Clear("P61-14:P61-15"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

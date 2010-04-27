@@ -90,7 +90,7 @@ HpiTestStatus MaxCharsLines::runCtrlTest(SaHpiSessionIdT sessionId,
         // be greater than the maximum number of allowed characters.
 
         for (int line = 1; line <= maxLines; line++) {
-            
+
             ctrlState.Type = SAHPI_CTRL_TYPE_TEXT;
             ctrlState.StateUnion.Text.Line = line;
             SaErrorT error = saHpiControlGet(sessionId, rptEntry->ResourceId,

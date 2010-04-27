@@ -16,10 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * Changes
- * 09/06/25 lars.wetzel@emerson.com
- *          areaType: PRODUCT_INFO -> OEM
  */
 
 #include "InvalidSession.h"
@@ -44,7 +40,7 @@ HpiTestStatus InvalidSession::run() {
     SaErrorT error = saHpiIdrAreaAdd(getInvalidSessionId(),
                                      getValidResourceId(), 
                                      SAHPI_DEFAULT_INVENTORY_ID, 
-                                     SAHPI_IDR_AREATYPE_OEM, &areaId);
+                                     SAHPI_IDR_AREATYPE_PRODUCT_INFO, &areaId);
 
     if (error == SA_ERR_HPI_INVALID_SESSION) {
         status.assertPass();

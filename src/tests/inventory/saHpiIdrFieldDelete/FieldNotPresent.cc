@@ -16,10 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * Changes
- * 09/07/30 anurag.saxena@emerson.com
- *          valid for WRITE_TC_ALL_IDR
  */
 
 #include "FieldNotPresent.h"
@@ -31,8 +27,7 @@ using namespace ns_saHpiIdrFieldDelete;
  * Constructor
  *****************************************************************************/
 
-FieldNotPresent::FieldNotPresent(char *line) 
-: WriteIdrTestCase(line, WRITE_TC_ALL_IDR) {
+FieldNotPresent::FieldNotPresent(char *line) : WriteIdrTestCase(line) {
 }
 
 /*****************************************************************************
@@ -57,8 +52,7 @@ const char *FieldNotPresent::getDescription() {
  *****************************************************************************/
 
 const char *FieldNotPresent::getPrecondition() {
-    return "Requires a read-only or read-write Inventory with a read-write\n"
-           "Area.";
+    return "Requires a read-write Inventory with a read-write Area.";
 }
 
 /*****************************************************************************

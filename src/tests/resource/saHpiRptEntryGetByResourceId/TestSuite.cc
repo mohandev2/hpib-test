@@ -33,14 +33,12 @@ using namespace ns_saHpiRptEntryGetByResourceId;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
-    add(new GetResource("B.02|P51-15:P51-15"));
-    add(new NullRptEntry("B.02|P51-16:P51-16"));
-    add(new HotSwapNotPresent("B.02|P51-25:P51-26"));
-    add(new HotSwapActive("B.02|P51-25:P51-26"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new GetResource("P42-15:P42-15"));
+    add(new NullRptEntry("P42-16:P42-16"));
+    add(new HotSwapNotPresent("P42-25:P42-26"));
+    add(new HotSwapActive("P42-25:P42-26"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

@@ -16,10 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * Changes
- * 09/07/30 anurag.saxena@emerson.com
- *          valid for WRITE_TC_ALL_IDR
  */
 
 #include "ReadOnlyArea.h"
@@ -31,8 +27,7 @@ using namespace ns_saHpiIdrFieldDelete;
  * Constructor
  *****************************************************************************/
 
-ReadOnlyArea::ReadOnlyArea(char *line) 
-: WriteIdrTestCase(line, WRITE_TC_ALL_IDR) {
+ReadOnlyArea::ReadOnlyArea(char *line) : WriteIdrTestCase(line) {
 }
 
 /*****************************************************************************
@@ -56,8 +51,8 @@ const char *ReadOnlyArea::getDescription() {
  *****************************************************************************/
 
 const char *ReadOnlyArea::getPrecondition() {
-    return "Requires a read-only or read-write Inventory with a read-only\n"
-           "Area with at least one Field.";
+    return "Requires a read-write Inventory with a read-only Area with at\n"
+           "least one Field.";
 }
 
 /*****************************************************************************

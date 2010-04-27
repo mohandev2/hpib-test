@@ -25,14 +25,14 @@
 
 using namespace ns_saHpiResourceIdGet;
 
- /* Constructor
+/*****************************************************************************
+ * Constructor
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-    add(new GetResourceId("B.02|P54-13:P54-13"));
-    add(new NullResourceId("B.02|P54-14:P54-14"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new GetResourceId("P45-13:P45-13"));
+    add(new NullResourceId("P45-14:P45-14"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

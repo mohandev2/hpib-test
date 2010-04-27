@@ -32,13 +32,11 @@ using namespace ns_saHpiSessionOpen;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
-    add(new UnspecifiedDomainId("B.02|P40-17:P40-17"));
-    add(new ValidDomainId("B.02|P40-2:P22-2;P40-17:P40-17"));
-    add(new InvalidDomainId("B.02|P40-18:P40-18"));
-    add(new NonNullSecurityParams("B.02|P40-19:P40-20"));
-    add(new NullSessionId("B.02|P40-21:P40-21"));
-
+    add(new UnspecifiedDomainId("P33-17:P33-17"));
+    add(new ValidDomainId("P33-2:P22-2;P33-17:P33-17"));
+    add(new InvalidDomainId("P33-18:P33-18"));
+    add(new NonNullSecurityParams("P33-19:P33-20"));
+    add(new NullSessionId("P33-21:P33-21"));
 }
 
 /*****************************************************************************

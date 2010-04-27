@@ -20,7 +20,6 @@
 
 #include "NullEvtEntry.h"
 #include "EventHelper.h"
-#include "EventLogHelper.h"
 
 using namespace ns_saHpiEventLogEntryAdd;
 
@@ -71,16 +70,12 @@ HpiTestStatus NullEvtEntry::runAddTest(SaHpiSessionIdT sessionId,
                                        SaHpiResourceIdT resourceId) {
     HpiTestStatus status;
 
-    if (EventLogHelper::hasEvtLogAddCapability(sessionId, resourceId)) {   
-      SaErrorT error = saHpiEventLogEntryAdd(sessionId, resourceId, NULL);
-      if (error == SA_ERR_HPI_INVALID_PARAMS) {
+    SaErrorT error = saHpiEventLogEntryAdd(sessionId, resourceId, NULL);
+    if (error == SA_ERR_HPI_INVALID_PARAMS) {
         status.assertPass();
-      } else {
+    } else {
         status.assertFailure(TRACE, EVENT_LOG_ENTRY_ADD,
                              SA_ERR_HPI_INVALID_PARAMS, error);
-      }
-    } else {
-      status.assertNotSupport();
     }
 
     return status;

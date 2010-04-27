@@ -18,13 +18,11 @@
  *     Donald A. Barre <dbarre@unh.edu>
  *
  * Changes
- * 2009/05/19 - Lars.Wetzel@emerson.com
- *              Verify if proper capability is set
+ * 2009/06/23 - Lars.Wetzel@emerson.com
  *              Fix original state is restored
  */
 
 #include "SetState.h"
-#include "EventLogHelper.h"
 
 using namespace ns_saHpiEventLogStateSet;
 
@@ -81,25 +79,15 @@ HpiTestStatus SetState::runLogTest(SaHpiSessionIdT sessionId,
     // test
     for (int i = 0; i < 2; i++) {
         error = saHpiEventLogStateSet(sessionId, resourceId, newState[i]);
-	if ((error == SA_ERR_HPI_INVALID_CMD) &&
-	    (!EventLogHelper::hasEvtLogStateSetCapability(sessionId,resourceId))) {
-	  status.assertNotSupport(); 
-
-        } else if (error != SA_OK) {
+        if (error != SA_OK) {
             status.assertFailure(TRACE, EVENT_LOG_STATE_SET, SA_OK, error,
                               "New state is %s.", HpiString::boolean(newState[i]));
         } else {
             error = saHpiEventLogStateGet(sessionId, resourceId, &state);
             if (error != SA_OK) {
                 status.assertError(TRACE, EVENT_LOG_STATE_GET, SA_OK, error);
-            
 	    } else if (state == newState[i]) {
-	      if (!EventLogHelper::hasEvtLogStateSetCapability(sessionId,resourceId)) {
-		status.assertFailure(TRACE,"Function is supported but CAPABILITY isn't set\n"); 
-	      } else {
                 status.assertPass();
-	      }
-
             } else {
                 status.assertFailure(TRACE, 
                             "State change did not occur when setting it to %s.", 

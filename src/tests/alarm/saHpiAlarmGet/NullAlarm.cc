@@ -69,18 +69,17 @@ HpiTestStatus NullAlarm::runSessionTest(SaHpiSessionIdT sessionId) {
     if (error != SA_OK) {
         status.assertError(TRACE, ALARM_ADD, SA_OK, error);
     } else {
-     
-      error = saHpiAlarmGet(sessionId, newAlarm.AlarmId, NULL);
-      if (error == SA_ERR_HPI_INVALID_PARAMS) {
+        error = saHpiAlarmGet(sessionId, newAlarm.AlarmId, NULL);
+        if (error == SA_ERR_HPI_INVALID_PARAMS) {
             status.assertPass();
-      } else {
-	status.assertFailure(TRACE, ALARM_GET,
-			     SA_ERR_HPI_INVALID_PARAMS, error);
-      } 
+        } else {
+            status.assertFailure(TRACE, ALARM_GET,
+                                 SA_ERR_HPI_INVALID_PARAMS, error);
+        } 
 
-      // Clean up
-      error = saHpiAlarmDelete(sessionId, newAlarm.AlarmId, SAHPI_MINOR);
-      status.checkError(TRACE, ALARM_DELETE, error);
+        // Clean up
+        error = saHpiAlarmDelete(sessionId, newAlarm.AlarmId, SAHPI_MINOR);
+        status.checkError(TRACE, ALARM_DELETE, error);
     }
 
     return status;

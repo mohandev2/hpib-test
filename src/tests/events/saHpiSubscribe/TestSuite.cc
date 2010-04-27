@@ -32,13 +32,11 @@ using namespace ns_saHpiSubscribe;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
-    add(new Subscribe("B.02|P76-11:P76-11"));
-    add(new Duplicate("B.02|P76-12:P76-12"));
-    add(new Severities("B.02|P76-2:P76-3"));
-    add(new EventTypes("B.02|P76-2:P76-3"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new Subscribe("P60-11:P60-11"));
+    add(new Duplicate("P60-12:P60-12"));
+    add(new Severities("P60-2:P60-3"));
+    add(new EventTypes("P60-2:P60-3"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

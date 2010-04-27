@@ -34,15 +34,13 @@ using namespace ns_saHpiSensorReadingGet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-  
-    add(new GetAndVerify("B.02|P98-20:P98-20;P98-28:P98-30;P98-31:P98-34"));
-    add(new NoCapability("B.02|P98-21:P98-22"));
-    add(new DisabledSensor("B.02|P98-23:P98-23"));
-    add(new SensorNotPresent("B.02|P98-24:P98-24"));
-    add(new NullParams("B.02|P98-15:P98-18;P98-35:P98-38"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new GetAndVerify("P80-20:P80-20;P80-28:P80-30;P80-31:P80-34"));
+    add(new NoCapability("P80-21:P80-22"));
+    add(new DisabledSensor("P80-23:P80-23"));
+    add(new SensorNotPresent("P80-24:P80-24"));
+    add(new NullParams("P80-15:P80-18;P80-35:P80-38"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

@@ -32,14 +32,12 @@ using namespace ns_saHpiResourceSeveritySet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-    add(new SetSeverity("B.02|P43-18:P43-18"));
-    add(new InvalidSeverity("B.02|P43-19:P43-20"));
-    add(new FruExtraction("B.02|P43-2:P43-5"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new SetSeverity("P43-18:P43-18"));
+    add(new InvalidSeverity("P43-19:P43-20"));
+    add(new FruExtraction("P43-2:P43-5"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
-
 
 /*****************************************************************************
  * Return the name of the test suite.

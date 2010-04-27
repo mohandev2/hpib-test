@@ -16,9 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- * Modified:
- *     AKMAL MUQEETH
- *     PUSHPA DATLA    
  */
 
 #include "TestSuite.h"
@@ -28,6 +25,8 @@
 #include "AreaNotPresent.h"
 #include "FieldNotPresent.h"
 #include "ReadOnlyField.h"
+#include "ReadOnlyArea.h"
+#include "ReadOnlyIdr.h"
 #include "InvalidFieldType.h"
 #include "UnspecifiedFieldType.h"
 #include "NullField.h"
@@ -45,23 +44,23 @@ using namespace ns_saHpiIdrFieldSet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
-    add(new SetField("B.02|P135-16:P135-16;P136-6:P136-6"));
-    add(new NoCapability("B.02|P135-17:P135-18"));
-    add(new IdrNotPresent("B.02|P135-20:P135-20"));
-    add(new AreaNotPresent("B.02|P135-21:P135-22"));
-    add(new FieldNotPresent("B.02|P135-21:P135-22"));
-    add(new NullField("B.02|P135-24:P135-24"));
-    add(new InvalidFieldType("B.02|P135-25:P135-25"));
-    add(new UnspecifiedFieldType("B.02|P135-26:P135-26"));
-    add(new ReadOnlyField("B.02|P135-32:P135-32"));
-    add(new InvalidDataType("B.02|P136-1:P136-1"));
-    add(new InvalidTextCharacters("B.02|P136-2:P136-2"));
-    add(new InvalidLanguage("B.02|P136-3:P136-4"));
-    add(new IgnoreReadOnly("B.02|P136-7:P136-8"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new SetField("P111-16:P111-16;P112-6:P112-6"));
+    add(new NoCapability("P111-17:P111-18"));
+    add(new IdrNotPresent("P111-20:P111-20"));
+    add(new AreaNotPresent("P111-21:P111-22"));
+    add(new FieldNotPresent("P111-21:P111-22"));
+    add(new NullField("P111-24:P111-24"));
+    add(new InvalidFieldType("P111-25:P111-25"));
+    add(new UnspecifiedFieldType("P111-26:P111-26"));
+    add(new ReadOnlyField("P111-32:P111-32"));
+    add(new ReadOnlyArea("P111-33:P111-33"));
+    add(new ReadOnlyIdr("P111-34:P111-34"));
+    add(new InvalidDataType("P112-1:P112-1"));
+    add(new InvalidTextCharacters("P112-2:P112-2"));
+    add(new InvalidLanguage("P112-3:P112-4"));
+    add(new IgnoreReadOnly("P112-7:P112-8"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

@@ -30,11 +30,9 @@ using namespace ns_saHpiDiscover;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
-    add(new Discover("B.02|P42-15:P42-15"));
-    add(new InsertFru("B.02|P42-4:P42-7"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new Discover("P35-15:P35-15"));
+    add(new InsertFru("P35-4:P35-7"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

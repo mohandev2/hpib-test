@@ -20,7 +20,6 @@
 
 #include "InvalidSeverity.h"
 #include "EventHelper.h"
-#include "EventLogHelper.h"
 
 using namespace ns_saHpiEventLogEntryAdd;
 
@@ -79,24 +78,20 @@ HpiTestStatus InvalidSeverity::runLogTest(SaHpiSessionIdT sessionId,
         (int) SAHPI_ALL_SEVERITIES,
         (int) SAHPI_ALL_SEVERITIES + 1 };
 
-    if (EventLogHelper::hasEvtLogAddCapability(sessionId, resourceId)) {
-      EventHelper::fill(&event);
-      for (int i = 0; i < 6; i++) {
+    EventHelper::fill(&event);
+    for (int i = 0; i < 6; i++) {
         event.Severity = (SaHpiSeverityT) invalidSeverity[i];
         SaErrorT error = saHpiEventLogEntryAdd(sessionId, resourceId, &event);
         if (error == SA_ERR_HPI_OUT_OF_SPACE) {
-	  status.assertNotSupport();
+            status.assertNotSupport();
         } else if (error == SA_ERR_HPI_INVALID_PARAMS) {
-	  status.assertPass();
+            status.assertPass();
         } else {
-	  status.assertFailure(TRACE, EVENT_LOG_ENTRY_ADD,
-			       SA_ERR_HPI_INVALID_PARAMS, error,
-			       "Invalid Severity is %s",
-			       HpiString::severity((SaHpiSeverityT) invalidSeverity[i]));
+            status.assertFailure(TRACE, EVENT_LOG_ENTRY_ADD,
+                                 SA_ERR_HPI_INVALID_PARAMS, error,
+                                 "Invalid Severity is %s",
+                                 HpiString::severity((SaHpiSeverityT) invalidSeverity[i]));
         }
-      }
-    } else {
-      status.assertNotSupport();
     }
 
     return status;

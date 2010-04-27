@@ -32,13 +32,11 @@ using namespace ns_saHpiAutoExtractTimeoutGet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
-    add(new GetTimeout("B.02|P199-18:P199-18"));
-    add(new NoCapability("B.02|P199-19:P199-20"));
-    add(new NullTimeout("B.02|P199-21:P199-21"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new GetTimeout("P144-18:P144-18"));
+    add(new NoCapability("P144-19:P144-20"));
+    add(new NullTimeout("P144-21:P144-21"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

@@ -18,9 +18,9 @@
  *     Donald A. Barre <dbarre@unh.edu>
  */
 
-#include <cstring>
 #include <iostream>
 #include <fstream>
+#include <string.h>
 
 #include "HtmlToc.h"
 #include "ListIterator.h"

@@ -16,10 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * Changes
- * 09/07/30 anurag.saxena@emerson.com
- *          valid for WRITE_TC_ALL_IDR
  */
 
 #include "NullField.h"
@@ -30,8 +26,7 @@ using namespace ns_saHpiIdrFieldAdd;
  * Constructor
  *****************************************************************************/
 
-NullField::NullField(char *line) 
-: WriteIdrTestCase(line, WRITE_TC_ALL_IDR) {
+NullField::NullField(char *line) : WriteIdrTestCase(line) {
 }
 
 /*****************************************************************************
@@ -55,8 +50,8 @@ const char *NullField::getDescription() {
  *****************************************************************************/
 
 const char *NullField::getPrecondition() {
-    return "Requires a read-only or read-write Inventory with a read-write\n"
-           "Area for which free space is available.";
+    return "Requires a read-write Inventory with a read-write Area for which\n"
+           "free space is available.";
 }
 
 /*****************************************************************************

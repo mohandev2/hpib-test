@@ -17,9 +17,10 @@
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
  */
-#include <cstring>
 
 #include "StringTokenizer.h"
+
+#include <string.h>
 
 using namespace std;
 

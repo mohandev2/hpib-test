@@ -93,13 +93,12 @@ HpiTestStatus SetStream::runCtrlTest(SaHpiSessionIdT sessionId,
                                     ctrlNum, ctrlMode, &ctrlState);
             if ((error != SA_OK) &&
                 (error != SA_ERR_HPI_INVALID_DATA) &&
-                (error != SA_ERR_HPI_INVALID_REQUEST) &&
-		(error != SA_ERR_HPI_UNSUPPORTED_PARAMS)) 
-            {
+                (error != SA_ERR_HPI_INVALID_REQUEST)) {
                 status.assertError(TRACE, CONTROL_SET, SA_OK, error);
             }
         }
     }
+
     return status;
 }
 
@@ -122,10 +121,8 @@ HpiTestStatus SetStream::setStreamValue(SaHpiSessionIdT sessionId,
     SaErrorT error = saHpiControlSet(sessionId, resourceId, ctrlNum,
                                      SAHPI_CTRL_MODE_MANUAL, &newCtrlState);
     if ((error == SA_ERR_HPI_INVALID_DATA) ||
-        (error == SA_ERR_HPI_INVALID_REQUEST) ||
-	(error == SA_ERR_HPI_UNSUPPORTED_PARAMS)) {
-      status.assertNotSupport();
-
+        (error == SA_ERR_HPI_INVALID_REQUEST)) {
+        status.assertNotSupport();
     } else if (error == SA_OK) {
         status.assertPass();
     } else {

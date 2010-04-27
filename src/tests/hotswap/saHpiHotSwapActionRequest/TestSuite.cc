@@ -34,17 +34,15 @@ using namespace ns_saHpiHotSwapActionRequest;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
- 
-    add(new Toggle("B.02|P203-2:P203-2;P203-16:P203-16;P203-16:P203-16;"
-                   "P189-5:P189-6;P189-15:P189-16;P189-20:P189-22;"
-                   "P189-31:P189-32"));
-    add(new NoCapability("B.02|P203-17:P203-18"));
-    add(new InvalidAction("B.02|P203-21:P203-21"));
-    add(new InvalidInsertion("B.02|P203-19:P203-20;P203-28:P203-29"));
-    add(new InvalidExtraction("B.02|P203-19:P203-20;P203-28:P203-29"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new Toggle("P148-2:P148-2;P148-16:P148-16;P148-16:P148-16;"
+                   "P136-5:P136-6;P136-15:P136-16;P136-20:P136-22;"
+                   "P136-31:P136-32"));
+    add(new NoCapability("P148-17:P148-18"));
+    add(new InvalidAction("P148-21:P148-21"));
+    add(new InvalidInsertion("P148-19:P148-20;P148-28:P148-29"));
+    add(new InvalidExtraction("P148-19:P148-20;P148-28:P148-29"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

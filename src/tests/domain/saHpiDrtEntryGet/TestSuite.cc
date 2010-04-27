@@ -33,14 +33,12 @@ using namespace ns_saHpiDrtEntryGet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
-    add(new GetAll("B.02|P44-19:P44-19"));
-    add(new InvalidEntryId("B.02|P44-20:P44-21"));
-    add(new NullDrtEntry("B.02|P44-24:P44-24"));
-    add(new NullNextEntryId("B.02|P44-25:P44-25"));
-    add(new ReservedEntryId("B.02|P44-26:P44-26"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new GetAll("P37-19:P37-19"));
+    add(new InvalidEntryId("P37-20:P37-21"));
+    add(new NullDrtEntry("P37-24:P37-24"));
+    add(new NullNextEntryId("P37-25:P37-25"));
+    add(new ReservedEntryId("P37-26:P37-26"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

@@ -98,7 +98,7 @@ HpiTestStatus GetMasks::runSensorTest(SaHpiSessionIdT sessionId,
             status.assertFailure(TRACE, 
                     "The DeassertEventMask [0x%X] has set bits that are "
                     "not found in SensorRec Events [0x%X].",
-                   deassertEventMask, rdrEventMask);
+                    deassertEventMask, rdrEventMask);
         }
     }
 

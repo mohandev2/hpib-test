@@ -16,10 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * Changes     
- * 2009/05/19 - Lars.Wetzel@emerson.com
- *              Verify if proper capability is set
  */
 
 #include "OverflowReset.h"
@@ -84,24 +80,14 @@ HpiTestStatus OverflowReset::runAddTest(SaHpiSessionIdT sessionId,
         status.add(TRACE, EventLogHelper::overflow(sessionId, resourceId));
         if (status.isOkay()) {
             error = saHpiEventLogOverflowReset(sessionId, resourceId);
-	    if ((error == SA_ERR_HPI_INVALID_CMD) &&
-		(!EventLogHelper::hasEvtLogOverflowResetCapability(sessionId,resourceId))) {
-	      status.assertNotSupport();
-
-            } else if (error != SA_OK) {
+            if (error != SA_OK) {
                 status.assertFailure(TRACE, EVENT_LOG_OVERFLOW_RESET, SA_OK, error);
- 
-           } else {
+            } else {
                 error = saHpiEventLogInfoGet(sessionId, resourceId, &info);
                 if (error != SA_OK) {
                     status.assertError(TRACE, EVENT_LOG_INFO_GET, SA_OK, error);
-
                 } else if (info.OverflowFlag) {
                     status.assertFailure(TRACE, "OverflowFlag was not reset.");
-		
-		} else if (!EventLogHelper::hasEvtLogOverflowResetCapability(sessionId,resourceId)) {
-		  status.assertFailure(TRACE, "Function is supported but CAPABILITY isn't set\n");
-
                 } else {
                     status.assertPass();
                 }

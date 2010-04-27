@@ -36,9 +36,6 @@ public:
 
     static bool isEqual(SaHpiInventoryRecT *rec1, SaHpiInventoryRecT *rec2);
     static bool isEqual(SaHpiInventoryRecT *rec1, SaHpiInventoryRecT *rec2, Report &report);
-    
-    static bool isEqual(SaHpiIdrFieldT *field1, SaHpiIdrFieldT *field2);
-    static bool isEqual(SaHpiIdrFieldT *field1, SaHpiIdrFieldT *field2, Report &report);
 
     static void fill(SaHpiIdrFieldT *field, SaHpiEntryIdT areaId);
     static void fill(SaHpiIdrFieldT *field, SaHpiEntryIdT areaId, SaHpiEntryIdT fieldId);

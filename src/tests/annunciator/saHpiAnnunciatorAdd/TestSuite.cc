@@ -24,13 +24,11 @@
 #include "AnnunciatorNotPresent.h"
 #include "NullAnnouncement.h"
 #include "InvalidSeverity.h"
-#include "InvalidNameLength.h"
 #include "InvalidStatusCond.h"
 #include "ReadOnly.h"
 #include "VerifyFields.h"
 #include "InvalidResource.h"
 #include "InvalidSession.h"
-#include "InvalidTextCharacters.h"
 
 using namespace ns_saHpiAnnunciatorAdd;
 
@@ -39,18 +37,16 @@ using namespace ns_saHpiAnnunciatorAdd;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-    add(new AddAnnouncement("B.02|P151-17:P151-17"));
-    add(new NoCapability("B.02|P151-18:P151-19"));
-    add(new AnnunciatorNotPresent("B.02|P151-20:P151-21"));
-    add(new NullAnnouncement("B.02|P151-23:P151-23"));
-    add(new InvalidSeverity("B.02|P151-24:P151-24"));
-    add(new InvalidNameLength("B.02|P151-26:P151-26"));
-    add(new InvalidTextCharacters("B.02|P151-26:P151-26"));
-    add(new InvalidStatusCond("B.02|P151-25:P151-25"));	
-    add(new ReadOnly("B.02|P151-36:P151-36"));
-    add(new VerifyFields("B.02|P152-2:P152-2"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
+    add(new AddAnnouncement("P127-17:P127-17"));
+    add(new NoCapability("P127-18:P127-19"));
+    add(new AnnunciatorNotPresent("P127-20:P127-21"));
+    add(new NullAnnouncement("P127-23:P127-23"));
+    add(new InvalidSeverity("P127-24:P127-24"));
+    add(new InvalidStatusCond("P127-25:P127-25"));
+    add(new ReadOnly("P127-28:P127-28"));
+    add(new VerifyFields("P127-30:P127-32"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

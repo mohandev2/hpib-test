@@ -25,7 +25,6 @@
 #include "InvalidTime.h"
 #include "InvalidResource.h"
 #include "InvalidSession.h"
-#include "MissingCapability.h"
 
 using namespace ns_saHpiEventLogTimeSet;
 
@@ -34,15 +33,12 @@ using namespace ns_saHpiEventLogTimeSet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
-    add(new RelativeTime("B.02|P70-15:P70-15;P70-27:P70-28"));
-    add(new AbsoluteTime("B.02|P70-15:P70-15;P70-27:P70-28"));
-    add(new NoCapability("B.02|P70-16:P70-17"));
-    add(new MissingCapability("B.02|P70-16:P70-17"));
-    add(new InvalidTime("B.02|P70-20:P70-20"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new RelativeTime("P55-15:P55-15;P55-27:P55-28"));
+    add(new AbsoluteTime("P55-15:P55-15;P55-27:P55-28"));
+    add(new NoCapability("P55-16:P55-17"));
+    add(new InvalidTime("P55-19:P55-19"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

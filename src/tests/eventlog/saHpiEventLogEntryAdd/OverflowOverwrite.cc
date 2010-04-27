@@ -16,13 +16,11 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
  */
 
 #include "OverflowOverwrite.h"
 #include "EventHelper.h"
 #include "EventLogHelper.h"
-#include "TextBufferHelper.h"
 
 using namespace ns_saHpiEventLogEntryAdd;
 
@@ -83,63 +81,53 @@ HpiTestStatus OverflowOverwrite::runAddTest(SaHpiSessionIdT sessionId,
     HpiTestStatus status;
     SaHpiEventT event;
     SaHpiEventLogInfoT info;
-    SaHpiTextBufferT text;
 
-    //    TextBufferHelper::fill(&text, "OverflowOverwrite test");
-    status.add(TRACE, prepareTestData(sessionId, resourceId, &text));
-
-    if (status.isOkay() &&
-	EventLogHelper::hasEvtLogClearCapability(sessionId, resourceId)) {
-      SaErrorT error = saHpiEventLogInfoGet(sessionId, resourceId, &info);
-      if (error != SA_OK) {
+    SaErrorT error = saHpiEventLogInfoGet(sessionId, resourceId, &info);
+    if (error != SA_OK) {
         status.assertError(TRACE, EVENT_LOG_INFO_GET, SA_OK, error);
-     
-      } else if (info.OverflowAction != SAHPI_EL_OVERFLOW_OVERWRITE) {
+    } else if (info.OverflowAction != SAHPI_EL_OVERFLOW_OVERWRITE) {
         status.assertNotSupport();
-
-      } else {
+    } else {
         error = saHpiEventLogClear(sessionId, resourceId);
         if (error != SA_OK) {
-	  status.assertError(TRACE, EVENT_LOG_CLEAR, SA_OK, error);
+            status.assertError(TRACE, EVENT_LOG_CLEAR, SA_OK, error);
         } else  {
-	  status.add(TRACE, EventLogHelper::fill(sessionId, resourceId));
-	  if (status.isOkay()) {
-
-	    EventHelper::fill(&event, &text);
-	    error = saHpiEventLogEntryAdd(sessionId, resourceId, &event);
-	    if (error != SA_OK) {
-	      status.assertFailure(TRACE, EVENT_LOG_ENTRY_ADD, SA_OK, error);
-
-	    } else {
-	      bool found;
-	      status.add(TRACE, EventLogHelper::findEvent(sessionId, resourceId,
+            status.add(TRACE, EventLogHelper::fill(sessionId, resourceId));
+            if (status.isOkay()) {
+                EventHelper::fill(&event, "OverflowOverwrite test");
+                error = saHpiEventLogEntryAdd(sessionId, resourceId, &event);
+                if (error != SA_OK) {
+                    status.assertFailure(TRACE, EVENT_LOG_ENTRY_ADD, SA_OK, error);
+                } else {
+                    bool found;
+                    status.add(TRACE, EventLogHelper::findEvent(sessionId, resourceId,
                                                                 &event, &found));
-	      if (status.isOkay() && !found) {
-		status.assertFailure(TRACE, "The event was not added.");
-	      }
+                    if (status.isOkay() && !found) {
+                        status.assertFailure(TRACE, "The event was not added.");
+                    }
 
-	      error = saHpiEventLogInfoGet(sessionId, resourceId, &info);
-	      if (error != SA_OK) {
-		status.assertError(TRACE, EVENT_LOG_INFO_GET, SA_OK, error);
-	      } else {
-		status.assertPass();
-		if (!info.OverflowFlag) {
-		  status.assertFailure(TRACE, "OverflowFlag was not set.");
-		}
-		if (info.Entries > info.Size) {
-		  status.assertFailure(TRACE,
-				       "More entries than can fit into the EventLog.");
-		}
-	      }
-	    }
+                    error = saHpiEventLogInfoGet(sessionId, resourceId, &info);
+                    if (error != SA_OK) {
+                        status.assertError(TRACE, EVENT_LOG_INFO_GET, SA_OK, error);
+                    } else {
+                        status.assertPass();
+                        if (!info.OverflowFlag) {
+                            status.assertFailure(TRACE, "OverflowFlag was not set.");
+                        }
+                        if (info.Entries > info.Size) {
+                            status.assertFailure(TRACE,
+                                    "More entries than can fit into the EventLog.");
+                        }
+                    }
+                }
 
-	    // since will filled up the Event Log, let's clear it for the following tests.
-	    error = saHpiEventLogClear(sessionId, resourceId);
-	    status.checkError(TRACE, EVENT_LOG_CLEAR, error);
-	  }
+                // since will filled up the Event Log, let's clear it for the following tests.
+                error = saHpiEventLogClear(sessionId, resourceId);
+                status.checkError(TRACE, EVENT_LOG_CLEAR, error);
+            }
         }
-      }
     }
+
     return status;
 }
 

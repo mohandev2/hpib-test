@@ -27,8 +27,7 @@ using namespace ns_saHpiIdrFieldSet;
  * Constructor
  *****************************************************************************/
 
-ReadOnlyField::ReadOnlyField(char *line) 
-: WriteIdrTestCase(line, WRITE_TC_ALL_IDR) {
+ReadOnlyField::ReadOnlyField(char *line) : WriteIdrTestCase(line) {
 }
 
 /*****************************************************************************
@@ -52,8 +51,8 @@ const char *ReadOnlyField::getDescription() {
  *****************************************************************************/
 
 const char *ReadOnlyField::getPrecondition() {
-    return "Requires a read-only or read-write Inventory with a read-only or\n"
-           "read-write Area that has at least one read-only Field.";
+    return "Requires a read-write Inventory with a read-write Area that has\n"
+           "at least one read-only Field.";
 }
 
 /*****************************************************************************
@@ -67,7 +66,7 @@ SaErrorT ReadOnlyField::getExpectedReturn() {
 /*****************************************************************************
  * Run the test.
  *
- * For each area, try to change a read-only field.
+ * For each area that is not read-only, try to change a read-only field.
  *****************************************************************************/
 
 HpiTestStatus ReadOnlyField::runWriteIdrTest(SaHpiSessionIdT sessionId,
@@ -93,8 +92,7 @@ HpiTestStatus ReadOnlyField::runWriteIdrTest(SaHpiSessionIdT sessionId,
         } else if (error != SA_OK) {
             status.assertError(TRACE, IDR_AREA_HEADER_GET,
                                SA_OK, SA_ERR_HPI_NOT_PRESENT, error);
-//        } else if (!header.ReadOnly) {
-        } else {
+        } else if (!header.ReadOnly) {
             status.add(TRACE, setField(sessionId, rptEntry->ResourceId,
                                        idrRec->IdrId, header.AreaId));
         }

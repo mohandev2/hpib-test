@@ -35,16 +35,14 @@ using namespace ns_saHpiSensorEnableSet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
-    add(new SetEnableStatus("B.02|P104-16:P104-16"));
-    add(new NoCapability("B.02|P104-17:P104-18"));
-    add(new SensorNotPresent("B.02|P104-19:P104-19"));
-    add(new ReadOnly("B.02|P104-20:P104-21"));
-    add(new DisabledSensor("B.02|P104-23:P104-24"));
-    add(new SensorEnableChangeEvent("B.02|P104-27:P104-27"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new SetEnableStatus("P86-16:P86-16"));
+    add(new NoCapability("P86-17:P86-18"));
+    add(new SensorNotPresent("P86-19:P86-19"));
+    add(new ReadOnly("P86-20:P86-21"));
+    add(new DisabledSensor("P86-23:P86-24"));
+    add(new SensorEnableChangeEvent("P86-27:P86-27"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

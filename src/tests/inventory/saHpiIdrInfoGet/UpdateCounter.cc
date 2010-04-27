@@ -16,11 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * Changes
- * 09/06/25 lars.wetzel@emerson.com
- *          areaType: PRODUCT_INFO -> OEM
- *          OUT_OF_SPACE -> NotSupported
  */
 
 #include "UpdateCounter.h"
@@ -96,12 +91,10 @@ HpiTestStatus UpdateCounter::runIdrTest(SaHpiSessionIdT sessionId,
         // Add an area which should cause the UpdateCount to increment.
 
         error = saHpiIdrAreaAdd(sessionId, resourceId, idrId,
-                                SAHPI_IDR_AREATYPE_OEM, &areaId);
+                                SAHPI_IDR_AREATYPE_PRODUCT_INFO, &areaId);
 
         if (error == SA_ERR_HPI_INVALID_DATA) {
             status.assertNotSupport();
-	} else if (error == SA_ERR_HPI_OUT_OF_SPACE) {
-	    status.assertNotSupport();
         } else if (error != SA_OK) {
             status.assertError(TRACE, IDR_AREA_ADD, SA_OK, error);
         } else {

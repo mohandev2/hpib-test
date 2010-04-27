@@ -32,19 +32,11 @@ using namespace ns_saHpiHotSwapStateGet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-    /*add(new GetState("P147-14:P147-14"));
+    add(new GetState("P147-14:P147-14"));
     add(new NoCapability("P147-15:P147-16"));
     add(new NullState("P147-17:P147-17"));
     add(new InvalidResource("P29-40:P29-42"));
     add(new InvalidSession("P29-43:P29-45"));
-*/
- 
-    add(new GetState("B.02|P202-14:P202-14"));
-    add(new NoCapability("B.02|P202-15:P202-16"));
-    add(new NullState("B.02|P202-17:P202-17"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
 }
 
 /*****************************************************************************

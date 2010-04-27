@@ -17,11 +17,9 @@
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
  *
- * Changes
- * 2009/05/19 - Lars.Wetzel@emerson.com / Anton.Pak@pigeonpoint.com
- *              enhancements to be HPI-B.02.01 compliant
- * 2009/10/19 - larswetzel@users.sourceforge.net
- * 	            enhancements to be HPI-B.03.01 compliant
+ * 09/06/21 lars.wetzel@emerson
+ *          Bugfix WatchdogExpirationFlag
+ *
  */
 
 #include <cstring>
@@ -37,8 +35,6 @@ const char *HpiString::function(HpiFunctionId funcId) {
 
     switch (funcId) {
         case VERSION_GET                  : return "saHpiVersionGet()";
-        case INITIALIZE                   : return "saHpiInitialize()";
-        case FINALIZE                     : return "saHpiFinalize()";
 
         case SESSION_OPEN                 : return "saHpiSessionOpen()";
         case SESSION_CLOSE                : return "saHpiSessionClose()";
@@ -53,10 +49,6 @@ const char *HpiString::function(HpiFunctionId funcId) {
         case RESOURCE_SEVERITY_SET        : return "saHpiResourceSeveritySet()";
         case RESOURCE_TAG_SET             : return "saHpiResourceTagSet()";
         case RESOURCE_ID_GET              : return "saHpiResourceIdGet()";
-        case RESOURCE_FAILED_REMOVE       : return "saHpiResourceFailedRemove()";
-        case GET_ID_BY_ENTITY_PATH        : return "saHpiGetIdByEntityPath()";
-        case MY_ENTITY_PATH_GET           : return "saHpiMyEntityPathGet()";
-        case GET_CHILD_ENTITY_PATH        : return "saHpiGetChildEntityPath()";
 
         case EVENT_LOG_INFO_GET           : return "saHpiEventLogInfoGet()";
         case EVENT_LOG_ENTRY_GET          : return "saHpiEventLogEntryGet()";
@@ -67,7 +59,6 @@ const char *HpiString::function(HpiFunctionId funcId) {
         case EVENT_LOG_STATE_GET          : return "saHpiEventLogStateGet()";
         case EVENT_LOG_STATE_SET          : return "saHpiEventLogStateSet()";
         case EVENT_LOG_OVERFLOW_RESET     : return "saHpiEventLogOverflowReset()";
-        case EVENT_LOG_CAPABILITIES_GET   : return "saHpiEventLogCapabilitiesGet()";
 
         case SUBSCRIBE                    : return "saHpiSubscribe()";
         case UNSUBSCRIBE                  : return "saHpiUnsubscribe()";
@@ -82,7 +73,6 @@ const char *HpiString::function(HpiFunctionId funcId) {
 
         case RDR_GET                      : return "saHpiRdrGet()";
         case RDR_GET_BY_INSTRUMENT_ID     : return "saHpiRdrGetByInstrumentId()";
-        case RDR_UPDATE_COUNT_GET         : return "saHpiRdrUpdateCountGet()";
 
         case SENSOR_READING_GET           : return "saHpiSensorReadingGet()";
         case SENSOR_THRESHOLDS_GET        : return "saHpiSensorThresholdsGet()";
@@ -102,11 +92,9 @@ const char *HpiString::function(HpiFunctionId funcId) {
         case IDR_INFO_GET                 : return "saHpiIdrInfoGet()";
         case IDR_AREA_HEADER_GET          : return "saHpiIdrAreaHeaderGet()";
         case IDR_AREA_ADD                 : return "saHpiIdrAreaAdd()";
-        case IDR_AREA_ADD_BY_ID           : return "saHpiIdrAreaAddById()";
         case IDR_AREA_DELETE              : return "saHpiIdrAreaDelete()";
         case IDR_FIELD_GET                : return "saHpiIdrFieldGet()";
         case IDR_FIELD_ADD                : return "saHpiIdrFieldAdd()";
-        case IDR_FIELD_ADD_BY_ID          : return "saHpiIdrFieldAddById()";
         case IDR_FIELD_SET                : return "saHpiIdrFieldSet()";
         case IDR_FIELD_DELETE             : return "saHpiIdrFieldDelete()";
 
@@ -177,8 +165,6 @@ const char *HpiString::error(SaErrorT error) {
         case SA_ERR_HPI_READ_ONLY          : return "SA_ERR_HPI_READ_ONLY";
         case SA_ERR_HPI_CAPABILITY         : return "SA_ERR_HPI_CAPABILITY";
         case SA_ERR_HPI_UNKNOWN            : return "SA_ERR_HPI_UNKNOWN";
-        case SA_ERR_HPI_INVALID_STATE      : return "SA_ERR_HPI_INVALID_STATE";
-        case SA_ERR_HPI_UNSUPPORTED_PARAMS : return "SA_ERR_HPI_UNSUPPORTED_PARAMS";
     }
 
     char *buf = StringBuffer::next();
@@ -476,20 +462,6 @@ const char *HpiString::entityType(SaHpiEntityTypeT entityType) {
         case SAHPI_ENT_REMOTE                   : return "SAHPI_ENT_REMOTE";
         case SAHPI_ENT_EXTERNAL_ENVIRONMENT     : return "SAHPI_ENT_EXTERNAL_ENVIRONMENT";
         case SAHPI_ENT_BATTERY                  : return "SAHPI_ENT_BATTERY";
-	case SAHPI_ENT_RESERVED_1               : return "SAHPI_ENT_RESERVED_1";
-        case SAHPI_ENT_RESERVED_2               : return "SAHPI_ENT_RESERVED_2";
-        case SAHPI_ENT_RESERVED_3               : return "SAHPI_ENT_RESERVED_3";
-        case SAHPI_ENT_RESERVED_4               : return "SAHPI_ENT_RESERVED_4";
-        case SAHPI_ENT_RESERVED_5               : return "SAHPI_ENT_RESERVED_5";
-        case SAHPI_ENT_MC_FIRMWARE              : return "SAHPI_ENT_MC_FIRMWARE";
-        case SAHPI_ENT_IPMI_CHANNEL             : return "SAHPI_ENT_IPMI_CHANNEL";
-        case SAHPI_ENT_PCI_BUS                  : return "SAHPI_ENT_PCI_BUS";
-        case SAHPI_ENT_PCI_EXPRESS_BUS          : return "SAHPI_ENT_PCI_EXPRESS_BUS";
-        case SAHPI_ENT_SCSI_BUS                 : return "SAHPI_ENT_SCSI_BUS";
-        case SAHPI_ENT_SATA_BUS                 : return "SAHPI_ENT_SATA_BUS";
-        case SAHPI_ENT_PROC_FSB                 : return "SAHPI_ENT_PROC_FSB";
-        case SAHPI_ENT_CLOCK                    : return "SAHPI_ENT_CLOCK";
-        case SAHPI_ENT_SYSTEM_FIRMWARE          : return "SAHPI_ENT_SYSTEM_FIRMWARE";
         case SAHPI_ENT_CHASSIS_SPECIFIC         : return "SAHPI_ENT_CHASSIS_SPECIFIC";
         case SAHPI_ENT_BOARD_SET_SPECIFIC       : return "SAHPI_ENT_BOARD_SET_SPECIFIC";
         case SAHPI_ENT_OEM_SYSINT_SPECIFIC      : return "SAHPI_ENT_OEM_SYSINT_SPECIFIC";
@@ -516,23 +488,6 @@ const char *HpiString::entityType(SaHpiEntityTypeT entityType) {
         case SAHPI_ENT_DISPLAY_PANEL            : return "SAHPI_ENT_DISPLAY_PANEL";
         case SAHPI_ENT_SUBBOARD_CARRIER_BLADE   : return "SAHPI_ENT_SUBBOARD_CARRIER_BLADE";
         case SAHPI_ENT_PHYSICAL_SLOT            : return "SAHPI_ENT_PHYSICAL_SLOT";
-        case SAHPI_ENT_PICMG_FRONT_BLADE        : return "SAHPI_ENT_PICMG_FRONT_BLADE";
-        case SAHPI_ENT_SYSTEM_INVENTORY_DEVICE  : return "SAHPI_ENT_SYSTEM_INVENTORY_DEVICE";
-        case SAHPI_ENT_FILTRATION_UNIT          : return "SAHPI_ENT_FILTRATION_UNIT";
-        case SAHPI_ENT_AMC                      : return "SAHPI_ENT_AMC";
-        case SAHPI_ENT_BMC                      : return "SAHPI_ENT_BMC";
-        case SAHPI_ENT_IPMC                     : return "SAHPI_ENT_IPMC";
-        case SAHPI_ENT_MMC                      : return "SAHPI_ENT_MMC";
-        case SAHPI_ENT_SHMC                     : return "SAHPI_ENT_SHMC";
-        case SAHPI_ENT_CPLD                     : return "SAHPI_ENT_CPLD";
-        case SAHPI_ENT_EPLD                     : return "SAHPI_ENT_EPLD";
-        case SAHPI_ENT_FPGA                     : return "SAHPI_ENT_FPGA";
-        case SAHPI_ENT_DASD                     : return "SAHPI_ENT_DASD";
-        case SAHPI_ENT_NIC                      : return "SAHPI_ENT_NIC";
-        case SAHPI_ENT_DSP                      : return "SAHPI_ENT_DSP";
-        case SAHPI_ENT_UCODE                    : return "SAHPI_ENT_UCODE";
-        case SAHPI_ENT_NPU                      : return "SAHPI_ENT_NPU";
-        case SAHPI_ENT_OEM                      : return "SAHPI_ENT_OEM";
     }
 
     char *buf = StringBuffer::next();
@@ -607,9 +562,6 @@ const char *HpiString::eventType(SaHpiEventTypeT eventType) {
         case SAHPI_ET_HPI_SW               : return "SAHPI_ET_HPI_SW";
         case SAHPI_ET_OEM                  : return "SAHPI_ET_OEM";
         case SAHPI_ET_USER                 : return "SAHPI_ET_USER";
-        case SAHPI_ET_DIMI                 : return "SAHPI_ET_DIMI";
-        case SAHPI_ET_DIMI_UPDATE          : return "SAHPI_ET_DIMI_UPDATE";
-        case SAHPI_ET_FUMI                 : return "SAHPI_ET_FUMI";
     }
 
     char *buf = StringBuffer::next();
@@ -686,12 +638,8 @@ const char *HpiString::sensorType(SaHpiSensorTypeT type) {
         case SAHPI_LAN                         : return "SAHPI_LAN";
         case SAHPI_MANAGEMENT_SUBSYSTEM_HEALTH : return "SAHPI_MANAGEMENT_SUBSYSTEM_HEALTH";
         case SAHPI_BATTERY                     : return "SAHPI_BATTERY";
-        case SAHPI_SESSION_AUDIT               : return "SAHPI_SESSION_AUDIT";
-        case SAHPI_VERSION_CHANGE              : return "SAHPI_VERSION_CHANGE";
         case SAHPI_OPERATIONAL                 : return "SAHPI_OPERATIONAL";
         case SAHPI_OEM_SENSOR                  : return "SAHPI_OEM_SENSOR";
-        case SAHPI_COMM_CHANNEL_LINK_STATE     : return "SAHPI_COMM_CHANNEL_LINK_STATE";
-        case SAHPI_MANAGEMENT_BUS_STATE        : return "SAHPI_MANAGEMENT_BUS_STATE";
     }
 
     char *buf = StringBuffer::next();
@@ -1203,8 +1151,6 @@ const char *HpiString::rdrType(SaHpiRdrTypeT rdrType) {
         case SAHPI_INVENTORY_RDR   : return "SAHPI_INVENTORY_RDR";
         case SAHPI_WATCHDOG_RDR    : return "SAHPI_WATCHDOG_RDR";
         case SAHPI_ANNUNCIATOR_RDR : return "SAHPI_ANNUNCIATOR_RDR";
-        case SAHPI_DIMI_RDR        : return "SAHPI_DIMI_RDR";
-        case SAHPI_FUMI_RDR        : return "SAHPI_FUMI_RDR";
     }
 
     char *buf = StringBuffer::next();

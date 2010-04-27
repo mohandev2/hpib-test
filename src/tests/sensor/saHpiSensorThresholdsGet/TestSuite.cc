@@ -35,15 +35,14 @@ using namespace ns_saHpiSensorThresholdsGet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-    add(new GetThresholds("B.02|P99-16:P99-16"));
-    add(new NoCapability("B.02|P99-17:P99-18"));
-    add(new NullSensorThresholds("B.02|P99-19:P99-19"));
-    add(new NonThresholdSensor("B.02|P99-21:P99-21"));
-    add(new NoReadableThresholds("B.02|P99-22:P99-22"));
-    add(new SensorNotPresent("B.02|P99-23:P99-23"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new GetThresholds("P81-16:P81-16"));
+    add(new NoCapability("P81-17:P81-18"));
+    add(new NullSensorThresholds("P81-19:P81-19"));
+    add(new NonThresholdSensor("P81-21:P81-21"));
+    add(new NoReadableThresholds("P81-22:P81-22"));
+    add(new SensorNotPresent("P81-23:P81-23"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

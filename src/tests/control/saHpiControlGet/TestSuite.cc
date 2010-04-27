@@ -37,18 +37,16 @@ using namespace ns_saHpiControlGet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
-    add(new GetControl("B.02|P112-20:P112-20"));
-    add(new WriteOnly("B.02|P112-21:P112-22"));
-    add(new NoCapability("B.02|P112-23:P112-24"));
-    add(new InvalidLineNumber("B.02|P112-25:P112-26"));
-    add(new ControlNotPresent("B.02|P112-27:P112-27"));
-    add(new NullParams("B.02|P112-15:P112-18"));
-    add(new AllLines("B.02|P113-1:P113-4"));
-    add(new MaxCharsLines("B.02|P113-7:P113-8"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new GetControl("P94-20:P94-20"));
+    add(new WriteOnly("P94-21:P94-22"));
+    add(new NoCapability("P94-23:P94-24"));
+    add(new InvalidLineNumber("P94-25:P94-26"));
+    add(new ControlNotPresent("P94-27:P94-27"));
+    add(new NullParams("P94-15:P94-18"));
+    add(new AllLines("P95-1:P95-4"));
+    add(new MaxCharsLines("P95-7:P95-8"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

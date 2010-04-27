@@ -16,12 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * Changes:
- * 2009/05/20 Lars.Wetzel@emerson.com
- *            Add saHpiGetChildEntityPath test cases
- * 2009/10/08 larswetzel@users.sourceforge.net
- *            Add saHpiMyEntityPathGet test cases
  */
 
 #include "TestSuite.h"
@@ -30,11 +24,6 @@
 #include "saHpiResourceSeveritySet/TestSuite.h"
 #include "saHpiResourceTagSet/TestSuite.h"
 #include "saHpiResourceIdGet/TestSuite.h"
-#include "saHpiRptEntryGetByResourceId/TestSuite.h"
-#include "saHpiResourceFailedRemove/TestSuite.h"
-#include "saHpiGetIdByEntityPath/TestSuite.h"
-#include "saHpiMyEntityPathGet/TestSuite.h"
-#include "saHpiGetChildEntityPath/TestSuite.h"
 
 using namespace ns_resource;
 
@@ -48,11 +37,6 @@ TestSuite::TestSuite() {
     add(new ns_saHpiResourceSeveritySet::TestSuite());
     add(new ns_saHpiResourceTagSet::TestSuite());
     add(new ns_saHpiResourceIdGet::TestSuite());
-    add(new ns_saHpiRptEntryGetByResourceId::TestSuite());
-    add(new ns_saHpiResourceFailedRemove::TestSuite());
-    add(new ns_saHpiGetIdByEntityPath::TestSuite());
-    add(new ns_saHpiMyEntityPathGet::TestSuite());
-    add(new ns_saHpiGetChildEntityPath::TestSuite());
 }
 
 /*****************************************************************************

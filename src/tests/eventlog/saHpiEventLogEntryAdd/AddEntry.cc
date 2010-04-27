@@ -16,16 +16,11 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * Changes     
- * 2009/05/19 - Lars.Wetzel@emerson.com
- *              Verify if proper capability is set 
  */
 
 #include "AddEntry.h"
 #include "Report.h"
 #include "EventHelper.h"
-#include "EventLogHelper.h"
 
 using namespace ns_saHpiEventLogEntryAdd;
 
@@ -84,28 +79,17 @@ HpiTestStatus AddEntry::runAddTest(SaHpiSessionIdT sessionId,
 
     EventHelper::fill(&event, "test");
     SaErrorT error = saHpiEventLogEntryAdd(sessionId, resourceId, &event);
-    if ((error == SA_ERR_HPI_INVALID_CMD) &&
-	(!EventLogHelper::hasEvtLogAddCapability(sessionId, resourceId))) {
-      status.assertNotSupport();
-      
-    } else if (error == SA_ERR_HPI_INVALID_DATA ) {
-      status.assertNotSupport();
-
+    if (error == SA_ERR_HPI_INVALID_DATA) {
+        status.assertNotSupport();
     } else if (error != SA_OK) {
-      status.assertFailure(TRACE, EVENT_LOG_ENTRY_ADD, SA_OK, error);
-
+        status.assertFailure(TRACE, EVENT_LOG_ENTRY_ADD, SA_OK, error);
     } else {
         error = saHpiEventLogEntryGet(sessionId, resourceId, SAHPI_NEWEST_ENTRY, 
                                       &prevEntryId, &nextEntryId, &eventLogEntry, NULL, NULL);
         if (error != SA_OK) {
-	  status.assertError(TRACE, EVENT_LOG_ENTRY_ADD, SA_OK, error);
-	    
+            status.assertError(TRACE, EVENT_LOG_ENTRY_GET, SA_OK, error);
         } else if (!EventHelper::isEqual(&event, &eventLogEntry.Event, report)) {
-	  status.assertFailure(TRACE, report.toString());
-
-	} else if (!EventLogHelper::hasEvtLogAddCapability(sessionId,resourceId)) {
-	  status.assertFailure(TRACE, "Function is supported but CAPABILITY isn't set\n");
-
+            status.assertFailure(TRACE, report.toString());
         } else {
             status.assertPass();
         }

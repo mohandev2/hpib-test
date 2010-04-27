@@ -63,17 +63,19 @@ ErrorList *FirstEntry::getExpectedReturnList() {
  *****************************************************************************/
 
 HpiTestStatus FirstEntry::runAlarmTest(SaHpiSessionIdT sessionId) {
-  HpiTestStatus status;
-  SaHpiAlarmT alarm;
+    HpiTestStatus status;
+    SaHpiAlarmT alarm;
 
-  status.assertPass();
+    status.assertPass();
+    SaErrorT error = saHpiAlarmGet(sessionId, SAHPI_FIRST_ENTRY, &alarm);
+    if (error == SA_OK) {
+        if (alarm.AlarmId == SAHPI_FIRST_ENTRY) {
+            status.assertFailure(TRACE, ALARM_GET, SA_OK, error);
+        }
+    } else if (error != SA_ERR_HPI_NOT_PRESENT) {
+        status.assertFailure(TRACE, ALARM_GET, SA_OK,
+                             SA_ERR_HPI_NOT_PRESENT, error);
+    }
 
-  SaErrorT error = saHpiAlarmGet(sessionId, SAHPI_FIRST_ENTRY, &alarm);
-  if (error != SA_ERR_HPI_INVALID_PARAMS) {
-    status.assertFailure(TRACE, ALARM_GET, 
-			 SA_ERR_HPI_INVALID_PARAMS, error);
-  }
-
-  return status;
-
+    return status;
 }

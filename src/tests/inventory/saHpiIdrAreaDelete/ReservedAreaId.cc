@@ -16,9 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * 09/07/29 lars.wetzel@emerson.com
- *          valid for READWRITE_IDR
  */
 
 #include "ReservedAreaId.h"
@@ -29,8 +26,7 @@ using namespace ns_saHpiIdrAreaDelete;
  * Constructor.
  *****************************************************************************/
 
-ReservedAreaId::ReservedAreaId(char *line) : WriteIdrTestCase(line, 
-							      WRITE_TC_READWRITE_IDR) {
+ReservedAreaId::ReservedAreaId(char *line) : WriteIdrTestCase(line) {
 }
 
 /*****************************************************************************

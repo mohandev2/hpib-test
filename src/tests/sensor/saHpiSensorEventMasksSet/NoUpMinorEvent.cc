@@ -185,8 +185,7 @@ bool NoUpMinorEvent::canTestRdr(SaHpiRdrT *rdr) {
         SaHpiSensorRecT *sensorRec = &(rdr->RdrTypeUnion.SensorRec);
         if ((sensorCount < MAX_THRESHOLD_SENSORS) &&
             (sensorRec->ThresholdDefn.IsAccessible) &&
-            (sensorRec->EnableCtrl) &&
-            (sensorRec->EventCtrl == SAHPI_SEC_PER_EVENT)) {
+            (sensorRec->EnableCtrl)) {
 
             return true;
         }

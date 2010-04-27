@@ -17,10 +17,11 @@
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
  */
-#include <stdlib.h>
 
 #include "HpiExecutive.h"
 #include "HpiProperties.h"
+
+#include <stdlib.h>
 
 /*****************************************************************************
  * Constructor.

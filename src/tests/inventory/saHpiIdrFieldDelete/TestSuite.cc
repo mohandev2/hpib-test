@@ -26,6 +26,7 @@
 #include "FieldNotPresent.h"
 #include "ReadOnlyField.h"
 #include "ReadOnlyArea.h"
+#include "ReadOnlyIdr.h"
 #include "ReservedAreaId.h"
 #include "ReservedFieldId.h"
 #include "InvalidSession.h"
@@ -38,19 +39,18 @@ using namespace ns_saHpiIdrFieldDelete;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-    add(new DeleteField("B.02|P137-18:P137-18"));
-    add(new NoCapability("B.02|P137-19:P137-20"));
-    add(new IdrNotPresent("B.02|P137-22:P137-22"));
-    add(new AreaNotPresent("B.02|P137-23:P137-23"));
-    add(new FieldNotPresent("B.02|P137-23:P137-24"));
-    add(new ReadOnlyField("B.02|P137-25:P137-25"));
-    add(new ReadOnlyArea("B.02|P137-25:P137-25"));
-    add(new ReservedAreaId("B.02|P137-26:P137-27"));
-    add(new ReservedFieldId("B.02|P137-26:P137-27"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
-
+    add(new DeleteField("P113-18:P113-18"));
+    add(new NoCapability("P113-19:P113-20"));
+    add(new IdrNotPresent("P113-22:P113-22"));
+    add(new AreaNotPresent("P113-23:P113-23"));
+    add(new FieldNotPresent("P113-23:P113-24"));
+    add(new ReadOnlyField("P113-25:P113-25"));
+    add(new ReadOnlyArea("P113-25:P113-25"));
+    add(new ReadOnlyIdr("P113-25:P113-25"));
+    add(new ReservedAreaId("P113-26:P113-27"));
+    add(new ReservedFieldId("P113-26:P113-27"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

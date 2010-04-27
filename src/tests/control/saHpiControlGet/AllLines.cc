@@ -163,7 +163,7 @@ HpiTestStatus AllLines::runAllLinesTest(SaHpiSessionIdT sessionId,
     SaHpiCtrlNumT ctrlNum = ctrlRec->Num;
     int maxChars = getMaxChars(ctrlRec);
 
-    ctrlStateAllLines.Type = SAHPI_CTRL_TYPE_TEXT;
+    ctrlState.Type = SAHPI_CTRL_TYPE_TEXT;
     ctrlStateAllLines.StateUnion.Text.Line = SAHPI_TLN_ALL_LINES;
     SaErrorT error = saHpiControlGet(sessionId, resourceId,
                                      ctrlRec->Num, &ctrlMode,
@@ -185,6 +185,7 @@ HpiTestStatus AllLines::runAllLinesTest(SaHpiSessionIdT sessionId,
         } else {
             status.assertPass();
             while (status.isOkay() && nextIndex < allLinesBuffer.getLength()) {
+
                 ctrlState.Type = SAHPI_CTRL_TYPE_TEXT;
                 ctrlState.StateUnion.Text.Line = lineNum;
                 error = saHpiControlGet(sessionId, resourceId,

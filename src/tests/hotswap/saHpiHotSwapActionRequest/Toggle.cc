@@ -178,13 +178,13 @@ HpiTestStatus Toggle::runActionTest(SaHpiSessionIdT sessionId,
             status.add(TRACE, extractInsertTest(sessionId, resourceId,
                                                 autoInsertTimeout,
                                                 autoExtractTimeout));
-        } else if (hsState == SAHPI_HS_STATE_INACTIVE) {
+        } else if (hsState == SAHPI_HS_STATE_INACTIVE){
             status.add(TRACE, insertExtractTest(sessionId, resourceId,
                                                 autoInsertTimeout,
                                                 autoExtractTimeout));
         } else {
             status.assertNotSupport();
-	}
+        }
 
         error = saHpiUnsubscribe(sessionId);
         status.checkError(TRACE, UNSUBSCRIBE, error);

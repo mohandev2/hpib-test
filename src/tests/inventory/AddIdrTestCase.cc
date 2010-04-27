@@ -16,13 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * Changes
- * 09/06/25 lars.wetzel@emerson.com
- *          areaType: PRODUCT_INFO -> OEM
- *
- * 09/07/28 lars.wetzel@emerson.com
- *          areaAdd is only possible with read-write IDR 
  */
 
 #include "AddIdrTestCase.h"
@@ -31,7 +24,7 @@
  * Constructor
  *****************************************************************************/
 
-AddIdrTestCase::AddIdrTestCase(bool delArea) : WriteIdrTestCase(WRITE_TC_READWRITE_IDR) {
+AddIdrTestCase::AddIdrTestCase(bool delArea) : WriteIdrTestCase() {
     this->deleteArea = delArea;
 }
 
@@ -39,7 +32,7 @@ AddIdrTestCase::AddIdrTestCase(bool delArea) : WriteIdrTestCase(WRITE_TC_READWRI
  * Constructor
  *****************************************************************************/
 
-AddIdrTestCase::AddIdrTestCase(char *line, bool delArea) : WriteIdrTestCase(line, WRITE_TC_READWRITE_IDR) {
+AddIdrTestCase::AddIdrTestCase(char *line, bool delArea) : WriteIdrTestCase(line) {
     this->deleteArea = delArea;
 }
 
@@ -57,7 +50,7 @@ HpiTestStatus AddIdrTestCase::runWriteIdrTest(SaHpiSessionIdT sessionId,
     SaHpiEntryIdT areaId;
 
     SaErrorT error = saHpiIdrAreaAdd(sessionId, rptEntry->ResourceId, idrRec->IdrId, 
-                                     SAHPI_IDR_AREATYPE_OEM, &areaId);
+                                     SAHPI_IDR_AREATYPE_PRODUCT_INFO, &areaId);
     if (error == SA_ERR_HPI_INVALID_DATA) {
         status.assertNotSupport();
     } else if (error == SA_ERR_HPI_OUT_OF_SPACE) {

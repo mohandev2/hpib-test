@@ -36,17 +36,15 @@ using namespace ns_saHpiRdrGetByInstrumentId;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
-    add(new GetRdr("B.02|P93-21:P93-21"));
-    add(new NoRdrCapability("B.02|P93-23:P93-24"));
-    add(new NoInstrumentCapability("B.02|P93-25:P93-26"));
-    add(new InvalidInstrumentId("B.02|P93-27:P93-28"));
-    add(new InvalidRdrType("B.02|P93-30:P93-30"));
-    add(new NoRecordRdrType("B.02|P93-31:P93-31"));
-    add(new NullRdr("B.02|P93-32:P93-32"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new GetRdr("P76-21:P76-21"));
+    add(new NoRdrCapability("P76-23:P76-24"));
+    add(new NoInstrumentCapability("P76-25:P76-26"));
+    add(new InvalidInstrumentId("P76-27:P76-28"));
+    add(new InvalidRdrType("P76-30:P76-30"));
+    add(new NoRecordRdrType("P76-31:P76-31"));
+    add(new NullRdr("P76-32:P76-32"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

@@ -28,13 +28,11 @@
 #include "saHpiEventLogStateGet/TestSuite.h"
 #include "saHpiEventLogStateSet/TestSuite.h"
 #include "saHpiEventLogOverflowReset/TestSuite.h"
-#include "saHpiEventLogCapabilitiesGet/TestSuite.h"
-
 
 using namespace ns_eventlog;
 
 /*****************************************************************************
- * Constructor
+ * Constructore
  *****************************************************************************/
 
 TestSuite::TestSuite() { 
@@ -47,8 +45,6 @@ TestSuite::TestSuite() {
     add(new ns_saHpiEventLogStateGet::TestSuite());
     add(new ns_saHpiEventLogStateSet::TestSuite());
     add(new ns_saHpiEventLogOverflowReset::TestSuite());
-    add(new ns_saHpiEventLogCapabilitiesGet::TestSuite());
-
 }
 
 /*****************************************************************************

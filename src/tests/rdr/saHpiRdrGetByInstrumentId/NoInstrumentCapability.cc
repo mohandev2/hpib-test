@@ -79,23 +79,19 @@ HpiTestStatus NoInstrumentCapability::runResourceTest(SaHpiSessionIdT sessionId,
                                         SAHPI_CAPABILITY_SENSOR,
                                         SAHPI_CAPABILITY_INVENTORY_DATA,
                                         SAHPI_CAPABILITY_ANNUNCIATOR,
-                                        SAHPI_CAPABILITY_WATCHDOG,
-					SAHPI_CAPABILITY_DIMI,
-					SAHPI_CAPABILITY_FUMI };
+                                        SAHPI_CAPABILITY_WATCHDOG };
 
     SaHpiRdrTypeT rdrType[] = { SAHPI_CTRL_RDR,
                                 SAHPI_SENSOR_RDR,
                                 SAHPI_INVENTORY_RDR, 
                                 SAHPI_ANNUNCIATOR_RDR,
-                                SAHPI_WATCHDOG_RDR,
-                                SAHPI_DIMI_RDR,
-                                SAHPI_FUMI_RDR };
+                                SAHPI_WATCHDOG_RDR };
 
     if (!hasRdrCapability(rptEntry)) {
         status.assertNotSupport();
     } else {
         bool tested = false;
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < 5; i++) {
             if (!hasCapability(rptEntry, capability[i])) {
                 tested = true;
                 status.add(TRACE, runBadRdrTest(sessionId,

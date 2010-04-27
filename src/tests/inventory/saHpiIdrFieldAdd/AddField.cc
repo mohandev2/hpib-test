@@ -16,10 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * Changes
- * 09/07/30 anurag.saxena@emerson.com
- *          valid for WRITE_TC_ALL_IDR
  */
 
 #include "AddField.h"
@@ -31,8 +27,7 @@ using namespace ns_saHpiIdrFieldAdd;
  * Constructor
  *****************************************************************************/
 
-AddField::AddField(char *line) 
-: WriteIdrTestCase(line, WRITE_TC_ALL_IDR) {
+AddField::AddField(char *line) : WriteIdrTestCase(line) {
 }
 
 /*****************************************************************************
@@ -56,9 +51,9 @@ const char *AddField::getDescription() {
  *****************************************************************************/
 
 const char *AddField::getPrecondition() {
-    return "Requires a read-only or read-write Inventory with a read-write\n"
-           "Area for which free space is available and the new field is not\n"
-           "rejected by the implementation, i.e. SA_ERR_HPI_INVALID_DATA.";
+    return "Requires a read-write Inventory with a read-write Area for which\n"
+           "free space is available and the new field is not rejected by the\n"
+           "implementation, i.e. SA_ERR_HPI_INVALID_DATA.";
 }
 
 /*****************************************************************************

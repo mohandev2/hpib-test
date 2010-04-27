@@ -83,21 +83,21 @@ HpiTestStatus SetDiscrete::runCtrlTest(SaHpiSessionIdT sessionId,
         if (error != SA_OK) {
             status.assertError(TRACE, CONTROL_GET, SA_OK, error);
         } else {
-	  status.add(TRACE, setDiscreteValue(sessionId,
-					     resourceId,
-					     ctrlRec,
-					     ctrlRec->TypeUnion.Discrete.Default));
+            status.add(TRACE, setDiscreteValue(sessionId,
+                                               resourceId,
+                                               ctrlRec,
+                                               ctrlRec->TypeUnion.Discrete.Default));
 
-	  // Restore original mode and state
-	  error = saHpiControlSet(sessionId, resourceId,
-				  ctrlNum, ctrlMode, &ctrlState);
-	  if ((error != SA_OK) &&
-	      (error != SA_ERR_HPI_INVALID_DATA) &&
-	      (error != SA_ERR_HPI_INVALID_REQUEST) &&
-	      (error != SA_ERR_HPI_UNSUPPORTED_PARAMS)) {
-	    status.assertError(TRACE, CONTROL_SET, SA_OK, error);
-	  }
-       }
+            // Restore original mode and state
+
+            error = saHpiControlSet(sessionId, resourceId,
+                                    ctrlNum, ctrlMode, &ctrlState);
+            if ((error != SA_OK) &&
+                (error != SA_ERR_HPI_INVALID_DATA) &&
+                (error != SA_ERR_HPI_INVALID_REQUEST)) {
+                status.assertError(TRACE, CONTROL_SET, SA_OK, error);
+            }
+        }
     }
 
     return status;
@@ -120,8 +120,7 @@ HpiTestStatus SetDiscrete::setDiscreteValue(SaHpiSessionIdT sessionId,
     SaErrorT error = saHpiControlSet(sessionId, resourceId, ctrlNum,
                                      SAHPI_CTRL_MODE_MANUAL, &newCtrlState);
     if ((error == SA_ERR_HPI_INVALID_DATA) ||
-        (error == SA_ERR_HPI_INVALID_REQUEST) ||
-	(error != SA_ERR_HPI_UNSUPPORTED_PARAMS)) {
+        (error == SA_ERR_HPI_INVALID_REQUEST)) {
         status.assertNotSupport();
     } else if (error == SA_OK) {
         status.assertPass();

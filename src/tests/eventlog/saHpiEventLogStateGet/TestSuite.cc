@@ -32,13 +32,11 @@ using namespace ns_saHpiEventLogStateGet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
-    add(new GetState("B.02|P72-16:P72-16"));
-    add(new NoCapability("B.02|P72-17:P72-18"));
-    add(new NullEnableState("B.02|P72-20:P72-20"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new GetState("P56-16:P56-16"));
+    add(new NoCapability("P56-17:P56-18"));
+    add(new NullEnableState("P56-20:P56-20"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

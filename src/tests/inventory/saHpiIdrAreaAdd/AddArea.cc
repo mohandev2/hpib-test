@@ -16,12 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * Changes
- * 09/06/25 lars.wetzel@emerson.com
- *          areaType: PRODUCT_INFO -> OEM
- * 09/07/29 lars.wetzel@emerson.com
- *          valid for READWRITE_IDR
  */
 
 #include "AddArea.h"
@@ -32,7 +26,7 @@ using namespace ns_saHpiIdrAreaAdd;
  * Constructor
  *****************************************************************************/
 
-AddArea::AddArea(char *line) : WriteIdrTestCase(line, WRITE_TC_READWRITE_IDR) {
+AddArea::AddArea(char *line) : WriteIdrTestCase(line) {
 }
 
 /*****************************************************************************
@@ -82,7 +76,7 @@ HpiTestStatus AddArea::runWriteIdrTest(SaHpiSessionIdT sessionId,
 
     SaErrorT error = saHpiIdrAreaAdd(sessionId,
                                      rptEntry->ResourceId, idrRec->IdrId, 
-                                     SAHPI_IDR_AREATYPE_OEM, &areaId);
+                                     SAHPI_IDR_AREATYPE_PRODUCT_INFO, &areaId);
 
     if (error == SA_ERR_HPI_INVALID_DATA) {
         status.assertNotSupport();

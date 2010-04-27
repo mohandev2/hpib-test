@@ -16,10 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * Changes
- * 09/06/25 lars.wetzel@emerson.com
- *          areaType: PRODUCT_INFO -> OEM
  */
 
 #include "ReadOnly.h"
@@ -46,7 +42,7 @@ const char *ReadOnly::getName() {
  *****************************************************************************/
 
 const char *ReadOnly::getDescription() {
-    return "The IDR is read-only and does not allow the addition of a new area.";
+    return "The IDR is read-only and does not allow the addition a a new area.";
 }
 
 /*****************************************************************************
@@ -87,7 +83,7 @@ HpiTestStatus ReadOnly::runIdrTest(SaHpiSessionIdT sessionId,
         error = saHpiIdrAreaAdd(sessionId,
                                 rptEntry->ResourceId,
                                 idrRec->IdrId, 
-                                SAHPI_IDR_AREATYPE_OEM,
+                                SAHPI_IDR_AREATYPE_PRODUCT_INFO,
                                 &areaId);
 
         if (error == SA_ERR_HPI_READ_ONLY) {

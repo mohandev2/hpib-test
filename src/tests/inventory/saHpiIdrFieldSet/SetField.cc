@@ -16,19 +16,10 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * Changes
- * 09/07/30 anurag.saxena@emerson.com
- *          lars.wetzel@emerson.com
- *          valid for WRITE_TC_ALL_IDR
- *          Change test case: 
- *          Existing IDR Fields are tested, instead of adding a new area
- *
  */
 
 #include "SetField.h"
 #include "InventoryHelper.h"
-#include "Report.h"
 
 using namespace ns_saHpiIdrFieldSet;
 
@@ -36,8 +27,7 @@ using namespace ns_saHpiIdrFieldSet;
  * Constructor
  *****************************************************************************/
 
-SetField::SetField(char *line) 
-: WriteIdrTestCase(line, WRITE_TC_ALL_IDR) {
+SetField::SetField(char *line) : WriteIdrTestCase(line) {
 }
 
 /*****************************************************************************
@@ -63,8 +53,9 @@ const char *SetField::getDescription() {
  *****************************************************************************/
 
 const char *SetField::getPrecondition() {
-  return "Requires a read-write Field for which a change to the standard\n"
-         "values is allowed.";
+    return "Requires a read-write Inventory with a read-write Area for which\n"
+           "free space is available and a new field for testing purposes\n"
+           "is not rejected by the implementation, i.e. SA_ERR_HPI_INVALID_DATA.";
 }
 
 /*****************************************************************************
@@ -98,18 +89,12 @@ HpiTestStatus SetField::runWriteIdrTest(SaHpiSessionIdT sessionId,
                                                SAHPI_IDR_AREATYPE_UNSPECIFIED,
                                                areaId, &nextAreaId, &header);
 
-	if (error != SA_OK) {
-
-	  // special case: No Area exists in the IDR
-	  if ((error == SA_ERR_HPI_NOT_PRESENT) &&
-	      (areaId == SAHPI_FIRST_ENTRY))
-	    return status;
-	      
-	  status.assertError(TRACE, IDR_AREA_HEADER_GET,
-			     SA_OK, error);
-
-        } else {
-	  if (header.NumFields > 0)
+        if (error == SA_ERR_HPI_NOT_PRESENT) {
+            break;
+        } else if (error != SA_OK) {
+            status.assertError(TRACE, IDR_AREA_HEADER_GET,
+                               SA_OK, SA_ERR_HPI_NOT_PRESENT, error);
+        } else if (!header.ReadOnly) {
             status.add(TRACE, setField(sessionId, rptEntry->ResourceId,
                                        idrRec->IdrId, header.AreaId));
         }
@@ -127,59 +112,50 @@ HpiTestStatus SetField::setField(SaHpiSessionIdT sessionId,
                                  SaHpiResourceIdT resourceId,
                                  SaHpiIdrIdT idrId,
                                  SaHpiEntryIdT areaId) {
-    
     HpiTestStatus status;
-    Report frep;
-    SaHpiIdrFieldT origfield;
+    SaHpiIdrFieldT field;
     SaHpiIdrFieldT newField;
-    SaHpiIdrFieldT tmpField;
-    SaHpiEntryIdT fieldId;
-    SaHpiEntryIdT nextFieldId = SAHPI_FIRST_ENTRY;
-    SaErrorT error;
+    SaHpiEntryIdT nextFieldId;
 
-    while (nextFieldId != SAHPI_LAST_ENTRY 
-	   && !status.hasFault()) {
+    InventoryHelper::fill(&field, areaId);
+    SaErrorT error = saHpiIdrFieldAdd(sessionId, resourceId, idrId, &field);
 
-      fieldId = nextFieldId;
-      error = saHpiIdrFieldGet(sessionId, resourceId, idrId, areaId,
-			       SAHPI_IDR_FIELDTYPE_UNSPECIFIED, fieldId,
-			       &nextFieldId, &origfield);
+    if (error == SA_ERR_HPI_INVALID_DATA) {
+        status.assertNotSupport();
+    } else if (error == SA_ERR_HPI_OUT_OF_SPACE) {
+        status.assertNotSupport();
+    } else if (error != SA_OK) {
+        status.assertError(TRACE, IDR_FIELD_ADD, SA_OK, error);
+    } else {
 
-      if (error != SA_OK) {
-	status.assertError(TRACE, IDR_FIELD_GET, SA_OK, error);
+        field.Field.Data[0] = '2';  // change from '1' to '2'
+        field.Type = SAHPI_IDR_FIELDTYPE_ASSET_TAG;
 
-      } else if (origfield.ReadOnly) {
-	status.assertNotSupport();
+        error = saHpiIdrFieldSet(sessionId, resourceId, idrId, &field);
+        if (error == SA_ERR_HPI_INVALID_DATA) {
+            status.assertNotSupport();
+        } else if (error != SA_OK) {
+            status.assertError(TRACE, IDR_FIELD_SET, SA_OK, error);
+        } else {
+            error = saHpiIdrFieldGet(sessionId, resourceId, idrId, areaId,
+                                     SAHPI_IDR_FIELDTYPE_UNSPECIFIED, field.FieldId, 
+                                     &nextFieldId, &newField);
+            if (error != SA_OK) {
+                status.assertError(TRACE, IDR_FIELD_GET, SA_OK, error, 
+                          "The FieldId (0x%X) returned from "
+                          "saHpiIdrFieldAdd() is most likely incorrect.",
+                          field.FieldId);
+            } else if (newField.Field.Data[0] != '2') {
+                status.assertFailure(TRACE, "The Field data was not changed.");
+            } else if (newField.Type != SAHPI_IDR_FIELDTYPE_ASSET_TAG) {
+                status.assertFailure(TRACE, "The Field Type was not changed.");
+            } else {
+                status.assertPass();
+            }
+        }
 
-      } else {
-	InventoryHelper::fill(&newField, areaId, origfield.FieldId);
-
-	error = saHpiIdrFieldSet(sessionId, resourceId, idrId, &newField);
-	if (error == SA_ERR_HPI_INVALID_DATA) {
-	  status.assertNotSupport();
-	} else if (error != SA_OK) {
-	  status.assertError(TRACE, IDR_FIELD_SET, SA_OK, error);
-	} else {
-
-	  error = saHpiIdrFieldGet(sessionId, resourceId, idrId, areaId,
-				   newField.Type, newField.FieldId,
-				   &nextFieldId, &tmpField);
-	  if (error != SA_OK) {
-	    status.assertError(TRACE, IDR_FIELD_GET, SA_OK, error);
-	  } else if (!InventoryHelper::isEqual(&newField, &tmpField, frep)) {
-	    status.assertError(TRACE, "Difference in Idr-Field content: %s", frep.toString());
-	  }	 
-
-	  // Restore the original values
-	  error = saHpiIdrFieldSet(sessionId, resourceId, idrId, &origfield);
-	  if (error != SA_OK) {
-	    status.assertError(TRACE, IDR_FIELD_SET, SA_OK, error);
-	  } else { 
-	    status.assertPass();
-	  }
-	}
-      }
-
+        error = saHpiIdrFieldDelete(sessionId, resourceId, idrId, areaId, field.FieldId);
+        status.checkError(TRACE, IDR_FIELD_DELETE, error);
     }
 
     return status;

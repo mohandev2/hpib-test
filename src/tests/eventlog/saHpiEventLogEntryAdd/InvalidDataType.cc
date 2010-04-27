@@ -20,7 +20,6 @@
 
 #include "InvalidDataType.h"
 #include "EventHelper.h"
-#include "EventLogHelper.h"
 
 using namespace ns_saHpiEventLogEntryAdd;
 
@@ -74,21 +73,16 @@ HpiTestStatus InvalidDataType::runAddTest(SaHpiSessionIdT sessionId,
     SaHpiEventT event;
     int invalidDataType = (int) SAHPI_TL_TYPE_BINARY + 1;
 
-    if (EventLogHelper::hasEvtLogAddCapability(sessionId, resourceId)) {
-      EventHelper::fill(&event);
-      event.EventDataUnion.UserEvent.UserEventData.DataType = 
-	(SaHpiTextTypeT) invalidDataType;
+    EventHelper::fill(&event);
+    event.EventDataUnion.UserEvent.UserEventData.DataType = 
+                                     (SaHpiTextTypeT) invalidDataType;
 
-      SaErrorT error = saHpiEventLogEntryAdd(sessionId, resourceId, &event);
-      if (error == SA_ERR_HPI_INVALID_PARAMS) {
+    SaErrorT error = saHpiEventLogEntryAdd(sessionId, resourceId, &event);
+    if (error == SA_ERR_HPI_INVALID_PARAMS) {
         status.assertPass();
-      } else {
+    } else {
         status.assertFailure(TRACE, EVENT_LOG_ENTRY_ADD,
                              SA_ERR_HPI_INVALID_PARAMS, error);
-      }
-
-    } else {
-      status.assertNotSupport();
     }
 
     return status;

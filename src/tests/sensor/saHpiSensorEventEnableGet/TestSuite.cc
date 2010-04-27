@@ -33,13 +33,12 @@ using namespace ns_saHpiSensorEventEnableGet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-    add(new GetEventEnableStatus("B.02|P105-16:P105-16"));
-    add(new NoCapability("B.02|P105-17:P105-18"));
-    add(new NullSensorEventsEnabled("B.02|P105-19:P105-19"));
-    add(new SensorNotPresent("B.02|P105-20:P105-20"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new GetEventEnableStatus("P87-16:P87-16"));
+    add(new NoCapability("P87-17:P87-18"));
+    add(new NullSensorEventsEnabled("P87-19:P87-19"));
+    add(new SensorNotPresent("P87-20:P87-20"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

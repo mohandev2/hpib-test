@@ -34,14 +34,13 @@ using namespace ns_saHpiWatchdogTimerGet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-    add(new GetTimer("B.02|P140-16:P140-16"));
-    add(new Countdown("B.02|P242-30:P242-31;P242-64:P242-65"));
-    add(new NoCapability("B.02|P140-17:P140-18"));
-    add(new WatchdogNotPresent("B.02|P140-19:P140-19"));
-    add(new NullWatchdog("B.02|P140-20:P140-20"));
-    add(new InvalidResource("B.02|P29-15:P29-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new GetTimer("P116-16:P116-16"));
+    add(new Countdown("P181-30:P181-31;P181-64:P181-65"));
+    add(new NoCapability("P116-17:P116-18"));
+    add(new WatchdogNotPresent("P116-19:P116-19"));
+    add(new NullWatchdog("P116-20:P116-20"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

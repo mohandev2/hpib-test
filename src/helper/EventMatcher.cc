@@ -18,13 +18,8 @@
  *     Donald A. Barre <dbarre@unh.edu>
  * 
  * Changes:
- * 09/10/30 larswetzel@users.sourceforge.net
- *          Enh Resource and HotSwap matching functionality to allow both types
- * 09/10/14 larswetzel@users.sourceforge.net
- *          Enh ResourceEvent matching functionality
  * 09/06/24 lars.wetzel@emerson.com
  *          Add Matching functionality for ResourceEventType
- *
  */
 
 #include "EventMatcher.h"
@@ -40,7 +35,6 @@ EventMatcher::EventMatcher() {
     matchSeverity = false;
     matchHotSwapState = false;
     hotSwapStateCount = 0;
-    eventStateCount = 0;
     matchSensorNum = false;
     matchSensorAssertion = false;
     matchSensorEventState = false;
@@ -78,21 +72,11 @@ void EventMatcher::setSeverity(SaHpiSeverityT s) {
  * Set the resource event type of the event we are looking for.
  *****************************************************************************/
 
-void EventMatcher::setResourceEventType(SaHpiResourceEventTypeT resourceEvtType) {
+void EventMatcher::setResourceEventType(SaHpiResourceEventTypeT resEvtType) {
     this->matchResourceEventType = true;
-    this->eventStateCount = 1;
-    this->resEvtType[0] = resourceEvtType;
+    this->resEvtType = resEvtType;
 }
 
-/*****************************************************************************
- * Add another resource event type that we are looking for.
- *****************************************************************************/
-
-void EventMatcher::addResourceEventType(SaHpiResourceEventTypeT resourceEvtType) {
-    this->matchResourceEventType = true;
-    this->resEvtType[this->eventStateCount] = resourceEvtType;
-    this->eventStateCount++;
-}
 /*****************************************************************************
  * Set the hot swap state of the event we are looking for.
  *****************************************************************************/
@@ -165,33 +149,22 @@ bool EventMatcher::matches(SaHpiEventT &event) {
     }
 
     if (matchHotSwapState) {
-        if (event.EventType == SAHPI_ET_HOTSWAP) {
-        	    // does the hotswap state match any of the given hot swap states?
-            bool match = false;
-            for (int i = 0; i < hotSwapStateCount && !match; i++) {
-            	    if (event.EventDataUnion.HotSwapEvent.HotSwapState == hotSwapState[i]) {
-            	    	    match = true;
-            	    	}
+        // does the hotswap state match any of the given hot swap states?
+        bool match = false;
+        for (int i = 0; i < hotSwapStateCount && !match; i++) {
+            if (event.EventDataUnion.HotSwapEvent.HotSwapState == hotSwapState[i]) {
+                match = true;
             }
-            if (!match) {
-            	    return false;
-            }
+        }
+        if (!match) {
+            return false;
         }
     }
 
     if (matchResourceEventType) {
-    	    if (event.EventType == SAHPI_ET_RESOURCE) {
-    	        // does the ResourceEvent match any of the given types?
-    	        bool match = false;
-    	        for (int i = 0; i < eventStateCount && !match; i++) {
-                if (event.EventDataUnion.ResourceEvent.ResourceEventType == resEvtType[i]) {
-                	    match = true;
-                }
-            }
-            if (!match) {
-                return false;
-            }
-    	    }    
+      if (event.EventDataUnion.ResourceEvent.ResourceEventType != resEvtType) {
+	return false;
+      }
     }
 
     if (event.EventType == SAHPI_ET_SENSOR_ENABLE_CHANGE) {

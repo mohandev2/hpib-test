@@ -38,19 +38,17 @@ using namespace ns_saHpiIdrAreaDelete;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
-    add(new DeleteArea("B.02|P128-17:P128-17"));
-    add(new NoCapability("B.02|P128-18:P128-19"));
-    add(new IdrNotPresent("B.02|P128-21:P128-21"));
-    add(new AreaIdNotPresent("B.02|P128-22:P128-22"));
-    add(new ReservedAreaId("B.02|P128-23:P128-24"));
-    add(new ReadOnlyArea("B.02|P128-26:P128-26"));
-    add(new ReadOnlyField("B.02|P128-27:P128-27"));
-    add(new ReadOnlyIdr("B.02|P128-28:P128-28"));
-    add(new VerifyDeletedFields("B.02|P128-30:P128-30"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new DeleteArea("P106-17:P106-17"));
+    add(new NoCapability("P106-18:P106-19"));
+    add(new IdrNotPresent("P106-21:P106-21"));
+    add(new AreaIdNotPresent("P106-22:P106-22"));
+    add(new ReservedAreaId("P106-23:P106-24"));
+    add(new ReadOnlyArea("P106-26:P106-26"));
+    add(new ReadOnlyField("P106-27:P106-27"));
+    add(new ReadOnlyIdr("P106-28:P106-28"));
+    add(new VerifyDeletedFields("P106-30:P106-30"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

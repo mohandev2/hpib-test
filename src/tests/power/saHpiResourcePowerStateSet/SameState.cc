@@ -74,6 +74,7 @@ HpiTestStatus SameState::runPowerTest(SaHpiSessionIdT sessionId,
     SaHpiPowerStateT state;
     SaHpiResourceIdT hpiResourceId;
     SaHpiResourceIdT resourceId = rptEntry->ResourceId;
+    bool success;
 
     SaErrorT error = getHpiUserResource(sessionId, &hpiResourceId);
     if (error != SA_OK) {

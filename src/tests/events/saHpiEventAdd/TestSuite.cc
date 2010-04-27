@@ -38,19 +38,17 @@ using namespace ns_saHpiEventAdd;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
-  add(new AddEvent("B.02|P80-16:P80-16"));
-    add(new DomainEventLog("B.02|P80-4:P80-5"));
-    add(new NullEvtEntry("B.02|P80-18:P80-18"));
-    add(new InvalidEventType("B.02|P80-19:P80-20"));
-    add(new InvalidSourceField("B.02|P80-19:P80-20"));
-    add(new InvalidSeverity("B.02|P80-21:P80-21"));
-    add(new InvalidDataType("B.02|P80-24:P80-24"));
-    add(new InvalidDataField("B.02|P80-25:P80-25"));
-    add(new InvalidLanguage("B.02|P80-26:P80-27"));
-    add(new InvalidDataLength("B.02|P80-28:P80-29"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new AddEvent("P64-16:P64-16"));
+    add(new DomainEventLog("P64-4:P64-5"));
+    add(new NullEvtEntry("P64-18:P64-18"));
+    add(new InvalidEventType("P64-19:P64-20"));
+    add(new InvalidSourceField("P64-19:P64-20"));
+    add(new InvalidSeverity("P64-21:P64-21"));
+    add(new InvalidDataType("P64-24:P64-24"));
+    add(new InvalidDataField("P64-25:P64-25"));
+    add(new InvalidLanguage("P64-26:P64-27"));
+    add(new InvalidDataLength("P64-28:P64-29"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

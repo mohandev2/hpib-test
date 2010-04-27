@@ -92,10 +92,9 @@ HpiTestStatus GetControl::runCtrlTest(SaHpiSessionIdT sessionId,
                 status.assertFailure(TRACE, "Control Mode is invalid: %d", mode);
             }
     
- if (!ControlHelper::isValidCtrlType(state.Type)) {
+            if (!ControlHelper::isValidCtrlType(state.Type)) {
                 status.assertFailure(TRACE, "Control Type is invalid: %d", state.Type);
             }
-
         }
     }
 

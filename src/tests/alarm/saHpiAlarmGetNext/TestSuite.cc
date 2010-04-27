@@ -38,21 +38,19 @@ using namespace ns_saHpiAlarmGetNext;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-     add(new AddAlarm("B.02|P84-20:P84-20"));
-    add(new NullAlarm("B.02|P84-23:P84-23"));
-    add(new Order("B.02|P84-32:P84-32"));
-    add(new MismatchedTimestamp("B.02|P84-29:P84-30"));
-    add(new DeletedAlarm("B.02|P84-34:P84-35"));
+    add(new AddAlarm("P67-20:P67-20"));
+    add(new NullAlarm("P67-23:P67-23"));
+    add(new Order("P67-32:P67-32"));
+    add(new MismatchedTimestamp("P67-29:P67-30"));
+    add(new DeletedAlarm("P67-34:P67-35"));
 
-    add(new GetBySeverity("B.02|P84-37:P84-37"));
-    add(new UnacknowledgedOnly("B.02|P84-37:P84-37"));
-    add(new GetUnacknowledgedBySeverity("B.02|P84-37:P84-37"));
+    add(new GetBySeverity("P67-37:P67-37"));
+    add(new UnacknowledgedOnly("P67-37:P67-37"));
+    add(new GetUnacknowledgedBySeverity("P67-37:P67-37"));
 
-    add(new GetAllAlarms("B.02|P84-1:P84-8"));
+    add(new GetAllAlarms("P68-1:P68-8"));
 
-    add(new InvalidSession("B.02|P36-17:P36-18"));
- 
-
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

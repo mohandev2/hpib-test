@@ -16,10 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * Changes
- * 09/07/30 anurag.saxena@emerson.com
- *          valid for WRITE_TC_ALL_IDR
  */
 
 #include "FieldNotPresent.h"
@@ -31,8 +27,7 @@ using namespace ns_saHpiIdrFieldSet;
  * Constructor
  *****************************************************************************/
 
-FieldNotPresent::FieldNotPresent(char *line) 
-: WriteIdrTestCase(line, WRITE_TC_ALL_IDR) {
+FieldNotPresent::FieldNotPresent(char *line) : WriteIdrTestCase(line) {
 }
 
 /*****************************************************************************
@@ -57,8 +52,7 @@ const char *FieldNotPresent::getDescription() {
  *****************************************************************************/
 
 const char *FieldNotPresent::getPrecondition() {
-    return "Requires a read-only or read-write Inventory with a read-only or\n"
-           "read-write Area.";
+    return "Requires a read-write Inventory with a read-write Area.";
 }
 
 /*****************************************************************************
@@ -98,8 +92,7 @@ HpiTestStatus FieldNotPresent::runWriteIdrTest(SaHpiSessionIdT sessionId,
         } else if (error != SA_OK) {
             status.assertError(TRACE, IDR_AREA_HEADER_GET,
                                SA_OK, SA_ERR_HPI_NOT_PRESENT, error);
-//        } else if (!header.ReadOnly) {
-        } else {
+        } else if (!header.ReadOnly) {
             status.add(TRACE, setField(sessionId, rptEntry->ResourceId,
                                        idrRec->IdrId, header.AreaId));
         }

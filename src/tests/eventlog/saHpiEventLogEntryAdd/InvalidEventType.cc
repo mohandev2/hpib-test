@@ -20,7 +20,6 @@
 
 #include "InvalidEventType.h"
 #include "EventHelper.h"
-#include "EventLogHelper.h"
 
 using namespace ns_saHpiEventLogEntryAdd;
 
@@ -79,20 +78,17 @@ HpiTestStatus InvalidEventType::runAddTest(SaHpiSessionIdT sessionId,
         SAHPI_ET_HOTSWAP, SAHPI_ET_WATCHDOG,
         SAHPI_ET_HPI_SW, SAHPI_ET_OEM };
 
-    if (EventLogHelper::hasEvtLogAddCapability(sessionId, resourceId)) {
-      EventHelper::fill(&event);
-      for (int i = 0; i < 8; i++) {
+    EventHelper::fill(&event);
+    for (int i = 0; i < 8; i++) {
         event.EventType = invalidEventType[i];
         SaErrorT error = saHpiEventLogEntryAdd(sessionId, resourceId, &event);
         if (error == SA_ERR_HPI_INVALID_PARAMS) {
-	  status.assertPass();
+            status.assertPass();
         } else {
-	  status.assertFailure(TRACE, EVENT_LOG_ENTRY_ADD, SA_ERR_HPI_INVALID_PARAMS, error);
+            status.assertFailure(TRACE, EVENT_LOG_ENTRY_ADD, SA_ERR_HPI_INVALID_PARAMS, error);
         }
-      }
-    } else {
-      status.assertNotSupport();
     }
+
     return status;
 }
 

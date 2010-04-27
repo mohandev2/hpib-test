@@ -16,10 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * Changes:
- * 09/10/20 Lars Wetzel <larswetzel@users.sourceforge.net>
- * 	        Add Version property
  */
 
 #ifndef __HPIPROPERTIES_H__
@@ -45,8 +41,6 @@ class HpiProperties : public Properties
 private:
     SaHpiDomainIdT invalidDomainId;
     SaHpiSessionIdT invalidSessionId;
-	SaHpiVersionT invalidVersion;
-	SaHpiInt32T invalidInitOptionId;
 
     SaHpiResourceIdT invalidResourceId;
     SaHpiResourceIdT validResourceId;
@@ -110,8 +104,6 @@ public:
 
     SaHpiDomainIdT getInvalidDomainId();
     SaHpiSessionIdT getInvalidSessionId();
-    SaHpiVersionT getInvalidVersion();
-    SaHpiInt32T getInvalidInitOptionId();
 
     SaHpiResourceIdT getValidResourceId();
     SaHpiResourceIdT getInvalidResourceId();

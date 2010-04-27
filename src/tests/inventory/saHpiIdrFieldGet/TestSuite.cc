@@ -41,22 +41,20 @@ using namespace ns_saHpiIdrFieldGet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
-    add(new NoCapability("B.02|P129-28:P129-29"));
-    add(new IdrNotPresent("B.02|P129-31:P129-31"));
-    add(new AreaNotPresent("B.02|P129-32:P129-32"));
-    add(new FieldNotPresent("B.02|P129-33:P129-34"));
-    add(new FieldTypeMismatch("B.02|P129-35:P129-36"));
-    add(new InvalidFieldType("B.02|P129-38:P129-38"));
-    add(new ReservedAreaId("B.02|P130-1:P130-1"));
-    add(new ReservedFieldId("B.02|P130-1:P130-1"));
-    add(new NullNextFieldId("B.02|P130-2:P130-2"));
-    add(new NullField("B.02|P130-3:P130-3"));
-    add(new Traversal("B.02|P130-7:P130-10"));
-    add(new TraversalByFieldType("B.02|P130-11:P130-14"));
-    add(new InvalidResource("B.02|P30-15:P30-16"));
-    add(new InvalidSession("B.02|P30-17:P30-18"));
-
+    add(new NoCapability("P107-28:P107-29"));
+    add(new IdrNotPresent("P107-31:P107-31"));
+    add(new AreaNotPresent("P107-32:P107-32"));
+    add(new FieldNotPresent("P107-33:P107-34"));
+    add(new FieldTypeMismatch("P107-35:P107-36"));
+    add(new InvalidFieldType("P107-38:P107-38"));
+    add(new ReservedAreaId("P108-1:P108-1"));
+    add(new ReservedFieldId("P108-1:P108-1"));
+    add(new NullNextFieldId("P108-2:P108-2"));
+    add(new NullField("P108-3:P108-3"));
+    add(new Traversal("P108-7:P108-10"));
+    add(new TraversalByFieldType("P108-11:P108-14"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

@@ -17,7 +17,6 @@
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
  */
-#include <stdlib.h>
 
 #include <cstring>
 

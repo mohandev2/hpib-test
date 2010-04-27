@@ -16,10 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * Changes
- * 09/07/30 anurag.saxena@emerson.com
- *          valid for WRITE_TC_ALL_IDR
  */
 
 #include "UnspecifiedFieldType.h"
@@ -32,7 +28,7 @@ using namespace ns_saHpiIdrFieldAdd;
  *****************************************************************************/
 
 UnspecifiedFieldType::UnspecifiedFieldType(char *line)
-: WriteIdrTestCase(line, WRITE_TC_ALL_IDR) {
+: WriteIdrTestCase(line) {
 }
 
 /*****************************************************************************
@@ -57,9 +53,9 @@ const char *UnspecifiedFieldType::getDescription() {
  *****************************************************************************/
 
 const char *UnspecifiedFieldType::getPrecondition() {
-    return "Requires a read-only or read-write Inventory with a read-write\n"
-           "Area for which free space is available and the new field is not\n"
-           "rejected by the implementation, i.e. SA_ERR_HPI_INVALID_DATA.";
+    return "Requires a read-write Inventory with a read-write Area for which\n"
+           "free space is available and the new field is not rejected by the\n"
+           "implementation, i.e. SA_ERR_HPI_INVALID_DATA.";
 }
 
 /*****************************************************************************
@@ -123,8 +119,7 @@ HpiTestStatus UnspecifiedFieldType::addField(SaHpiSessionIdT sessionId,
     SaErrorT error = saHpiIdrFieldAdd(sessionId, resourceId, idrId, &field);
 
     if (error == SA_ERR_HPI_INVALID_DATA) {
-     //Invalid data is also allowed   
-     status.assertPass();
+        status.assertNotSupport();
     } else if (error == SA_ERR_HPI_OUT_OF_SPACE) {
         status.assertNotSupport();
     } else if (error != SA_ERR_HPI_INVALID_PARAMS) {

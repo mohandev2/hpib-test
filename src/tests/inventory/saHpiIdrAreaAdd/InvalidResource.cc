@@ -16,10 +16,6 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
- *
- * Changes
- * 09/06/25 lars.wetzel@emerson.com
- *          areaType: PRODUCT_INFO -> OEM
  */
 
 #include "InvalidResource.h"
@@ -44,7 +40,7 @@ HpiTestStatus InvalidResource::runSessionTest(SaHpiSessionIdT sessionId) {
 
     SaErrorT error = saHpiIdrAreaAdd(sessionId, getInvalidResourceId(),
                                      SAHPI_DEFAULT_INVENTORY_ID, 
-                                     SAHPI_IDR_AREATYPE_OEM, &areaId);
+                                     SAHPI_IDR_AREATYPE_PRODUCT_INFO, &areaId);
 
     if (error == SA_ERR_HPI_INVALID_RESOURCE) {
         status.assertPass();

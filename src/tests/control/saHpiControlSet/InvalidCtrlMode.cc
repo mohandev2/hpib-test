@@ -14,9 +14,8 @@
  * this program; if not, write to the Free Software Foundation, Inc., 59 Temple 
  * Place - Suite 330, Boston, MA 02111-1307 USA.
  *
- * Modified By:
- *     Akmal Muqeeth
- *     Pushpa Datla
+ * Author(s):
+ *     Donald A. Barre <dbarre@unh.edu>
  */
 
 #include "InvalidCtrlMode.h"
@@ -86,8 +85,7 @@ HpiTestStatus InvalidCtrlMode::runCtrlTest(SaHpiSessionIdT sessionId,
             (error == SA_ERR_HPI_INVALID_REQUEST)) {
             status.assertNotSupport();
 
-        } else if (error == SA_ERR_HPI_INVALID_PARAMS)
- {
+        } else if (error == SA_ERR_HPI_INVALID_PARAMS) {
             status.assertPass();
         } else {
             status.assertFailure(TRACE, CONTROL_SET,

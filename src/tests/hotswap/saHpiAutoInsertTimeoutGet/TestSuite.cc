@@ -30,11 +30,9 @@ using namespace ns_saHpiAutoInsertTimeoutGet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
-    add(new GetTimeout("B.02|P196-16:P196-16"));
-    add(new NullTimeout("B.02|P196-17:P196-17"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new GetTimeout("P141-16:P141-16"));
+    add(new NullTimeout("P141-17:P141-17"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************

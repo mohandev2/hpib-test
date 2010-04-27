@@ -35,16 +35,14 @@ using namespace ns_saHpiRdrGet;
  *****************************************************************************/
 
 TestSuite::TestSuite() {
-
-    add(new GetAll("B.02|P92-20:P92-20"));
-    add(new NoCapability("B.02|P92-21:P92-22"));
-    add(new InvalidEntryId("B.02|P92-23:P92-24"));
-    add(new LastEntry("B.02|P92-26:P92-26"));
-    add(new NullNextEntryId("B.02|P92-27:P92-27"));
-    add(new NullRdr("B.02|P92-28:P92-28"));
-    add(new InvalidResource("B.02|P36-15:P36-16"));
-    add(new InvalidSession("B.02|P36-17:P36-18"));
-
+    add(new GetAll("P75-20:P75-20"));
+    add(new NoCapability("P75-21:P75-22"));
+    add(new InvalidEntryId("P75-23:P75-24"));
+    add(new LastEntry("P75-26:P75-26"));
+    add(new NullNextEntryId("P75-27:P75-27"));
+    add(new NullRdr("P75-28:P75-28"));
+    add(new InvalidResource("P29-40:P29-42"));
+    add(new InvalidSession("P29-43:P29-45"));
 }
 
 /*****************************************************************************
