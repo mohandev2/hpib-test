@@ -87,6 +87,7 @@ HpiTestStatus GetChildEntityPath::parseDomainEntTree(SaHpiSessionIdT sessionId,
        instanceId == SAHPI_FIRST_ENTRY) {
       // We are in a leaf of the tree - there is no more child
       error = SA_OK;
+      status.assertPass();
       break;
       
     } else if(error != SA_OK) {
