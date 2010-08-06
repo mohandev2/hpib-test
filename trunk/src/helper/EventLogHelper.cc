@@ -52,16 +52,20 @@ HpiTestStatus EventLogHelper::addEntry(SaHpiSessionIdT sessionId,
     HpiTestStatus status;
     SaHpiEventT event;
 
-    EventHelper::fill(&event);
-    SaErrorT error = saHpiEventLogEntryAdd(sessionId, resourceId, &event);
-    if (error == SA_ERR_HPI_INVALID_DATA) {
+    if (hasEvtLogAddCapability(sessionId, resourceId)) {
+        EventHelper::fill(&event);
+        SaErrorT error = saHpiEventLogEntryAdd(sessionId, resourceId, &event);
+        if (error == SA_ERR_HPI_INVALID_DATA) {
+            status.assertNotSupport();
+        } else if (ignoreOutOfSpace && error == SA_ERR_HPI_OUT_OF_SPACE) {
+            // do nothing
+        } else if (error != SA_OK) {
+            status.assertError(TRACE, EVENT_LOG_ENTRY_ADD, SA_OK, error);
+        }
+    } else {
         status.assertNotSupport();
-    } else if (ignoreOutOfSpace && error == SA_ERR_HPI_OUT_OF_SPACE) {
-        // do nothing
-    } else if (error != SA_OK) {
-        status.assertError(TRACE, EVENT_LOG_ENTRY_ADD, SA_OK, error);
     }
-
+    
     return status;
 }
 
@@ -82,14 +86,17 @@ HpiTestStatus EventLogHelper::addEntry(SaHpiSessionIdT sessionId,
                                        SaHpiResourceIdT resourceId,
                                        SaHpiEventT *event) {
     HpiTestStatus status;
-
-    SaErrorT error = saHpiEventLogEntryAdd(sessionId, resourceId, event);
-    if (error == SA_ERR_HPI_INVALID_DATA) {
+    
+    if (hasEvtLogAddCapability(sessionId, resourceId)) {
+        SaErrorT error = saHpiEventLogEntryAdd(sessionId, resourceId, event);
+        if (error == SA_ERR_HPI_INVALID_DATA) {
+            status.assertNotSupport();
+        } else if (error != SA_OK) {
+            status.assertError(TRACE, EVENT_LOG_ENTRY_ADD, SA_OK, error);
+        }
+    } else {
         status.assertNotSupport();
-    } else if (error != SA_OK) {
-        status.assertError(TRACE, EVENT_LOG_ENTRY_ADD, SA_OK, error);
     }
-
     return status;
 }
 
