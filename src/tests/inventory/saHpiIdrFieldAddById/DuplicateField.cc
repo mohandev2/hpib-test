@@ -100,9 +100,12 @@ HpiTestStatus DuplicateField::runWriteIdrTest(SaHpiSessionIdT sessionId,
 					     SAHPI_IDR_AREATYPE_UNSPECIFIED,
 					     areaId, &nextAreaId, &header);
 
+      if ((areaId == SAHPI_FIRST_ENTRY) && (error == SA_ERR_HPI_NOT_PRESENT) ) {
+        status.assertNotSupport();
+        break;
+      }
       if (error != SA_OK) {
-	status.assertError(TRACE, IDR_AREA_HEADER_GET,
-			   SA_OK, SA_ERR_HPI_NOT_PRESENT, error);
+	status.assertError(TRACE, IDR_AREA_HEADER_GET, SA_OK, error);
 
       } else if (!header.ReadOnly) {
 
