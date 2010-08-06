@@ -476,7 +476,7 @@ const char *HpiString::entityType(SaHpiEntityTypeT entityType) {
         case SAHPI_ENT_REMOTE                   : return "SAHPI_ENT_REMOTE";
         case SAHPI_ENT_EXTERNAL_ENVIRONMENT     : return "SAHPI_ENT_EXTERNAL_ENVIRONMENT";
         case SAHPI_ENT_BATTERY                  : return "SAHPI_ENT_BATTERY";
-	case SAHPI_ENT_RESERVED_1               : return "SAHPI_ENT_RESERVED_1";
+        case SAHPI_ENT_RESERVED_1               : return "SAHPI_ENT_RESERVED_1";
         case SAHPI_ENT_RESERVED_2               : return "SAHPI_ENT_RESERVED_2";
         case SAHPI_ENT_RESERVED_3               : return "SAHPI_ENT_RESERVED_3";
         case SAHPI_ENT_RESERVED_4               : return "SAHPI_ENT_RESERVED_4";
@@ -533,6 +533,12 @@ const char *HpiString::entityType(SaHpiEntityTypeT entityType) {
         case SAHPI_ENT_UCODE                    : return "SAHPI_ENT_UCODE";
         case SAHPI_ENT_NPU                      : return "SAHPI_ENT_NPU";
         case SAHPI_ENT_OEM                      : return "SAHPI_ENT_OEM";
+        case SAHPI_ENT_INTERFACE                : return "SAHPI_ENT_INTERFACE";
+        case SAHPI_ENT_MICROTCA_CHASSIS         : return "SAHPI_ENT_MICROTCA_CHASSIS";
+        case SAHPI_ENT_CARRIER                  : return "SAHPI_ENT_CARRIER";
+        case SAHPI_ENT_CARRIER_MANAGER          : return "SAHPI_ENT_CARRIER_MANAGER";
+        case SAHPI_ENT_CONFIG_DATA              : return "SAHPI_ENT_CONFIG_DATA";
+        case SAHPI_ENT_INDICATOR                : return "SAHPI_ENT_INDICATOR";
     }
 
     char *buf = StringBuffer::next();
@@ -692,6 +698,9 @@ const char *HpiString::sensorType(SaHpiSensorTypeT type) {
         case SAHPI_OEM_SENSOR                  : return "SAHPI_OEM_SENSOR";
         case SAHPI_COMM_CHANNEL_LINK_STATE     : return "SAHPI_COMM_CHANNEL_LINK_STATE";
         case SAHPI_MANAGEMENT_BUS_STATE        : return "SAHPI_MANAGEMENT_BUS_STATE";
+        case SAHPI_COMM_CHANNEL_BUS_STATE      : return "SAHPI_COMM_CHANNEL_BUS_STATE";
+        case SAHPI_CONFIG_DATA                 : return "SAHPI_CONFIG_DATA";
+        case SAHPI_POWER_BUDGET                : return "SAHPI_POWER_BUDGET";
     }
 
     char *buf = StringBuffer::next();
@@ -925,6 +934,12 @@ const char *HpiString::ctrlOutputType(SaHpiCtrlOutputTypeT ctrlOutputType) {
         case SAHPI_CTRL_POWER_STATE          : return "SAHPI_CTRL_POWER_STATE";
         case SAHPI_CTRL_LCD_DISPLAY          : return "SAHPI_CTRL_LCD_DISPLAY";
         case SAHPI_CTRL_OEM                  : return "SAHPI_CTRL_OEM";
+        case SAHPI_CTRL_GENERIC_ADDRESS      : return "SAHPI_CTRL_GENERIC_ADDRESS";
+        case SAHPI_CTRL_IP_ADDRESS           : return "SAHPI_CTRL_IP_ADDRESS";
+        case SAHPI_CTRL_RESOURCE_ID          : return "SAHPI_CTRL_RESOURCE_ID";
+        case SAHPI_CTRL_POWER_BUDGET         : return "SAHPI_CTRL_POWER_BUDGET";
+        case SAHPI_CTRL_ACTIVATE             : return "SAHPI_CTRL_ACTIVATE";
+        case SAHPI_CTRL_RESET                : return "SAHPI_CTRL_RESET";
     } 
 
     char *buf = StringBuffer::next();
