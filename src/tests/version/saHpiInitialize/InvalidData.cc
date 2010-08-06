@@ -19,6 +19,7 @@
  */
 
 #include "InvalidData.h"
+#include <stdlib.h>
 
 using namespace ns_saHpiInitialize;
 
