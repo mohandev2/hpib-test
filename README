@@ -48,26 +48,21 @@ follow the below instructions.
 
 a. A default SaHpi.h is included in the top-level include directory.
    If necessary that header file can be replaced in order to correctly
-   build on your platform.
+   build on your platform. The OpenHPI header file could be found in
+   /usr/include/openhpi or /usr/local/include/openhpi directory
 
 b. Modify the LDFLAGS file.  The LDFLAGS file contains the name of the 
    HPI library to link against and optionally the directory where that
    HPI library is located.
 
-c. Decide to build the test suite in threaded or non-threaded mode.  In
-   thread mode, pthreads are used.  Run "./configure" with the desired option.
+c. Run ./bootstrap.sh
 
-          ./configure --with-threads
-           
-           or
+d. Run ./configure
+   By default "./configure" builds with pthreads. If you would like to turn
+   off threads run ./configure --without-threads
 
-          ./configure --without-threads
-
-   Building with threads is the default, i.e. executing "./configure" 
-   with no options is same as using "--with-threads."
-
-d. Build the "hpitest" executable by entering "make" at the command line.
-
+e. Build the "hpitest" executable by entering "make" at the command line.
+ 
 *********************************************************************************
 3.0 Running the HPI Test Suite
 
