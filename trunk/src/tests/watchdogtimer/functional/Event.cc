@@ -233,10 +233,15 @@ HpiTestStatus Event::handleEvent(SaHpiSessionIdT, SaHpiEventT *event) {
         if ((watchdogData[i].resourceId == event->Source) && 
             (watchdogData[i].watchdogNum == watchdogNum)) {
 
-            foundEventCount++;
             pushLocation("Resource", event->Source);
             pushLocation("Watchdog", watchdogNum);
 
+            if (watchdogEvent->WatchdogAction == SAHPI_WAE_TIMER_INT) {
+               popLocation();
+               popLocation();
+               break;
+            }
+            foundEventCount++;
             watchdogData[i].foundEvent = true;
 
             if (watchdogEvent->WatchdogAction != SAHPI_WAE_NO_ACTION) {

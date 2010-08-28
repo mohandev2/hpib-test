@@ -16,6 +16,10 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
+ *
+ * Changes:
+ * 09/11/27 Lars Wetzel <larswetzel@users.sourceforge.net>
+ * 	        Add Fumi support
  */
 
 #include "RootTestSuite.h"
@@ -36,6 +40,7 @@
 #include "configuration/TestSuite.h"
 #include "reset/TestSuite.h"
 #include "power/TestSuite.h"
+#include "fumi/TestSuite.h"
 
 /*****************************************************************************
  * Constructor
@@ -59,6 +64,7 @@ RootTestSuite::RootTestSuite() {
     add(new ns_configuration::TestSuite());
     add(new ns_reset::TestSuite());
     add(new ns_power::TestSuite());
+    add(new ns_fumi::TestSuite());
 }
 
 /*****************************************************************************

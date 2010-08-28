@@ -20,6 +20,8 @@
  * Changes
  * 2009/05/19 - Lars.Wetzel@emerson.com
  *              Allow Sensor->Types > OEM
+ * 2010/03/12 - <larswetzel@users.sourceforge.net>
+ *              new function setMask for setting reading or writing mask properly
  */
 
 #include "SensorHelper.h"
@@ -986,3 +988,51 @@ bool SensorHelper::isValidSensorRange(SaHpiSensorRangeT *range,
     return valid;
 }
 
+/*****************************************************************************
+ * Set the IsSupport flags as it is given by the mask
+ *****************************************************************************/
+void SensorHelper::setMask(SaHpiSensorThresholdsT *sensorThresholds, 
+                            SaHpiSensorThdMaskT mask) {
+
+   if (mask & SAHPI_STM_UP_CRIT) {
+      sensorThresholds->UpCritical.IsSupported = SAHPI_TRUE;
+   } else {
+   	  sensorThresholds->UpCritical.IsSupported = SAHPI_FALSE;
+   }
+   if (mask & SAHPI_STM_UP_MAJOR) {
+      sensorThresholds->UpMajor.IsSupported = SAHPI_TRUE;
+   } else {
+   	  sensorThresholds->UpMajor.IsSupported = SAHPI_FALSE;
+   }
+   if (mask & SAHPI_STM_UP_MINOR) {
+   	  sensorThresholds->UpMinor.IsSupported = SAHPI_TRUE;
+   } else {
+   	  sensorThresholds->UpMinor.IsSupported = SAHPI_FALSE;
+   }
+   if (mask & SAHPI_STM_LOW_MINOR) {
+   	  sensorThresholds->LowMinor.IsSupported = SAHPI_TRUE;
+   } else {
+   	  sensorThresholds->LowMinor.IsSupported = SAHPI_FALSE;
+   }
+   if (mask & SAHPI_STM_LOW_MAJOR) {
+   	  sensorThresholds->LowMajor.IsSupported = SAHPI_TRUE;
+   } else {
+   	  sensorThresholds->LowMajor.IsSupported = SAHPI_FALSE;
+   }
+   if (mask & SAHPI_STM_LOW_CRIT) {
+   	  sensorThresholds->LowCritical.IsSupported = SAHPI_TRUE;
+   } else {
+   	  sensorThresholds->LowCritical.IsSupported = SAHPI_FALSE;
+   }
+   if (mask & SAHPI_STM_UP_HYSTERESIS) {
+   	  sensorThresholds->PosThdHysteresis.IsSupported = SAHPI_TRUE;
+   } else {
+   	  sensorThresholds->PosThdHysteresis.IsSupported = SAHPI_FALSE;
+   }
+   if (mask & SAHPI_STM_LOW_HYSTERESIS) {
+   	  sensorThresholds->NegThdHysteresis.IsSupported = SAHPI_TRUE;
+   } else {
+   	  sensorThresholds->NegThdHysteresis.IsSupported = SAHPI_FALSE;
+   }
+
+}

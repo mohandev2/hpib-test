@@ -141,6 +141,12 @@ const char *HpiString::function(HpiFunctionId funcId) {
 
         case RESOURCE_POWER_STATE_GET     : return "saHpiResourcePowerStateGet()";
         case RESOURCE_POWER_STATE_SET     : return "saHpiResourcePowerStateSet()";
+        
+        case FUMI_AUTO_ROLLBACK_DISABLE_GET : return "saHpiFumiAutoRollbackDisableGet()";
+        case FUMI_AUTO_ROLLBACK_DISABLE_SET : return "saHpiFumiAutoRollbackDisableSet()";
+        case FUMI_LOGICAL_TARGET_INFO_GET : return "saHpiFumiLogicalTargetInfoGet()";
+        case FUMI_SERVICE_IMPACT_GET      : return "saHpiFumiServiceImpactGet()";
+        case FUMI_SPEC_INFO_GET           : return "saHpiFumiSpecInfoGet()";
     }
 
     char *buf = StringBuffer::next();
@@ -1015,11 +1021,11 @@ const char *HpiString::watchdogAction(SaHpiWatchdogActionT action) {
 
 const char *HpiString::watchdogActionEvent(SaHpiWatchdogActionEventT actionEvent) {
     switch (actionEvent) {
-        case SAHPI_WAE_NO_ACTION    : return "SAHPI_WAI_NO_ACTION";
-        case SAHPI_WAE_RESET        : return "SAHPI_WAI_RESET";
-        case SAHPI_WAE_POWER_DOWN   : return "SAHPI_WAI_POWER_DOWN";
-        case SAHPI_WAE_POWER_CYCLE  : return "SAHPI_WAI_POWER_CYCLE";
-        case SAHPI_WAE_TIMER_INT    : return "SAHPI_WAI_TIMER_INT";
+        case SAHPI_WAE_NO_ACTION    : return "SAHPI_WAE_NO_ACTION";
+        case SAHPI_WAE_RESET        : return "SAHPI_WAE_RESET";
+        case SAHPI_WAE_POWER_DOWN   : return "SAHPI_WAE_POWER_DOWN";
+        case SAHPI_WAE_POWER_CYCLE  : return "SAHPI_WAE_POWER_CYCLE";
+        case SAHPI_WAE_TIMER_INT    : return "SAHPI_WAE_TIMER_INT";
     }
 
     char *buf = StringBuffer::next();

@@ -16,6 +16,9 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
+ * Fix
+ * 10/03/12 Set up the correct writing mask at restoring the original values
+ *          <larswetzel@users.sourceforge.net>
  */
 
 #include "OutOfOrder.h"
@@ -84,6 +87,8 @@ HpiTestStatus OutOfOrder::runThresholdTest(SaHpiSessionIdT sessionId,
 
     SaErrorT error = saHpiSensorThresholdsGet(sessionId, rptEntry->ResourceId,
                                               sensorRec->Num, &origSensorThresholds);
+    SensorHelper::setMask(&origSensorThresholds, sensorRec->ThresholdDefn.WriteThold);
+      
     if (error == SA_ERR_HPI_BUSY) {
         status.assertNotSupport();
     } else if (error == SA_ERR_HPI_ENTITY_NOT_PRESENT) {
@@ -122,7 +127,6 @@ HpiTestStatus OutOfOrder::runThresholdTest(SaHpiSessionIdT sessionId,
                             } 
 
                             // restore the threshold just in case it was mistakenly changed
-
                             error = saHpiSensorThresholdsSet(sessionId, rptEntry->ResourceId,
                                                              sensorRec->Num, &origSensorThresholds);
                             status.checkError(TRACE, SENSOR_THRESHOLDS_SET, error);

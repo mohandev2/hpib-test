@@ -1,3 +1,32 @@
+2010/08/28 hpi-b 3.2.0 larswetzel@users.sourceforge.net
+    - Fix #3040864 saHpiInitialize/InvalidData.cc missing include of stdlib
+    - Fix #3033766 Use SaHpi.h version 3.02
+    - Fix #3033741 EventLog - AddEvent Capability isn't checked
+    - Fix #3033710 Clean up of Build System
+    - Fix #3033693 Wrong Error Message in saHpiIdrFieldAddById/DuplicateField
+    - Fix #2994068 GetChildEntityPath GetChildEntityPath returns UNKNOWN instead of PASS
+
+2010/03/12 hpi-b 3.1.1.fumi larswetzel@users.sourceforge.net
+    - Fix Watchdogtimer/functional/Event.cc
+    - Fix HpiString.cc
+
+2010/03/12 hpi-b 3.1.1.fumi larswetzel@users.sourceforge.net
+    - Enh SensorHelper::setMask 
+    - Fix ThresholdsSet/OutOfOrder.cc
+    - Fix ThresholdsSet/SetUpCritical.cc
+
+2009/12/28 hpi-b 3.1.1.fumi larswetzel@users.sourceforge.net
+    - Int saHpiFumiAutoRollbackDisableGet
+    - Int saHpiFumiAutoRollbackDisableSet
+
+2009/11/27 hpi-b 3.1.1.fumi larswetzel@users.sourceforge.net
+	Based on hpi-b 3.1.1 following changese were made
+	- Enh hpitest framework to support fumi test case
+	- Add FumiTestCase class preview
+	- Int saHpiFumiLogicalTargetInfoGet from UNH
+	- Int saHpiFumiServiceImpactGet from UNH
+	- Int saHpiFumiSpecInfoGet from UNH
+
 2009/11/02 hpi-b 3.1.1 larswetzel@users.sourceforge.net
 	Based on hpi-b 2.0.11 following changes were made
 	- Add test cases for saHpiInitialize
