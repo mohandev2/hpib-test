@@ -20,6 +20,8 @@
  * Changes:
  * 09/10/20 Lars Wetzel <larswetzel@users.sourceforge.net>
  * 	        Add Version property
+ * 09/11/27 Lars Wetzel <larswetzel@users.sourceforge.net>
+ * 	        Add Fumi property
  */
 
 #ifndef __HPIPROPERTIES_H__
@@ -82,6 +84,9 @@ private:
 
     SaHpiEntryIdT validAnnouncementId;
     SaHpiEntryIdT invalidAnnouncementId;
+    
+    SaHpiFumiNumT validFumiNum;
+    SaHpiFumiNumT invalidFumiNum;
 
     int hsTestTimeout;
     TimeMsec autoInsertionTime;
@@ -148,6 +153,9 @@ public:
     SaHpiEntryIdT getValidAnnouncementId();
     SaHpiEntryIdT getInvalidAnnouncementId();
 
+	SaHpiFumiNumT getValidFumiNum();
+	SaHpiFumiNumT getInvalidFumiNum();
+	
     /*********************************************************
      * HotSwap properties.
      *********************************************************/

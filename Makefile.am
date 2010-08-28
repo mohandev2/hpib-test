@@ -38,6 +38,7 @@ INCLUDES =  \
 	-I$(top_srcdir)/src/tests/domain \
 	-I$(top_srcdir)/src/tests/eventlog \
 	-I$(top_srcdir)/src/tests/events \
+	-I$(top_srcdir)/src/tests/fumi \
 	-I$(top_srcdir)/src/tests/hotswap \
 	-I$(top_srcdir)/src/tests/inventory \
 	-I$(top_srcdir)/src/tests/power \
@@ -1784,6 +1785,72 @@ hpitest_SOURCES = \
 	./src/tests/power/saHpiResourcePowerStateSet/PowerCycleOff.h \
 	./src/tests/power/saHpiResourcePowerStateSet/SameState.cc \
 	./src/tests/power/saHpiResourcePowerStateSet/SameState.h \
+	./src/tests/fumi/TestSuite.h \
+	./src/tests/fumi/TestSuite.cc \
+	./src/tests/fumi/FumiTestCase.h \
+	./src/tests/fumi/FumiTestCase.cc \
+	./src/tests/fumi/saHpiFumiLogicalTargetInfoGet/TestSuite.h \
+	./src/tests/fumi/saHpiFumiLogicalTargetInfoGet/TestSuite.cc \
+	./src/tests/fumi/saHpiFumiLogicalTargetInfoGet/GetBankInfo.cc \
+	./src/tests/fumi/saHpiFumiLogicalTargetInfoGet/GetBankInfo.h \
+	./src/tests/fumi/saHpiFumiLogicalTargetInfoGet/InvalidResource.cc \
+	./src/tests/fumi/saHpiFumiLogicalTargetInfoGet/InvalidResource.h \
+	./src/tests/fumi/saHpiFumiLogicalTargetInfoGet/InvalidSession.cc \
+	./src/tests/fumi/saHpiFumiLogicalTargetInfoGet/InvalidSession.h \
+	./src/tests/fumi/saHpiFumiLogicalTargetInfoGet/NoCapability.cc \
+	./src/tests/fumi/saHpiFumiLogicalTargetInfoGet/NoCapability.h \
+	./src/tests/fumi/saHpiFumiLogicalTargetInfoGet/NullBankInfo.cc \
+	./src/tests/fumi/saHpiFumiLogicalTargetInfoGet/NullBankInfo.h \
+	./src/tests/fumi/saHpiFumiServiceImpactGet/TestSuite.cc \
+	./src/tests/fumi/saHpiFumiServiceImpactGet/TestSuite.h \
+	./src/tests/fumi/saHpiFumiServiceImpactGet/GetServiceImpact.cc \
+	./src/tests/fumi/saHpiFumiServiceImpactGet/GetServiceImpact.h \
+	./src/tests/fumi/saHpiFumiServiceImpactGet/InvalidResource.cc \
+	./src/tests/fumi/saHpiFumiServiceImpactGet/InvalidResource.h \
+	./src/tests/fumi/saHpiFumiServiceImpactGet/InvalidSession.cc \
+	./src/tests/fumi/saHpiFumiServiceImpactGet/InvalidSession.h \
+	./src/tests/fumi/saHpiFumiServiceImpactGet/NoCapability.cc \
+	./src/tests/fumi/saHpiFumiServiceImpactGet/NoCapability.h \
+	./src/tests/fumi/saHpiFumiServiceImpactGet/NullServiceImpact.cc \
+	./src/tests/fumi/saHpiFumiServiceImpactGet/NullServiceImpact.h \
+	./src/tests/fumi/saHpiFumiSpecInfoGet/TestSuite.h \
+	./src/tests/fumi/saHpiFumiSpecInfoGet/TestSuite.cc \
+	./src/tests/fumi/saHpiFumiSpecInfoGet/GetInfo.cc \
+	./src/tests/fumi/saHpiFumiSpecInfoGet/GetInfo.h \
+	./src/tests/fumi/saHpiFumiSpecInfoGet/InvalidResource.cc \
+	./src/tests/fumi/saHpiFumiSpecInfoGet/InvalidResource.h \
+	./src/tests/fumi/saHpiFumiSpecInfoGet/InvalidSession.cc \
+	./src/tests/fumi/saHpiFumiSpecInfoGet/InvalidSession.h \
+	./src/tests/fumi/saHpiFumiSpecInfoGet/NoCapability.cc \
+	./src/tests/fumi/saHpiFumiSpecInfoGet/NoCapability.h \
+	./src/tests/fumi/saHpiFumiSpecInfoGet/NullInfo.cc \
+	./src/tests/fumi/saHpiFumiSpecInfoGet/NullInfo.h \
+	./src/tests/fumi/saHpiFumiAutoRollbackDisableGet/TestSuite.h \
+	./src/tests/fumi/saHpiFumiAutoRollbackDisableGet/TestSuite.cc \
+	./src/tests/fumi/saHpiFumiAutoRollbackDisableGet/FumiNotPresent.cc \
+	./src/tests/fumi/saHpiFumiAutoRollbackDisableGet/FumiNotPresent.h \
+	./src/tests/fumi/saHpiFumiAutoRollbackDisableGet/GetDisable.cc \
+	./src/tests/fumi/saHpiFumiAutoRollbackDisableGet/GetDisable.h \
+	./src/tests/fumi/saHpiFumiAutoRollbackDisableGet/InvalidResource.cc \
+	./src/tests/fumi/saHpiFumiAutoRollbackDisableGet/InvalidResource.h \
+	./src/tests/fumi/saHpiFumiAutoRollbackDisableGet/InvalidSession.cc \
+	./src/tests/fumi/saHpiFumiAutoRollbackDisableGet/InvalidSession.h \
+	./src/tests/fumi/saHpiFumiAutoRollbackDisableGet/NoCapability.cc \
+	./src/tests/fumi/saHpiFumiAutoRollbackDisableGet/NoCapability.h \
+	./src/tests/fumi/saHpiFumiAutoRollbackDisableGet/NullDisable.cc \
+	./src/tests/fumi/saHpiFumiAutoRollbackDisableGet/NullDisable.h \
+	./src/tests/fumi/saHpiFumiAutoRollbackDisableSet/TestSuite.h \
+	./src/tests/fumi/saHpiFumiAutoRollbackDisableSet/TestSuite.cc \
+	./src/tests/fumi/saHpiFumiAutoRollbackDisableSet/FumiNotPresent.cc \
+	./src/tests/fumi/saHpiFumiAutoRollbackDisableSet/FumiNotPresent.h \
+	./src/tests/fumi/saHpiFumiAutoRollbackDisableSet/InvalidResource.cc \
+	./src/tests/fumi/saHpiFumiAutoRollbackDisableSet/InvalidResource.h \
+	./src/tests/fumi/saHpiFumiAutoRollbackDisableSet/InvalidSession.cc \
+	./src/tests/fumi/saHpiFumiAutoRollbackDisableSet/InvalidSession.h \
+	./src/tests/fumi/saHpiFumiAutoRollbackDisableSet/NoCapability.cc \
+	./src/tests/fumi/saHpiFumiAutoRollbackDisableSet/NoCapability.h \
+	./src/tests/fumi/saHpiFumiAutoRollbackDisableSet/SetDisable.cc \
+	./src/tests/fumi/saHpiFumiAutoRollbackDisableset/SetDisable.h \
 	./src/util/Time.cc \
 	./src/util/List.h \
 	./src/util/Timer.cc \

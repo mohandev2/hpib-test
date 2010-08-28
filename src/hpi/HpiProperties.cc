@@ -20,6 +20,8 @@
  * Changes:
  * 09/10/20 Lars Wetzel <larswetzel@users.sourceforge.net>
  * 	        Add Version property
+ * 09/11/27 Lars Wetzel <larswetzel@users.sourceforge.net>
+ * 	        Add Fumi properties
  */
 #include <stdlib.h>
 
@@ -84,6 +86,9 @@ void HpiProperties::setDefaults() {
     validAnnouncementId = VALID_ID;
     invalidAnnouncementId = INVALID_ID;
 
+    validFumiNum = VALID_ID;
+    invalidFumiNum = INVALID_ID;
+    
     autoInsertionTime = 5000; // five seconds
     autoExtractionTime = 5000; // five seconds
 
@@ -174,6 +179,10 @@ void HpiProperties::setPropertyValue(const char *name, const char *value) {
         validAnnouncementId = toUlong(name, value);
     } else if (strcmp(name, "InvalidAnnouncementId") == 0) {
         invalidAnnouncementId = toUlong(name, value);
+    } else if (strcmp(name, "ValidFumiNum") == 0) {
+        validAnnunciatorNum = toUlong(name, value);
+    } else if (strcmp(name, "InvalidFumiNum") == 0) {
+        invalidAnnunciatorNum = toUlong(name, value);
     } else if (strcmp(name, "MaxEventQueueSize") == 0) {
         maxEventQueueSize = atoi(value);
     } else if (strcmp(name, "MaxEventRetries") == 0) {
@@ -425,6 +434,22 @@ SaHpiEntryIdT HpiProperties::getValidAnnouncementId() {
 
 SaHpiEntryIdT HpiProperties::getInvalidAnnouncementId() {
     return invalidAnnouncementId;
+}
+
+/*****************************************************************************
+ * Return the valid Fumi Num.
+ *****************************************************************************/
+
+SaHpiFumiNumT HpiProperties::getValidFumiNum() {
+    return validFumiNum;
+}
+
+/*****************************************************************************
+ * Return the invalid Fumi Num.
+ *****************************************************************************/
+
+SaHpiFumiNumT HpiProperties::getInvalidFumiNum() {
+    return invalidFumiNum;
 }
 
 /*****************************************************************************

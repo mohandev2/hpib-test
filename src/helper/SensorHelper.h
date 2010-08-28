@@ -73,6 +73,9 @@ public:
                              SaHpiSensorThdMaskT mask,
                              SaHpiSensorReadingT &reading);
 
+    static void setMask(SaHpiSensorThresholdsT *sensorThresholds,
+                          SaHpiSensorThdMaskT mask);
+                          
     static bool isValidThresholds(SaHpiSensorThresholdsT *sensorThresholds,
                                   SaHpiSensorRecT *sensorRec, Report &report);
 

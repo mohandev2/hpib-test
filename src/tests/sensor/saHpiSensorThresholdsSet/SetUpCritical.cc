@@ -16,6 +16,9 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
+ * Fix
+ * 10/03/12 Restore the complete sensor
+ *          <larswetzel@users.sourceforge.net>
  */
 
 #include "SetUpCritical.h"
@@ -139,12 +142,9 @@ HpiTestStatus SetUpCritical::runThresholdTest(SaHpiSessionIdT sessionId,
                 }
 
                 // Restore the original UpCritical Threshold
-
-                SensorHelper::fill(&sensorThresholds, sensorRec->DataFormat.ReadingType);
-                sensorThresholds.UpCritical.IsSupported = SAHPI_TRUE;
-                sensorThresholds.UpCritical.Value = origSensorThresholds.UpCritical.Value;
+                SensorHelper::setMask(&origSensorThresholds, sensorRec->ThresholdDefn.WriteThold);
                 error = saHpiSensorThresholdsSet(sessionId, rptEntry->ResourceId,
-                                                  sensorRec->Num, &sensorThresholds);
+                                                  sensorRec->Num, &origSensorThresholds);
                 status.checkError(TRACE, SENSOR_THRESHOLDS_SET, error);
             }
         }

@@ -33,6 +33,6 @@ const char *HpiTestSuite::getTitle() {
 }
 
 const char *HpiTestSuite::getBanner() {
-    return "Hardware Platform Interface Test Suite<br />(SAI-HPI-B.01.01)";
+    return "Hardware Platform Interface Test Suite<br />(SAI-HPI-B.03.01)";
 }
 

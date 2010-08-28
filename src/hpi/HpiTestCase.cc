@@ -16,6 +16,10 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
+ *
+ * Changes:  
+ * 09/11/27 Lars Wetzel <larswetzel@users.sourceforge.net>
+ * 	        Add Fumi property
  */
 
 #include "SafTest.h"
@@ -274,6 +278,22 @@ SaHpiEntryIdT HpiTestCase::getValidAnnouncementId() {
 
 SaHpiEntryIdT HpiTestCase::getInvalidAnnouncementId() {
     return getProperties()->getInvalidAnnouncementId();
+}
+
+/*****************************************************************************
+ * Return a valid Fumi Num.
+ *****************************************************************************/
+
+SaHpiFumiNumT HpiTestCase::getValidFumiNum() {
+    return getProperties()->getValidFumiNum();
+}
+
+/*****************************************************************************
+ * Return an invalid Fumi Num.
+ *****************************************************************************/
+
+SaHpiFumiNumT HpiTestCase::getInvalidFumiNum() {
+    return getProperties()->getInvalidFumiNum();
 }
 
 /*****************************************************************************
@@ -635,6 +655,14 @@ bool HpiTestCase::hasManagedHotSwapCapability(SaHpiRptEntryT *rptEntry) {
 
 bool HpiTestCase::hasConfigurationCapability(SaHpiRptEntryT *rptEntry) {
     return (rptEntry->ResourceCapabilities & SAHPI_CAPABILITY_CONFIGURATION);
+}
+
+/*****************************************************************************
+ * Does this resource have the FUMI capability?
+ *****************************************************************************/
+
+bool HpiTestCase::hasFumiCapability(SaHpiRptEntryT *rptEntry) {
+    return (rptEntry->ResourceCapabilities & SAHPI_CAPABILITY_FUMI);
 }
 
 /*****************************************************************************

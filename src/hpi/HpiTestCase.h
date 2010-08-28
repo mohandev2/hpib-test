@@ -16,6 +16,10 @@
  *
  * Author(s):
  *     Donald A. Barre <dbarre@unh.edu>
+ * 
+ * Changes:
+ * 09/11/27 Lars Wetzel <larswetzel@users.sourceforge.net>
+ * 	        Add Fumi property
  */
 
 #ifndef __HPITESTCASE_H__
@@ -95,6 +99,9 @@ protected:
 
     SaHpiEntryIdT getValidAnnouncementId();
     SaHpiEntryIdT getInvalidAnnouncementId();
+    
+    SaHpiFumiNumT getValidFumiNum();
+    SaHpiFumiNumT getInvalidFumiNum();
 
     /*********************************************************
      * Get general configuration values.
@@ -143,6 +150,7 @@ protected:
     bool hasFruCapability(SaHpiRptEntryT *rptEntry);
     bool hasManagedHotSwapCapability(SaHpiRptEntryT *rptEntry);
     bool hasConfigurationCapability(SaHpiRptEntryT *rptEntry);
+    bool hasFumiCapability(SaHpiRptEntryT *rptEntry);
 
     /*********************************************************
      * Miscellaneous methods
