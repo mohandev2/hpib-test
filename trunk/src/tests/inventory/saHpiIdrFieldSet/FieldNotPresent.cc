@@ -126,7 +126,8 @@ HpiTestStatus FieldNotPresent::setField(SaHpiSessionIdT sessionId,
     } else if (error == SA_ERR_HPI_NOT_PRESENT) {
         status.assertPass();
     } else {
-        status.assertFailure(TRACE, IDR_FIELD_SET, SA_ERR_HPI_NOT_PRESENT, error);
+        status.assertFailure(TRACE, IDR_FIELD_SET, SA_ERR_HPI_NOT_PRESENT, error, 
+           "Test failed for AreaId %d, FieldId %d", field.AreaId, field.FieldId);
     }
 
     return status;
