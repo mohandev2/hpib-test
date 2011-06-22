@@ -171,11 +171,23 @@ HpiTestStatus SetField::setField(SaHpiSessionIdT sessionId,
 	  }	 
 
 	  // Restore the original values
-	  error = saHpiIdrFieldSet(sessionId, resourceId, idrId, &origfield);
-	  if (error != SA_OK) {
-	    status.assertError(TRACE, IDR_FIELD_SET, SA_OK, error);
-	  } else { 
-	    status.assertPass();
+          error = saHpiIdrFieldSet(sessionId, resourceId, idrId, &origfield);
+	  if (origfield.Type > SAHPI_IDR_FIELDTYPE_UNSPECIFIED) {
+		  if (error == SA_ERR_HPI_INVALID_PARAMS){
+    // As per SaHpi.h it is ok to have this return. 
+        status.assertPassWarn(TRACE, "Returned SA_ERR_HPI_INVALID_PARAMS. "
+                                     "Field Type is > SAHPI_IDR_FIELDTYPE_UNSPECIFIED.");
+		  } else {
+			  status.assertError(TRACE, IDR_FIELD_SET,
+					  SA_ERR_HPI_INVALID_PARAMS, error);
+		  }
+	  }
+	  else {
+		  if (error != SA_OK) {
+			  status.assertError(TRACE, IDR_FIELD_SET, SA_OK, error);
+		  } else { 
+			  status.assertPass();
+		  }
 	  }
 	}
       }
