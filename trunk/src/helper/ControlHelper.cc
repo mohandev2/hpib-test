@@ -36,19 +36,21 @@ bool ControlHelper::isValid(SaHpiCtrlRecT *rec, Report &report) {
         (rec->Type > SAHPI_CTRL_TYPE_TEXT && rec->Type < SAHPI_CTRL_TYPE_OEM)) {
 
         valid = false;
-        report.add("CtrlRec->Type is invalid [0x%X].", rec->Type);
+        report.add("CtrlRec->Type for is invalid [0x%X] for CtrlRec->Num %d.",rec->Type, rec->Num);
     }
 
-    if (rec->OutputType < SAHPI_CTRL_GENERIC || rec->OutputType > SAHPI_CTRL_OEM) {
+    if (rec->OutputType < SAHPI_CTRL_GENERIC || rec->OutputType > SAHPI_CTRL_OUTPUT_TYPE_MAX_VALID) {
         valid = false;
-        report.add("CtrlRec->OutputType is invalid [0x%X].", rec->OutputType);
+        report.add("CtrlRec->OutputType is invalid [0x%X] for CtrlRec->Num %d.",
+                    rec->OutputType, rec->Num);
     }
 
     if (rec->DefaultMode.Mode < SAHPI_CTRL_MODE_AUTO || 
         rec->DefaultMode.Mode > SAHPI_CTRL_MODE_MANUAL) {
 
         valid = false;
-        report.add("CtrlRec->DefaultMode.Mode is invalid [0x%X].", rec->DefaultMode.Mode);
+        report.add("CtrlRec->DefaultMode.Mode is invalid [0x%X] for CtrlRec->Num %d.", 
+                    rec->DefaultMode.Mode, rec->Num);
     }
 
     SaHpiCtrlRecAnalogT *analog;
