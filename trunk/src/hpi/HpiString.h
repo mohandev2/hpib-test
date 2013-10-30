@@ -22,6 +22,7 @@
 #define __HPISTRING_H__
 
 #include <string>
+#include <stdio.h>
 
 #include "SafTest.h"
 #include "HpiFunctionId.h"

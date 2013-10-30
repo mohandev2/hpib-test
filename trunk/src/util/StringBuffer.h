@@ -31,6 +31,7 @@
 #ifndef __STRINGBUFFER_H__
 #define __STRINGBUFFER_H__
 
+#include <stdio.h>
 #include <string>
 
 using namespace std;
