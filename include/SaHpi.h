@@ -612,6 +612,25 @@ typedef enum
     SAHPI_ENT_RESERVED_3,
     SAHPI_ENT_RESERVED_4,
     SAHPI_ENT_RESERVED_5,
+    /**
+     * The following five symbols are not defined by the SAF HPI specification,
+     * but are included here to align with the IPMI 2.0 specification
+     **/
+    /* Processing blade (a blade module that contain processor, memory,
+       and I/O connections that enable it to operate as a processing entity) */
+    SAHPI_ENT_PROCESSING_BLADE = SAHPI_ENT_RESERVED_1,
+    /* Connectivity switch (a blade module that provides the fabric or network
+       connection for one or more processing blades or modules) */
+    SAHPI_ENT_CONNECTIVITY_SWITCH = SAHPI_ENT_RESERVED_2,
+    /* Processor/memory module (processor and memory together on a module) */
+    SAHPI_ENT_PROCESSOR_MEMORY_MODULE = SAHPI_ENT_RESERVED_3,
+    /* I/O module
+       (a module that contains the main elements of an I/O interface) */
+    SAHPI_ENT_IO_MODULE = SAHPI_ENT_RESERVED_4,
+    /* Processor/ IO module (a module that contains the main elements of an I/O
+       interface combination processor and i/O module) */
+    SAHPI_ENT_PROCESSOR_IO_MODULE = SAHPI_ENT_RESERVED_5,
+
     SAHPI_ENT_MC_FIRMWARE    ,     /* Management Controller Firmware,
                          represents firmware or software
                         running on a management controller */
@@ -638,6 +657,19 @@ typedef enum
                                     Reserved for future use by this
                                     specification */
     SAHPI_ENT_CHASSIS_SPECIFIC    = SAHPI_ENT_IPMI_GROUP + 0x90,
+    SAHPI_ENT_CHASSIS_SPECIFIC01, /* include numbers from SaHpiXtca.h to */
+    SAHPI_ENT_CHASSIS_SPECIFIC02, /* avoid gcc-4.6 warning */
+    SAHPI_ENT_CHASSIS_SPECIFIC03, /* from -Wswitch check */
+    SAHPI_ENT_CHASSIS_SPECIFIC04,
+    SAHPI_ENT_CHASSIS_SPECIFIC05,
+    SAHPI_ENT_CHASSIS_SPECIFIC06,
+    SAHPI_ENT_CHASSIS_SPECIFIC07,
+    SAHPI_ENT_CHASSIS_SPECIFIC08,
+    SAHPI_ENT_CHASSIS_SPECIFIC09,
+    SAHPI_ENT_CHASSIS_SPECIFIC10,
+    SAHPI_ENT_CHASSIS_SPECIFIC11,
+    SAHPI_ENT_CHASSIS_SPECIFIC12,
+    SAHPI_ENT_CHASSIS_SPECIFIC13,
     SAHPI_ENT_BOARD_SET_SPECIFIC  = SAHPI_ENT_IPMI_GROUP + 0xB0,
     SAHPI_ENT_OEM_SYSINT_SPECIFIC = SAHPI_ENT_IPMI_GROUP + 0xD0,
     SAHPI_ENT_ROOT = SAHPI_ENT_ROOT_VALUE,
@@ -8895,7 +8927,7 @@ SaErrorT SAHPI_API saHpiFumiSourceInfoGet (
 **   returned is SAHPI_LAST_ENTRY.
 **
 *******************************************************************************/
-SaErrorT saHpiFumiSourceComponentInfoGet (
+SaErrorT SAHPI_API saHpiFumiSourceComponentInfoGet (
     SAHPI_IN    SaHpiSessionIdT           SessionId,
     SAHPI_IN    SaHpiResourceIdT          ResourceId,
     SAHPI_IN    SaHpiFumiNumT            FumiNum,
@@ -9017,7 +9049,7 @@ SaErrorT SAHPI_API saHpiFumiTargetInfoGet (
 **   SAHPI_LAST_ENTRY.
 **
 *******************************************************************************/
-SaErrorT saHpiFumiTargetComponentInfoGet (
+SaErrorT SAHPI_API saHpiFumiTargetComponentInfoGet (
     SAHPI_IN    SaHpiSessionIdT           SessionId,
     SAHPI_IN    SaHpiResourceIdT          ResourceId,
     SAHPI_IN    SaHpiFumiNumT            FumiNum,
@@ -9128,7 +9160,7 @@ SaErrorT SAHPI_API saHpiFumiLogicalTargetInfoGet (
 **   SAHPI_LAST_ENTRY.
 **
 *******************************************************************************/
-SaErrorT saHpiFumiLogicalTargetComponentInfoGet (
+SaErrorT SAHPI_API saHpiFumiLogicalTargetComponentInfoGet (
     SAHPI_IN    SaHpiSessionIdT               SessionId,
     SAHPI_IN    SaHpiResourceIdT              ResourceId,
     SAHPI_IN    SaHpiFumiNumT                FumiNum,

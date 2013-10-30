@@ -21,6 +21,8 @@
 #ifndef __USERPROMPTER_H__
 #define __USERPROMPTER_H__
 
+#include <stdio.h>
+
 /*****************************************************************************
  * Prompts the user and wait for an Enter to continue.
  *****************************************************************************/
