@@ -31,6 +31,7 @@
 #include "ResourcesListEntry.h"
 #include "ListIterator.h"
 #include "HpiString.h"
+#include <unistd.h>
 
 
 using namespace ns_saHpiResourceFailedRemove;
