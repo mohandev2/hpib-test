@@ -39,7 +39,7 @@ HpiTestStatus NoCapability::runResourceTest(SaHpiSessionIdT sessionId,
     HpiTestStatus status;
     SaHpiHsStateT state;
 
-    if (hasManagedHotSwapCapability(rptEntry)) {
+    if (hasFruHotSwapCapability(rptEntry)) {
         status.assertNotSupport();
     } else {
         SaErrorT error = saHpiHotSwapStateGet(sessionId,

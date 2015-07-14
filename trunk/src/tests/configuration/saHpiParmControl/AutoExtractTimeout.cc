@@ -86,7 +86,7 @@ HpiTestStatus AutoExtractTimeout::runParmTest(SaHpiSessionIdT sessionId,
     SaHpiTimeoutT origTimeout;
     SaHpiTimeoutT newTimeout;
 
-    if (!hasManagedHotSwapCapability(rptEntry)) {
+    if (!hasFruHotSwapCapability(rptEntry)) {
         status.assertNotSupport();
     } else if (rptEntry->HotSwapCapabilities & SAHPI_HS_CAPABILITY_AUTOEXTRACT_READ_ONLY) {
         status.assertNotSupport();

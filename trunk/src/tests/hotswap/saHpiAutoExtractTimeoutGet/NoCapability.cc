@@ -39,7 +39,7 @@ HpiTestStatus NoCapability::runResourceTest(SaHpiSessionIdT sessionId,
     HpiTestStatus status;
     SaHpiTimeoutT timeout;
 
-    if (hasManagedHotSwapCapability(rptEntry)) {
+    if (hasFruHotSwapCapability(rptEntry)) {
         status.assertNotSupport();
     } else {
         SaErrorT error = saHpiAutoExtractTimeoutGet(sessionId,

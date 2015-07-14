@@ -650,6 +650,14 @@ bool HpiTestCase::hasManagedHotSwapCapability(SaHpiRptEntryT *rptEntry) {
 }
 
 /*****************************************************************************
+ * Does this resource have the FRU HOTSWAP capability?
+ *****************************************************************************/
+
+bool HpiTestCase::hasFruHotSwapCapability(SaHpiRptEntryT *rptEntry) {
+    return (rptEntry->ResourceCapabilities & SAHPI_CAPABILITY_FRU);
+}
+
+/*****************************************************************************
  * Does this resource have the CONFIGURATION capability?
  *****************************************************************************/
 
