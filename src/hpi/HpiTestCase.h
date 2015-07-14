@@ -149,6 +149,7 @@ protected:
     bool hasInventoryCapability(SaHpiRptEntryT *rptEntry);
     bool hasFruCapability(SaHpiRptEntryT *rptEntry);
     bool hasManagedHotSwapCapability(SaHpiRptEntryT *rptEntry);
+    bool hasFruHotSwapCapability(SaHpiRptEntryT *rptEntry);
     bool hasConfigurationCapability(SaHpiRptEntryT *rptEntry);
     bool hasFumiCapability(SaHpiRptEntryT *rptEntry);
 

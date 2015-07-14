@@ -68,7 +68,7 @@ HpiTestStatus HotSwapTestCase::runResourceTest(SaHpiSessionIdT sessionId,
 
     if (!hasFruCapability(rptEntry)) {
         status.assertNotSupport();
-    } else if (!hasManagedHotSwapCapability(rptEntry)) {
+    } else if (!hasFruHotSwapCapability(rptEntry)) {
         status.assertNotSupport();
     } else {
         status.add(TRACE, gatherHsInfo(sessionId, rptEntry));
