@@ -38,11 +38,11 @@ HpiTestStatus InvalidSession::run() {
     SaHpiEntityPathT 	entitypath;
 
     SaErrorT error = saHpiMyEntityPathGet(getInvalidSessionId(), &entitypath);
-    if (error == SA_ERR_HPI_INVALID_SESSION) {
+    if (error == SA_ERR_HPI_UNKNOWN) {
         status.assertPass();
     } else {
         status.assertFailure(TRACE, MY_ENTITY_PATH_GET, 
-                             SA_ERR_HPI_INVALID_SESSION, error);
+                             SA_ERR_HPI_UNKNOWN, error);
     } 
 
     return status;
