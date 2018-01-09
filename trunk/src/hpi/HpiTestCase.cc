@@ -654,7 +654,7 @@ bool HpiTestCase::hasManagedHotSwapCapability(SaHpiRptEntryT *rptEntry) {
  *****************************************************************************/
 
 bool HpiTestCase::hasFruHotSwapCapability(SaHpiRptEntryT *rptEntry) {
-    return (rptEntry->ResourceCapabilities & SAHPI_CAPABILITY_FRU);
+    return (rptEntry->ResourceCapabilities & SAHPI_CAPABILITY_MANAGED_HOTSWAP);
 }
 
 /*****************************************************************************
