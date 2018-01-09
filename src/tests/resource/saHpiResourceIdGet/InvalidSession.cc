@@ -38,11 +38,11 @@ HpiTestStatus InvalidSession::run() {
     SaHpiResourceIdT resourceId;
 
     SaErrorT error = saHpiResourceIdGet(getInvalidSessionId(), &resourceId);
-    if (error == SA_ERR_HPI_INVALID_SESSION) {
+    if (error == SA_ERR_HPI_UNKNOWN) {
         status.assertPass();
     } else {
         status.assertFailure(TRACE, RESOURCE_ID_GET, 
-                             SA_ERR_HPI_INVALID_SESSION, error);
+                             SA_ERR_HPI_UNKNOWN, error);
     } 
 
     return status;

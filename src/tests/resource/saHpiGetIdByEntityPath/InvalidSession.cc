@@ -46,11 +46,11 @@ HpiTestStatus InvalidSession::run() {
     SaErrorT error = saHpiGetIdByEntityPath(getInvalidSessionId(),entityPath, SAHPI_NO_RECORD,
 					    SAHPI_FIRST_ENTRY, &resourceId, &instrumentId, &rptUpdateCount);
     
-    if (error == SA_ERR_HPI_INVALID_SESSION) {
+    if (error == SA_ERR_HPI_INVALID_PARAMS) {
         status.assertPass();
     } else {
         status.assertFailure(TRACE, GET_ID_BY_ENTITY_PATH, 
-                              SA_ERR_HPI_INVALID_SESSION, error);
+                              SA_ERR_HPI_INVALID_PARAMS, error);
     } 
 
     return status;
