@@ -3,6 +3,8 @@ noinst_PROGRAMS = hpitest
 AM_CXXFLAGS = -Wextra -Wall -Wshadow -Woverloaded-virtual 
 
 AM_LDFLAGS = $(shell cat LDFLAGS | grep -v \^\#)
+LDADD = -lopenhpi
+
 AUTOMAKE_OPTIONS = subdir-objects
 
 EXTRA_DIST = \
