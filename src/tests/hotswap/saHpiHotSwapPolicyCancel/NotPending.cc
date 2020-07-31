@@ -26,7 +26,7 @@ using namespace ns_saHpiHotSwapPolicyCancel;
  * Constructor
  *****************************************************************************/
 
-NotPending::NotPending(char *line) : HotSwapTestCase(false, line) {
+NotPending::NotPending(char *line) : HotSwapTestCase(line, false) {
 }
 
 /*****************************************************************************
