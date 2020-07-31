@@ -86,7 +86,7 @@ private:
     static TimerEntry timer[];
 #ifdef USE_THREADS
     static pthread_mutex_t mutex;
-    static std::atomic<bool> testsRunning;
+    static std::atomic_bool testsAreRunning;
 #endif
 
 
