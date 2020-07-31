@@ -23,6 +23,10 @@
 
 #include <config.h>
 
+#ifdef USE_THREADS
+#include <atomic>
+#endif
+
 /*****************************************************************************
  * Constants
  *****************************************************************************/
@@ -82,12 +86,15 @@ private:
     static TimerEntry timer[];
 #ifdef USE_THREADS
     static pthread_mutex_t mutex;
+    static std::atomic_bool testsAreRunning;
 #endif
+
 
 public:
     Timer() { }
 
     static void start();
+    static void stop();
     static void sleep(unsigned int seconds);
     static void usecSleep(long usec);
     static int add(TimeoutFunc func, int seconds, void *data);

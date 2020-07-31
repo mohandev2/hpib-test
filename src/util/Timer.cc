@@ -21,13 +21,14 @@
 #include <config.h>
 
 #ifdef USE_THREADS
+#include <atomic>
 #include <pthread.h>
 #endif
 
-#include <sys/select.h>
-#include <iostream>
 #include <cstdio>
 #include <csignal>
+#include <iostream>
+#include <sys/select.h>
 #include <unistd.h>
 
 #include "Timer.h"
@@ -41,6 +42,7 @@ TimerEntry Timer::timer[MAX_TIMERS];
 
 #ifdef USE_THREADS
 pthread_mutex_t Timer::mutex = PTHREAD_MUTEX_INITIALIZER;
+std::atomic_bool Timer::testsAreRunning(false);
 #endif
 
 /*****************************************************************************
@@ -51,7 +53,7 @@ pthread_mutex_t Timer::mutex = PTHREAD_MUTEX_INITIALIZER;
 
 void Timer::start() {
 
-    for (int i = 0; i < MAX_TIMERS; i++) {
+    for (int i = 0; i < MAX_TIMERS; ++i) {
         timer[i].isActive = false;
     }
 
@@ -59,11 +61,24 @@ void Timer::start() {
     signal(SIGALRM, alarmHandler);
     alarm(1);
 #else
+    testsAreRunning.store(true);
     pthread_t thread1;
     int rc = pthread_create(&thread1, NULL, timerHandler, NULL);
     if (rc) {
         perror("pthread_create() failed");
     }
+#endif
+}
+
+/*****************************************************************************
+ * Stop the Timer Utility.
+ *
+ * Stop thread which is servicing Timer::timerHandler function.
+ *****************************************************************************/
+
+void Timer::stop() {
+#ifdef USE_THREADS
+    testsAreRunning.store(false);
 #endif
 }
 
@@ -126,7 +141,7 @@ int Timer::add(TimeoutFunc func, int seconds, void *data, bool repeat) {
     pthread_mutex_lock(&mutex);
 #endif
 
-    for (int i = 0; i < MAX_TIMERS; i++) {
+    for (int i = 0; i < MAX_TIMERS; ++i) {
         if (!timer[i].isActive) {
             timer[i].func = func;
             timer[i].seconds = seconds;
@@ -187,7 +202,7 @@ void Timer::resume(int id) {
 
 void Timer::alarmHandler(int ) {
 
-    for (int i = 0; i < MAX_TIMERS; i++) {
+    for (int i = 0; i < MAX_TIMERS; ++i) {
         TimerEntry *timerEntry = &timer[i];
         if (timerEntry->isActive && timerEntry->isAlive && 
             !timerEntry->isPaused && !timerEntry->isRunning) {
@@ -224,7 +239,7 @@ void *Timer::timerHandler(void *) {
     pthread_attr_init(&tattr);
     pthread_attr_setdetachstate(&tattr, PTHREAD_CREATE_DETACHED);
 
-    while (true) {
+    while (testsAreRunning.load()) {
 
         // wait for one second
 
@@ -232,7 +247,7 @@ void *Timer::timerHandler(void *) {
 
         pthread_mutex_lock(&mutex);
 
-        for (int i = 0; i < MAX_TIMERS; i++) {
+        for (int i = 0; i < MAX_TIMERS; ++i) {
             TimerEntry *timerEntry = &timer[i];
             if (timerEntry->isActive && timerEntry->isAlive &&
                 !timerEntry->isPaused && !timerEntry->isRunning) {
