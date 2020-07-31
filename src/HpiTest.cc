@@ -38,4 +38,6 @@ int main (int argc, char *argv[]) {
     HpiExecutive *executive = new HpiExecutive(testSuite);
     Controller controller(VERSION, argc, argv, executive, testSuite);
     controller.run();
+
+    Timer::stop();
 }

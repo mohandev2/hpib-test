@@ -25,6 +25,7 @@
 #endif
 
 #include <sys/select.h>
+#include <atomic>
 #include <iostream>
 #include <cstdio>
 #include <csignal>
@@ -41,6 +42,7 @@ TimerEntry Timer::timer[MAX_TIMERS];
 
 #ifdef USE_THREADS
 pthread_mutex_t Timer::mutex = PTHREAD_MUTEX_INITIALIZER;
+std::atomic_bool Timer::testsRunning(false);
 #endif
 
 /*****************************************************************************
@@ -59,11 +61,24 @@ void Timer::start() {
     signal(SIGALRM, alarmHandler);
     alarm(1);
 #else
+    testsRunning.store(true);
     pthread_t thread1;
     int rc = pthread_create(&thread1, NULL, timerHandler, NULL);
     if (rc) {
         perror("pthread_create() failed");
     }
+#endif
+}
+
+/*****************************************************************************
+ * Stop the Timer Utility.
+ *
+ * Stop thread which is servicing Timer::timerHandler function.
+ *****************************************************************************/
+
+void Timer::stop() {
+#ifdef USE_THREADS
+    testsRunning.store(false);
 #endif
 }
 
@@ -224,7 +239,7 @@ void *Timer::timerHandler(void *) {
     pthread_attr_init(&tattr);
     pthread_attr_setdetachstate(&tattr, PTHREAD_CREATE_DETACHED);
 
-    while (true) {
+    while (testsRunning.load()) {
 
         // wait for one second
 
